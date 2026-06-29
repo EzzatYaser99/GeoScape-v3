@@ -1,0 +1,124 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.social-list {
+  flex-wrap: wrap;
+  @include mx.display-flex(row, start, center);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include mx.media-down(vr.$breakpoint-sm) {
+    gap: vr.$spacing-16;
+  }
+}
+
+.social-item {
+  @include mx.fade-slide-in(0.55s, var(--item-delay, 0s));
+}
+
+.social-link {
+  --platform-color: #{cv.$nav-gold};
+  position: relative;
+  @include mx.display-flex(column, center, center);
+  gap: 6.4px;
+  text-decoration: none;
+  outline: none;
+
+  &-facebook {
+    --platform-color: #{cv.$platform-facebook};
+  }
+
+  &-whatsapp {
+    --platform-color: #{cv.$platform-whatsapp};
+  }
+
+  &-linkedin {
+    --platform-color: #{cv.$platform-linkedin};
+  }
+
+  &-twitter {
+    --platform-color: #{cv.$platform-twitter};
+  }
+
+  &-instagram {
+    --platform-color: #{cv.$platform-instagram};
+  }
+
+  &:hover,
+  &:focus-visible {
+    .social-icon-wrap {
+      border-color: rgba(cv.$brand-white, 0.18);
+      background: cv.$brand-white;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px cv.$shadow-black-35;
+
+      i {
+        color: var(--platform-color);
+        transform: scale(1.1);
+      }
+    }
+
+    .social-label {
+      color: cv.$nav-gold;
+      opacity: 1;
+    }
+  }
+}
+
+.social-icon-wrap {
+  @include mx.flex-center;
+  @include mx.circle(44px);
+  border: 1px solid rgba(cv.$brand-white, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  @include mx.transition(
+    border-color 0.35s vr.$ease-standard,
+    background-color vr.$transition-base,
+    transform 0.35s vr.$ease-standard,
+    box-shadow 0.35s ease
+  );
+
+  i {
+    font-size: vr.$size-3xl;
+    color: rgba(cv.$brand-white, 0.9);
+    @include mx.transition(color 0.35s ease, transform 0.35s vr.$ease-standard);
+  }
+}
+
+.social-label {
+  @include mx.uppercase-label(vr.$size-lg, 0.06em);
+  color: rgba(cv.$brand-white, 0.45);
+  opacity: 0;
+  max-width: 64px;
+  text-align: center;
+  line-height: 1.2;
+  @include mx.transition(
+    color vr.$transition-base,
+    opacity vr.$transition-base
+  );
+
+  @include mx.media-down(vr.$breakpoint-md) {
+    display: none;
+  }
+}
+
+.social-link:hover .social-label,
+.social-link:focus-visible .social-label {
+  opacity: 1;
+}
+
+@include mx.media-up(vr.$breakpoint-md) {
+  .social-list {
+    gap: vr.$spacing-4;
+  }
+
+  .social-icon-wrap {
+    @include mx.circle(48px);
+
+    i {
+      font-size: vr.$size-4xl;
+    }
+  }
+}

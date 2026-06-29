@@ -1,0 +1,12 @@
+<div class="app-shell" style="color: #1e1f22">
+  <app-header></app-header>
+
+  <main role="main">
+    <router-outlet></router-outlet>
+  </main>
+
+  @defer (on idle) {
+    <app-scroll></app-scroll>
+    <app-footer></app-footer>
+  }
+</div>

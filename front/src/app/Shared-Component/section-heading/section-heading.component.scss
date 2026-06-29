@@ -1,0 +1,74 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.section-heading {
+  text-align: center;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.section-heading.left {
+  text-align: start;
+
+  .section-title-accent {
+    margin-inline: 0;
+  }
+}
+
+.section-subtitle {
+  display: inline-block;
+  @include mx.uppercase-label(vr.$size-xl, 0.18em);
+  color: cv.$brand-green;
+  margin-bottom: vr.$spacing-12;
+  padding: vr.$padding-4 vr.$padding-12;
+  border-radius: vr.$border-radius-curvy;
+  background: cv.$brand-green-05;
+}
+
+.section-eyebrow {
+  display: block;
+  font-size: vr.$size-xxl;
+  color: cv.$brand-dark;
+  font-weight: 700;
+  margin-bottom: vr.$spacing-4;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 800;
+  color: cv.$brand-dark;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.section-title-accent {
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: vr.$spacing-16 auto 0;
+  border-radius: vr.$border-radius-curvy;
+  background: linear-gradient(90deg, cv.$brand-green, cv.$nav-gold);
+}
+
+.section-heading.dark {
+  .section-subtitle {
+    color: cv.$brand-accent;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .section-title {
+    color: cv.$brand-white;
+  }
+
+  .section-title-accent {
+    background: linear-gradient(
+      90deg,
+      cv.$brand-accent,
+      rgba(255, 255, 255, 0.5)
+    );
+  }
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GeoScape LandScape</title>
+    <link href="assets/images/logo-2.png" rel="icon" type="image/x-icon" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, minimal-ui"
+      name="viewport"
+    />
+    <meta content="GeoScape LandScape Site" name="description" />
+    <meta content="Ezzat Yaser" name="author" />
+    <meta content="yes" name="mobile-web-app-capable" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="#1e1f22" name="theme-color" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/home-page/sindalla/sindalla-1.webp"
+      fetchpriority="high"
+      type="image/webp"
+    />
+    <base href="/" />
+    <script>
+      let url = window.location.pathname.replace(/\/+/g, "/");
+      if (!url.startsWith("/")) url = "/" + url;
+      if (!url.endsWith("/")) url += "/";
+      const baseUrl =
+        window.location.protocol + "//" + window.location.host + url;
+      document.write('<base href="' + baseUrl + '">');
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

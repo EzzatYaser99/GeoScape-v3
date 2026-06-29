@@ -1,0 +1,54 @@
+<div class="benito-layout grid w-full">
+  <div class="col-12 md:col-3 px-0 md:p-1">
+    <app-filter-navigation
+      [filterItems]="filterItems"
+      [(activeIndex)]="activeIndex"
+      (activeIndexChange)="setActiveTab($event)"
+      titleKey="generic.please_select_product"
+    />
+  </div>
+  <main class="col-12 md:col-9 px-0 md:p-1">
+    <article class="service-details-card">
+      <div class="service-details-visual">
+        <div class="gallery-container">
+          <header class="gallery-header">
+            <h4 class="gallery-title">
+              {{ "services_details.service_gallery" | translate }}
+            </h4>
+          </header>
+
+          <ul
+            class="gallery-grid"
+            [attr.aria-label]="'services_details.image_gallery' | translate"
+          >
+            @for (img of selectedBenitoProduct.subImages; track $index) {
+              <li>
+                <div class="gallery-card">
+                  <p-image
+                    [preview]="false"
+                    [src]="
+                      'assets/images/products-page/benito-products/' +
+                      img?.imageSrc
+                    "
+                    [alt]="img.alt || (lang == 'en' ? img.nameEN : img.nameAR)"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="viewer-body">
+        <p class="viewer-desc">
+          {{
+            lang == "en"
+              ? selectedBenitoProduct?.descriptionEN
+              : selectedBenitoProduct?.descriptionAR
+          }}
+        </p>
+      </div>
+    </article>
+  </main>
+</div>

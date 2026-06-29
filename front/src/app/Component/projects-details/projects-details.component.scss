@@ -1,0 +1,202 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+:host ::ng-deep {
+  .p-image-preview-container > img {
+    border-radius: vr.$border-radius-xl;
+  }
+
+  .p-progressbar {
+    height: 0.8rem;
+    border-radius: vr.$border-radius-curvy;
+    overflow: hidden;
+  }
+
+  .p-button {
+    background-color: cv.$brand-green !important;
+    border-color: cv.$brand-green !important;
+    border-radius: vr.$border-radius-curvy !important;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 320px;
+    border-radius: vr.$border-radius-xl;
+    object-fit: cover;
+    border: 1px solid cv.$brand-border;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.04);
+  }
+}
+
+.project-details-page {
+  padding-top: calc(#{vr.$header-height} + #{vr.$spacing-16});
+  padding-inline: vr.$spacing-24;
+  padding-bottom: vr.$spacing-64;
+  max-width: vr.$max-content-width;
+  margin-inline: auto;
+  background: linear-gradient(
+    160deg,
+    cv.$gray-surface 0%,
+    cv.$brand-white 100%
+  );
+  min-height: 100vh;
+}
+
+.project-hero {
+  margin-bottom: vr.$spacing-32;
+  @include mx.display-flex(row, space-between, center);
+  gap: vr.$spacing-16;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: vr.$border-radius-2xl;
+  background: linear-gradient(
+    135deg,
+    cv.$brand-green 0%,
+    cv.$brand-green-dark 100%
+  );
+  color: cv.$brand-white;
+  box-shadow: 0 12px 40px cv.$brand-green-30;
+}
+
+.project-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(24px, 3.5vw, 36px);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.project-subtitle {
+  margin-top: vr.$spacing-8;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.project-status {
+  padding: vr.$padding-12 vr.$padding-20;
+  border-radius: vr.$border-radius-curvy;
+  color: cv.$brand-green-dark;
+  background: cv.$brand-white;
+  font-weight: 700;
+  font-size: vr.$size-xxl;
+  white-space: nowrap;
+}
+
+.project-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: vr.$spacing-16;
+  margin-bottom: vr.$spacing-32;
+}
+
+.info-card,
+.progress-card,
+.description-card {
+  @include mx.enhanced-card;
+  padding: vr.$padding-24;
+}
+
+.label {
+  display: block;
+  margin-bottom: vr.$spacing-12;
+  color: cv.$brand-text-muted;
+  font-size: vr.$size-xl;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.value {
+  font-size: vr.$size-3xl;
+  font-weight: 600;
+  line-height: 1.6;
+  color: cv.$brand-text;
+}
+
+.progress-card {
+  margin-bottom: vr.$spacing-32;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: vr.$spacing-16;
+  font-weight: 700;
+}
+
+.description-card {
+  margin-bottom: vr.$spacing-32;
+
+  p {
+    line-height: 1.85;
+    color: cv.$brand-text-muted;
+    margin: 0;
+  }
+}
+
+.section-title {
+  margin-bottom: vr.$spacing-24;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin-top: vr.$spacing-12;
+    border-radius: vr.$border-radius-curvy;
+    background: linear-gradient(90deg, cv.$brand-green, cv.$nav-gold);
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: vr.$spacing-24;
+}
+
+.gallery-card {
+  overflow: hidden;
+  border-radius: vr.$border-radius-xl;
+  background: cv.$brand-white;
+  border: 1px solid cv.$brand-border;
+  transition: all 0.35s ease;
+
+  &:hover {
+    box-shadow: 0 12px 32px cv.$shadow-black-10;
+    transform: translateY(-4px);
+  }
+}
+
+.back-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: vr.$spacing-48;
+  margin-bottom: vr.$spacing-32;
+}
+
+@media (max-width: 768px) {
+  .project-details-page {
+    padding-top: calc(#{vr.$header-height-mobile} + #{vr.$spacing-12});
+    padding-inline: vr.$spacing-16;
+  }
+
+  .project-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-status {
+    align-self: flex-start;
+  }
+
+  :host ::ng-deep .gallery-card img {
+    height: 250px;
+  }
+}

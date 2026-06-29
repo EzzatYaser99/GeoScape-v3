@@ -1,0 +1,146 @@
+<header
+  class="header"
+  [class.scrolled]="isScrolled"
+  [class.menu-open]="isMobileMenuOpen"
+  role="banner"
+>
+  <div class="header-accent" aria-hidden="true"></div>
+
+  <div class="header-inner">
+    <!-- Logo (left) -->
+    <a
+      class="header-logo"
+      routerLink="/main/home"
+      aria-label="GeoScape Home"
+      (click)="closeMobileMenu()"
+    >
+      <div class="header-brand">
+        <img
+          alt="GeoSCAPE Logo"
+          class="header-logo-img"
+          loading="eager"
+          src="assets/images/logo-2.png"
+        />
+        <span class="header-brand-name">
+          <span class="header-brand-accent">{{ "header.geo" | translate }}</span
+          >{{ "header.scape" | translate }}
+        </span>
+        <span class="header-tagline">{{
+          "generic.landscape" | translate
+        }}</span>
+      </div>
+    </a>
+
+    <!-- Desktop navigation (center-right) -->
+    <nav class="header-nav" aria-label="Main navigation">
+      <div class="header-nav-shell">
+        <ul class="header-nav-list">
+          @for (item of headerItems; track item.routerLink) {
+            <li class="header-nav-item">
+              <a
+                class="header-nav-link"
+                [class.header-nav-link-active]="item.isActive"
+                [routerLink]="'/main/' + item.routerLink"
+                [attr.aria-current]="item.isActive ? 'page' : null"
+                (click)="handleItemClick(item)"
+              >
+                <i class="pi" [class]="item.icon" aria-hidden="true"></i>
+                <span>{{ item.label | translate }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Utilities (right) -->
+    <div class="header-actions">
+      <app-switch-lang-button [theme]="langTheme"></app-switch-lang-button>
+
+      <button
+        type="button"
+        class="header-toggle"
+        [class.header-toggle-open]="isMobileMenuOpen"
+        [attr.aria-expanded]="isMobileMenuOpen"
+        aria-controls="mobile-nav"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMobileMenu()"
+      >
+        <span
+          class="header-toggle-bar"
+          [class.header-toggle-bar-open]="isMobileMenuOpen"
+        ></span>
+        <span
+          class="header-toggle-bar"
+          [class.header-toggle-bar-open]="isMobileMenuOpen"
+        ></span>
+        <span
+          class="header-toggle-bar"
+          [class.header-toggle-bar-open]="isMobileMenuOpen"
+        ></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile slide-in panel -->
+  <div
+    id="mobile-nav"
+    class="header-mobile-panel"
+    [class.header-mobile-panel-open]="isMobileMenuOpen"
+    [attr.aria-hidden]="!isMobileMenuOpen"
+    [attr.inert]="isMobileMenuOpen ? null : ''"
+  >
+    <nav aria-label="Mobile navigation" class="header-mobile-nav">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-title"
+          >{{ "header.geo" | translate }}{{ "header.scape" | translate }}</span
+        >
+        <span class="mobile-nav-subtitle">{{
+          "generic.landscape" | translate
+        }}</span>
+      </div>
+
+      <ul class="header-mobile-list">
+        @for (item of headerItems; track item.routerLink) {
+          <li
+            class="header-mobile-item"
+            [style.animation-delay]="$index * 0.05 + 's'"
+          >
+            <a
+              class="header-mobile-link"
+              [class.header-mobile-link-active]="item.isActive"
+              [routerLink]="'/main/' + item.routerLink"
+              [attr.aria-current]="item.isActive ? 'page' : null"
+              (click)="handleItemClick(item)"
+            >
+              <span class="mobile-link-icon">
+                <i class="pi" [class]="item.icon" aria-hidden="true"></i>
+              </span>
+              <span>{{ item.label | translate }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="mobile-nav-footer">
+        <a
+          class="mobile-nav-cta"
+          routerLink="/main/contacts"
+          (click)="closeMobileMenu()"
+        >
+          <i class="pi pi-envelope" aria-hidden="true"></i>
+          <span>{{ "header.contacts" | translate }}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  @if (isMobileMenuOpen) {
+    <button
+      type="button"
+      class="header-backdrop"
+      aria-label="Close navigation menu"
+      (click)="closeMobileMenu()"
+    ></button>
+  }
+</header>

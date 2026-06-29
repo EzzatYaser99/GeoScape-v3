@@ -1,0 +1,53 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.scrollbtn {
+  position: fixed;
+  bottom: 78px;
+  right: 24px;
+  z-index: 999;
+  transition:
+    opacity vr.$transition-base,
+    transform vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+
+    .btn {
+      box-shadow: 0 12px 32px rgba(122, 174, 59, 0.35);
+    }
+  }
+
+  .btn {
+    @include mx.display-flex(row, center, center);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    border-radius: vr.$border-radius-circle;
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(122, 174, 59, 0.3);
+    transition:
+      background-color vr.$transition-base,
+      box-shadow vr.$transition-base,
+      transform vr.$transition-fast;
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  i {
+    font-size: vr.$size-5xl;
+    color: cv.$brand-white;
+    padding: 0;
+  }
+}
+
+::ng-deep [dir="rtl"] .scrollbtn {
+  right: auto;
+  left: 24px;
+}

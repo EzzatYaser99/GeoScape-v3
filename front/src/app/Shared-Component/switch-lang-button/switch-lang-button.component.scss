@@ -1,0 +1,75 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.lang {
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, start, center, inline-flex);
+  border: 1px solid rgba(cv.$brand-white, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: vr.$border-radius-curvy;
+  font: inherit;
+  padding: vr.$padding-8 vr.$padding-12;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition:
+    color vr.$transition-base,
+    border-color vr.$transition-base,
+    background-color vr.$transition-base,
+    transform vr.$transition-fast,
+    box-shadow vr.$transition-base;
+
+  i {
+    font-size: vr.$size-3xl;
+    color: cv.$brand-green-light;
+    transition:
+      color vr.$transition-base,
+      transform vr.$transition-fast;
+  }
+
+  span {
+    font-size: vr.$size-xl;
+    color: cv.$brand-white;
+  }
+
+  &:hover {
+    border-color: rgba(cv.$brand-green, 0.45);
+    background: rgba(cv.$brand-green, 0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(122, 174, 59, 0.2);
+
+    i {
+      color: cv.$brand-green-light;
+      transform: rotate(15deg);
+    }
+  }
+
+  &.theme-light,
+  &.theme-dark {
+    &:hover i {
+      color: cv.$brand-green-light;
+    }
+  }
+}
+
+::ng-deep {
+  .p-tooltip-text {
+    font-size: vr.$size-xxl;
+    text-align: center;
+  }
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: cv.$overlay-black-60;
+  @include mx.display-flex(row, center, center);
+  z-index: 1000;
+}

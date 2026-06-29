@@ -1,0 +1,78 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+@import "primeflex/primeflex.css";
+
+// ==============================
+// HERO SECTION
+// ==============================
+
+.products-hero {
+  @include mx.hero-section;
+}
+
+// ==============================
+// PRODUCTS SECTION
+// ==============================
+
+.products-section {
+  @include mx.page-light-section;
+  padding: clamp(32px, 5vw, 64px) vr.$spacing-24;
+
+  .products-container {
+    max-width: vr.$max-content-width;
+    margin: 0 auto;
+  }
+}
+
+// ==============================
+// PRODUCTS CONTENT
+// ==============================
+
+.products-content {
+  margin: 0 auto;
+
+  @include mx.media-down(vr.$breakpoint-md) {
+    padding: vr.$padding-16 vr.$padding-12;
+  }
+}
+
+// ==============================
+// TAB PANEL
+// ==============================
+
+.tab-panel {
+  width: 100%;
+}
+
+// ==============================
+// TAB DESCRIPTION
+// ==============================
+
+.tab-description {
+  @include mx.tab-description;
+
+  .description-icon {
+    @include mx.description-icon(white);
+  }
+}
+
+// ==============================
+// PRIMENG OVERRIDES
+// ==============================
+
+:host ::ng-deep {
+  .p-image-toolbar {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    display: flex;
+  }
+
+  @media screen and (max-width: 990px) and (min-width: 570px) {
+    .trees .p-card .p-card-body {
+      min-height: 300px;
+    }
+  }
+}

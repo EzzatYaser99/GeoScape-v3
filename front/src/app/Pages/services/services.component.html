@@ -1,0 +1,166 @@
+<!-- ===========================
+     HERO SECTION
+=========================== -->
+<app-hero-section
+  backgroundImage="assets/images/services/Our-Services.webp"
+  badgeIcon="fa-solid fa-leaf"
+  badgeTextKey="services.geoscape_services"
+  titleKey="services.geoscape_services"
+  subtitleKey="services.geoscape_services_dec"
+  customClass="services-hero"
+/>
+
+<!-- ===========================
+     SERVICES CAROUSEL (hero adjacent showcase)
+=========================== -->
+<section
+  class="services-carousel-section"
+  aria-label="Featured services showcase"
+>
+  <div dir="ltr">
+    <p-carousel
+      [circular]="true"
+      [numScroll]="1"
+      [numVisible]="5"
+      [responsiveOptions]="responsiveOptions"
+      [showIndicators]="false"
+      [value]="geoscapeServices"
+      autoplayInterval="2000"
+      (onPage)="onClientsPage($event)"
+    >
+      <ng-template let-service pTemplate="item">
+        <article class="service-card" aria-label="service">
+          <div class="service-logo">
+            <img
+              [alt]="service.alt"
+              [src]="'assets/images/services/' + service.image"
+              loading="lazy"
+              class="service-image"
+            />
+          </div>
+          <div class="service-name">
+            {{ lang == "en" ? service.nameEN : service.nameAR }}
+          </div>
+        </article>
+      </ng-template>
+    </p-carousel>
+    <div
+      class="carousel-counter"
+      aria-live="polite"
+      [attr.aria-label]="
+        'Slide ' + (currentPage + 1) + ' of ' + geoscapeServices.length
+      "
+    >
+      <span class="counter-current">{{ currentPage + 1 }}</span>
+      <span class="counter-sep">/</span>
+      <span class="counter-total">{{ geoscapeServices.length }}</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     SERVICES SECTION
+=========================== -->
+<section id="services-content" class="services-section">
+  <div class="services-container grid w-full">
+    <!-- Sidebar filter (vertical list) -->
+    <div class="services-nav col-12 sm:col-9 md:col-3 lg:col-3">
+      <app-filter-navigation
+        [filterItems]="filterItems"
+        [(activeIndex)]="activeIndex"
+        (activeIndexChange)="setActiveTab($event)"
+        titleKey="services.filter_by_service"
+      />
+    </div>
+    <!-- Tab Panels Content -->
+    <div class="services-content col-12 sm:col-9 md:col-9 lg:col-9">
+      @for (service of geoscapeServices; track service.id; let idx = $index) {
+        @if (activeIndex === idx) {
+          <div
+            class="tab-panel"
+            [id]="'panel-service-' + service.id"
+            role="tabpanel"
+            [attr.aria-labelledby]="'tab-service-' + service.id"
+          >
+            <div class="tab-description">
+              <div class="description-icon">
+                <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+              </div>
+              <div class="description-body">
+                <h2 class="description-title">
+                  {{ lang == "en" ? service.nameEN : service.nameAR }}
+                </h2>
+                <p class="description-text">
+                  {{
+                    lang == "en" ? service.descriptionEN : service.descriptionAR
+                  }}
+                </p>
+              </div>
+            </div>
+            <div class="service-details-visual">
+              <div class="gallery-container">
+                <header class="gallery-header">
+                  <h4 class="gallery-title">
+                    {{ "services_details.service_gallery" | translate }}
+                  </h4>
+                </header>
+
+                <ul
+                  class="gallery-grid"
+                  [attr.aria-label]="
+                    'services_details.image_gallery' | translate
+                  "
+                >
+                  @for (
+                    img of service.subImages;
+                    track $index;
+                  ) {
+                    <li>
+                      <div class="gallery-card">
+                        <p-image
+                          [preview]="false"
+                          [src]="'assets/images/service-details/' + img.image"
+                          [alt]="
+                            img.alt ||
+                            (lang == 'en' ? service.nameEN : service.nameAR)
+                          "
+                          loading="lazy"
+                        />
+                      </div>
+                    </li>
+                  }
+                </ul>
+              </div>
+            </div>
+
+            <!-- Service Details Card -->
+            <article class="service-details-card mt-3">
+              <div class="service-details-content">
+                <div class="content-wrapper">
+                  <header class="content-header">
+                    <div class="content-icon">
+                      <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="detail-heading">
+                      {{ "services_details.our_approach" | translate }}
+                    </h3>
+                  </header>
+
+                  <div class="content-body">
+                    <p class="detail-text">
+                      {{
+                        lang == "en" ? service.whatWeDoEN : service.whatWeDoAR
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Section -->
+            </article>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>

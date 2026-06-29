@@ -1,0 +1,121 @@
+<section class="hero-carousel" aria-label="Hero banner">
+  <p-carousel
+    #heroCarousel
+    dir="ltr"
+    [value]="slides"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="autoplayInterval"
+    [showIndicators]="false"
+    [showNavigators]="false"
+    [responsiveOptions]="responsiveOptions"
+    [page]="activeIndex"
+    (onPage)="onPageChange($event.page ?? 0)"
+  >
+    <ng-template let-slide pTemplate="item">
+      <div class="hero-slide">
+        <img
+          class="hero-slide-image"
+          [src]="slide.image"
+          [alt]="
+            slide.ariaLabelKey
+              ? (slide.ariaLabelKey | translate)
+              : localized(slide.title)
+          "
+          decoding="async"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  @if (overlayMode === "static") {
+    <div class="hero-static-content">
+      <ng-content />
+    </div>
+  } @else if (activeSlide; as slide) {
+    <div class="hero-static-content hero-slide-content">
+      @for (_ of [activeIndex]; track activeIndex) {
+        <div class="hero-slide-text">
+          @if (slide.titleKey) {
+            <h3 class="hero-title animate-fade-in-down">
+              {{ slide.titleKey | translate }}
+            </h3>
+          } @else {
+            <h1 class="hero-title animate-fade-in-down">
+              {{ localized(slide.title) }}
+            </h1>
+          }
+          @if (slide.subtitleKey) {
+            <p class="hero-subtitle animate-fade-in-up">
+              {{ slide.subtitleKey | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <ng-content select="[heroActions]" />
+    </div>
+  }
+
+  <div class="hero-dots" role="tablist" [attr.aria-label]="'Hero slides'">
+    @for (slide of slides; track $index) {
+      <button
+        type="button"
+        role="tab"
+        class="hero-dot"
+        [class.is-active]="activeIndex === $index"
+        [attr.aria-selected]="activeIndex === $index"
+        [attr.aria-label]="'Slide ' + ($index + 1) + ' of ' + slides.length"
+        (click)="goToSlide($index)"
+      ></button>
+    }
+  </div>
+
+  <div class="hero-footer">
+    <button
+      type="button"
+      class="hero-nav hero-nav-prev"
+      [attr.aria-label]="'generic.prev' | translate"
+      (click)="heroCarousel.navBackward($event)"
+    >
+      <i
+        [class]="lang === 'en' ? 'pi pi-chevron-left' : 'pi pi-chevron-right'"
+        aria-hidden="true"
+      ></i>
+      <span class="hero-nav-text">{{ "generic.prev" | translate }}.</span>
+    </button>
+
+    <div
+      class="hero-counter"
+      aria-live="polite"
+      [attr.aria-label]="'Slide ' + (activeIndex + 1) + ' of ' + slides.length"
+    >
+      <span class="counter-current">{{
+        (activeIndex + 1).toString().padStart(2, "0")
+      }}</span>
+      <span class="counter-sep">/</span>
+      <span class="counter-total">{{
+        slides.length.toString().padStart(2, "0")
+      }}</span>
+    </div>
+
+    <button
+      type="button"
+      class="hero-nav hero-nav-next"
+      [attr.aria-label]="'generic.next' | translate"
+      (click)="heroCarousel.navForward($event)"
+    >
+      <span class="hero-nav-text">{{ "generic.next" | translate }}.</span>
+      <i
+        [class]="lang === 'en' ? 'pi pi-chevron-right' : 'pi pi-chevron-left'"
+        aria-hidden="true"
+      ></i>
+    </button>
+  </div>
+
+  <div class="hero-progress" aria-hidden="true">
+    <div class="hero-progress-bar" [style.width.%]="progressPercent"></div>
+  </div>
+</section>

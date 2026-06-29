@@ -1,0 +1,396 @@
+<!-- Premium Hero Section -->
+<app-hero-section
+  backgroundImage="assets/images/contact-page/ContactHero.webp"
+  badgeIcon="fa-solid fa-envelope"
+  badgeTextKey="contacts.get_in_touch"
+  subtitleKey="contacts.hero_subtitle"
+  customClass="contacts-hero"
+/>
+
+<!-- Main Content Container -->
+<div class="contacts-container">
+  <!-- Address Cards Section -->
+  <section class="offices-section">
+    <div class="section-header">
+      <h2 class="section-title">{{ "contacts.address" | translate }}</h2>
+      <p class="section-description">
+        {{ "contacts.offices_subtitle" | translate }}
+      </p>
+    </div>
+
+    <div class="offices-grid">
+      @for (item of addressInfo; track $index; let i = $index) {
+        <div
+          class="office-card animate-fade-in"
+          [style.animationDelay]="i * 100 + 'ms'"
+        >
+          <div class="office-card-header">
+            <div class="office-icon">
+              <i class="pi pi-map-marker"></i>
+            </div>
+            <h3 class="office-name">
+              {{ lang == "en" ? item.officeNameEN : item.officeNameAR }}
+            </h3>
+          </div>
+
+          <div class="office-card-body">
+            <!-- Location -->
+            <div class="contact-item location-item">
+              <div class="contact-icon">
+                <i class="fa-solid fa-location-arrow"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">{{
+                  "contacts.location" | translate
+                }}</span>
+                <a
+                  [href]="item.locationHref"
+                  target="_blank"
+                  class="contact-link"
+                >
+                  {{ lang == "en" ? item.addressNameEN : item.addressNameAR }}
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="pi pi-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">{{
+                  "contacts.email" | translate
+                }}</span>
+                <a [href]="item.mailHref" class="contact-link">
+                  {{ item.mail }}
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="pi pi-phone"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">{{
+                  "contacts.phone_no" | translate
+                }}</span>
+                <a [href]="item.phoneHref" target="_blank" class="contact-link">
+                  {{ lang == "en" ? item.phoneEN : item.phoneAR }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="office-card-footer">
+            <a
+              [href]="item.locationHref"
+              target="_blank"
+              class="cta-link-secondary"
+            >
+              <i class="pi pi-directions"></i>
+              {{ "contacts.get_directions" | translate }}
+            </a>
+            <a
+              [href]="item.phoneHref"
+              target="_blank"
+              class="cta-link-secondary"
+            >
+              <i class="pi pi-whatsapp"></i>
+              {{ "contacts.whatsapp" | translate }}
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section">
+    <div class="form-container">
+      <!-- Form Header -->
+      <div class="form-header">
+        <h2 class="form-title animate-fade-in-left">
+          {{ "contacts.get_in_touch" | translate }}
+        </h2>
+        <p
+          class="form-subtitle animate-fade-in-left"
+          [style.animationDelay]="'100ms'"
+        >
+          {{ "contacts.form_subtitle" | translate }}
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <form
+        [formGroup]="getTouchForm"
+        (ngSubmit)="submitForm()"
+        class="contact-form animate-fade-in"
+        [style.animationDelay]="'200ms'"
+      >
+        <!-- Form Grid -->
+        <div class="form-grid">
+          <!-- Name Field -->
+          <div class="form-group">
+            <label class="form-label">
+              {{ "contacts.name" | translate }}
+              <span class="required">*</span>
+            </label>
+            <input
+              formControlName="name"
+              class="form-input"
+              [class.is-invalid]="
+                getTouchForm.get('name')?.invalid &&
+                getTouchForm.get('name')?.touched
+              "
+              placeholder="{{ 'contacts.placeholder_name' | translate }}"
+              type="text"
+              pInputText
+            />
+            <div
+              class="form-error"
+              [class.show]="
+                getTouchForm.get('name')?.invalid &&
+                getTouchForm.get('name')?.touched
+              "
+            >
+              {{ "contacts.mandatory_name" | translate }}
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label class="form-label">
+              {{ "contacts.email" | translate }}
+              <span class="required">*</span>
+            </label>
+            <input
+              formControlName="email"
+              class="form-input"
+              [class.is-invalid]="
+                getTouchForm.get('email')?.invalid &&
+                getTouchForm.get('email')?.touched
+              "
+              placeholder="{{ 'contacts.placeholder_email' | translate }}"
+              type="email"
+              pInputText
+            />
+            <div
+              class="form-error"
+              [class.show]="
+                getTouchForm.get('email')?.invalid &&
+                getTouchForm.get('email')?.touched
+              "
+            >
+              {{ "contacts.mandatory_email" | translate }}
+            </div>
+          </div>
+
+          <!-- Phone Field -->
+          <div class="form-group">
+            <label class="form-label">
+              {{ "contacts.phone_no" | translate }}
+              <span class="required">*</span>
+            </label>
+            <input
+              formControlName="phone"
+              class="form-input"
+              [class.is-invalid]="
+                getTouchForm.get('phone')?.invalid &&
+                getTouchForm.get('phone')?.touched
+              "
+              placeholder="{{ 'contacts.placeholder_phone' | translate }}"
+              type="text"
+              pInputText
+            />
+            <div
+              class="form-error"
+              [class.show]="
+                getTouchForm.get('phone')?.invalid &&
+                getTouchForm.get('phone')?.touched
+              "
+            >
+              {{ "contacts.mandatory_phone" | translate }}
+            </div>
+          </div>
+
+          <!-- Services Field (Full Width) -->
+          <div class="form-group form-group-full">
+            <label class="form-label">
+              {{ "contacts.select_services" | translate }}
+            </label>
+            <p-multiSelect
+              formControlName="selectedServices"
+              [options]="geoscapeServices"
+              optionLabel="name"
+              [placeholder]="'contacts.select_services' | translate"
+              styleClass="w-full"
+            >
+              <ng-template let-value pTemplate="selectedItems">
+                @if (value && value.length > 0) {
+                  <div class="selected-items">
+                    <span class="selected-count"
+                      >{{ value.length }}
+                      {{ "contacts.selected" | translate }}</span
+                    >
+                  </div>
+                }
+              </ng-template>
+              <ng-template let-service pTemplate="item">
+                <div class="service-option">
+                  <img
+                    [alt]="service.alt"
+                    [src]="'assets/images/services/' + service.image"
+                    loading="lazy"
+                    class="service-image"
+                  />
+                  <div class="service-info">
+                    <div class="service-name">
+                      {{ lang == "en" ? service.nameEN : service.nameAR }}
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+
+          <!-- Message Field (Full Width) -->
+          <div class="form-group form-group-full">
+            <label class="form-label">
+              {{ "contacts.placeholder_message" | translate }}
+            </label>
+            <textarea
+              formControlName="message"
+              class="form-textarea"
+              [class.is-invalid]="
+                getTouchForm.get('message')?.invalid &&
+                getTouchForm.get('message')?.touched
+              "
+              placeholder="{{ 'contacts.placeholder_message' | translate }}"
+              rows="5"
+              pInputTextarea
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button
+            type="submit"
+            [disabled]="!getTouchForm.valid || isLoading"
+            class="btn btn-primary"
+            pButton
+            pRipple
+            [label]="'contacts.sent' | translate"
+          >
+            <i class="pi pi-send"></i>
+          </button>
+        </div>
+
+        <!-- Success/Error Messages -->
+        @if (showMessage) {
+          <div class="form-messages">
+            @if (successMessage && successMessage.length > 0) {
+              <div class="message-item success-message animate-fade-in">
+                <i class="pi pi-check-circle"></i>
+                <div>
+                  <p class="message-title">
+                    {{ "contacts.success" | translate }}
+                  </p>
+                  <p class="message-text">{{ successMessage[0]?.summary }}</p>
+                </div>
+              </div>
+            }
+            @if (errorMessage && errorMessage.length > 0) {
+              <div class="message-item error-message animate-fade-in">
+                <i class="pi pi-exclamation-circle"></i>
+                <div>
+                  <p class="message-title">
+                    {{ "contacts.error" | translate }}
+                  </p>
+                  <p class="message-text">{{ errorMessage[0]?.detail }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </form>
+    </div>
+
+    <!-- Form Sidebar - Trust Building Elements -->
+    <div class="form-sidebar">
+      <div
+        class="trust-section animate-fade-in"
+        [style.animationDelay]="'300ms'"
+      >
+        <h3 class="trust-title">{{ "contacts.why_choose_us" | translate }}</h3>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <i class="pi pi-bolt"></i>
+          </div>
+          <div>
+            <h4 class="trust-item-title">
+              {{ "contacts.fast_response" | translate }}
+            </h4>
+            <p class="trust-item-text">
+              {{ "contacts.fast_response_desc" | translate }}
+            </p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <i class="pi pi-shield"></i>
+          </div>
+          <div>
+            <h4 class="trust-item-title">
+              {{ "contacts.secure_trusted" | translate }}
+            </h4>
+            <p class="trust-item-text">
+              {{ "contacts.secure_trusted_desc" | translate }}
+            </p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <i class="pi pi-star-fill"></i>
+          </div>
+          <div>
+            <h4 class="trust-item-title">
+              {{ "contacts.expert_team" | translate }}
+            </h4>
+            <p class="trust-item-text">
+              {{ "contacts.expert_team_desc" | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div
+        class="stats-section animate-fade-in"
+        [style.animationDelay]="'400ms'"
+      >
+        <div class="stat-item">
+          <div class="stat-number">18+</div>
+          <div class="stat-label">
+            {{ "contacts.happy_clients" | translate }}
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">{{ "contacts.support" | translate }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">92+</div>
+          <div class="stat-label">{{ "contacts.projects" | translate }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

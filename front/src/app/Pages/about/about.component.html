@@ -1,0 +1,374 @@
+<main class="about-page">
+  <!-- Hero Section -->
+  <section class="hero" aria-label="About GeoScape">
+    <div
+      class="hero-background"
+      style="background-image: url('assets/images/about-page/about.webp')"
+      aria-hidden="true"
+    ></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="hero-badge animate-fade-in-down">
+          <span class="badge-icon">✦</span>
+          <span>{{ "about.our_story" | translate }}</span>
+        </div>
+        <h1 class="hero-title animate-fade-in-down">
+          {{ "about.title" | translate }}
+        </h1>
+        <p class="hero-subtitle animate-fade-in-down">
+          {{ "about.subtitle" | translate }}
+        </p>
+        <div class="hero-actions animate-fade-in-up">
+          <a class="btn btn-primary" routerLink="/main/uploadPdf/1">
+            <span>{{ "about.preview_profile" | translate }}</span>
+            <span class="btn-icon">
+              @if (lang == "en") {
+                <i aria-hidden="true" class="pi pi-arrow-right"></i>
+              } @else {
+                <i aria-hidden="true" class="pi pi-arrow-left"></i>
+              }
+            </span>
+          </a>
+          <a class="btn btn-secondary" routerLink="/main/contacts">
+            <span>{{ "about.contact_us" | translate }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-container">
+    <!-- Our Story Section -->
+    <section class="story-section" aria-labelledby="story-heading">
+      <header class="story-header">
+        <span class="story-label">{{ "about.our_story" | translate }}</span>
+        <h2 id="story-heading" class="story-heading">
+          {{ "about.title" | translate }}
+        </h2>
+        <p class="story-subtitle">{{ "about.subtitle" | translate }}</p>
+      </header>
+
+      <div class="story-layout">
+        <div class="story-visual">
+          <figure class="story-figure">
+            <div class="story-image-container">
+              <img
+                alt="GeoScape Story"
+                loading="lazy"
+                ngSrc="assets/images/about-page/ourStory.webp"
+                width="1600"
+                height="1067"
+                class="story-image"
+              />
+            </div>
+            <div class="story-badge">
+              <span class="badge-icon">✦</span>
+              <span class="badge-text">{{
+                "about.since_2010" | translate
+              }}</span>
+            </div>
+          </figure>
+        </div>
+
+        <div class="story-narrative">
+          <div class="story-intro">
+            <p class="story-description">
+              {{ "about.our_story_dec" | translate }}
+            </p>
+          </div>
+
+          <div class="story-metrics">
+            <div class="metric-item">
+              <span class="metric-value">14+</span>
+              <span class="metric-label">{{
+                "about.years_experience" | translate
+              }}</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">92+</span>
+              <span class="metric-label">{{
+                "about.projects_completed" | translate
+              }}</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">2+</span>
+              <span class="metric-label">{{
+                "about.global_partners_count" | translate
+              }}</span>
+            </div>
+          </div>
+
+          <div class="story-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <span aria-hidden="true">🌱</span>
+              </div>
+              <div class="highlight-content">
+                <h4 class="highlight-title">
+                  {{ "about.sustainability" | translate }}
+                </h4>
+                <p class="highlight-text">
+                  {{ "about.sustainability_desc" | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <span aria-hidden="true">💡</span>
+              </div>
+              <div class="highlight-content">
+                <h4 class="highlight-title">
+                  {{ "about.innovation" | translate }}
+                </h4>
+                <p class="highlight-text">
+                  {{ "about.innovation_desc" | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <span aria-hidden="true">🤝</span>
+              </div>
+              <div class="highlight-content">
+                <h4 class="highlight-title">
+                  {{ "about.partnership" | translate }}
+                </h4>
+                <p class="highlight-text">
+                  {{ "about.partnership_desc" | translate }}
+                </p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <span aria-hidden="true">✨</span>
+              </div>
+              <div class="highlight-content">
+                <h4 class="highlight-title">
+                  {{ "about.quality" | translate }}
+                </h4>
+                <p class="highlight-text">
+                  {{ "about.quality_desc" | translate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section>
+      <div class="values-grid">
+        <article class="value-card">
+          <div class="value-card-media">
+            <img
+              alt="Services"
+              loading="lazy"
+              ngSrc="assets/images/about-page/ourServices.webp"
+              width="768"
+              height="512"
+              class="value-card-image"
+            />
+          </div>
+          <div class="value-card-body">
+            <h3 class="value-card-title">
+              {{ "about.our_services" | translate
+              }}<span aria-hidden="true">⚡</span>
+            </h3>
+            <p class="value-card-description">
+              {{ "about.our_services_dec" | translate }}
+            </p>
+          </div>
+        </article>
+
+        <article class="value-card">
+          <div class="value-card-media">
+            <img
+              alt="Mission"
+              loading="lazy"
+              ngSrc="assets/images/about-page/ourMission.webp"
+              width="1600"
+              height="1066"
+              class="value-card-image"
+            />
+          </div>
+          <div class="value-card-body">
+            <h3 class="value-card-title">
+              {{ "about.our_mission" | translate
+              }}<span aria-hidden="true">🎯</span>
+            </h3>
+            <p class="value-card-description">
+              {{ "about.our_mission_dec" | translate }}
+            </p>
+          </div>
+        </article>
+
+        <article class="value-card">
+          <div class="value-card-media">
+            <img
+              alt="Commitment"
+              loading="lazy"
+              ngSrc="assets/images/about-page/ourCommitment.webp"
+              width="1600"
+              height="1066"
+              class="value-card-image"
+            />
+          </div>
+          <div class="value-card-body">
+            <h3 class="value-card-title">
+              {{ "about.our_commitment" | translate
+              }}<span aria-hidden="true">💎</span>
+            </h3>
+            <p class="value-card-description">
+              {{ "about.our_commitment_dec" | translate }}
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section-products" aria-labelledby="our-products">
+      <header class="section-header">
+        <h2 id="our-products" class="section-title">
+          {{ "about.our_products" | translate }}
+        </h2>
+        <p class="section-description">
+          {{ "about.our_products_dec" | translate }}
+        </p>
+      </header>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-card-icon">
+            <span aria-hidden="true">🏙️</span>
+          </div>
+          <h4 class="product-card-title">
+            {{ "about.urban_furniture" | translate }}
+          </h4>
+          <p class="product-card-description">
+            {{ "about.urban_furniture_dec" | translate }}
+          </p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card-icon">
+            <span aria-hidden="true">🎪</span>
+          </div>
+          <h4 class="product-card-title">
+            {{ "about.play_equipment" | translate }}
+          </h4>
+          <p class="product-card-description">
+            {{ "about.play_equipment_dec" | translate }}
+          </p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card-icon">
+            <span aria-hidden="true">🏋️</span>
+          </div>
+          <h4 class="product-card-title">
+            {{ "about.sports_fitness_equipment" | translate }}
+          </h4>
+          <p class="product-card-description">
+            {{ "about.sports_fitness_equipment_dec" | translate }}
+          </p>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card-icon">
+            <span aria-hidden="true">🪵</span>
+          </div>
+          <h4 class="product-card-title">
+            {{ "about.wood_plastic_composites" | translate }}
+          </h4>
+          <p class="product-card-description">
+            {{ "about.wood_plastic_composites_dec" | translate }}
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Company Profile CTA -->
+    <section aria-labelledby="company-profile">
+      <div class="cta-card">
+        <div class="cta-card-content">
+          <h3 id="company-profile" class="cta-card-title">
+            {{ "about.company_profile" | translate }}
+          </h3>
+          <p class="cta-card-description">
+            {{ "about.company_profile_dec" | translate }}
+          </p>
+        </div>
+        <div class="cta-card-action">
+          <a
+            class="btn btn-primary btn-large"
+            routerLink="/main/uploadPdf/1"
+            target="_self"
+          >
+            <span>{{ "about.preview_profile" | translate }}</span>
+            <span class="btn-icon">
+              @if (lang == "en") {
+                <i aria-hidden="true" class="pi pi-arrow-right"></i>
+              } @else {
+                <i aria-hidden="true" class="pi pi-arrow-left"></i>
+              }
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section-clients" aria-labelledby="our-clients">
+      <header class="section-header">
+        <h2 id="our-clients" class="section-title">
+          {{ "about.our_clients" | translate }}
+        </h2>
+      </header>
+
+      <div dir="ltr" class="clients-carousel">
+        <p-carousel
+          [circular]="true"
+          [numScroll]="1"
+          [numVisible]="5"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="false"
+          [value]="clients"
+          autoplayInterval="2000"
+          (onPage)="onClientsPage($event)"
+        >
+          <ng-template let-client pTemplate="item">
+            <article class="client-card" aria-label="Client">
+              <div class="client-logo">
+                <img
+                  [alt]="client.alt"
+                  [src]="'assets/images/about-page/client/' + client.image"
+                  loading="lazy"
+                  class="client-image"
+                />
+              </div>
+              <div class="client-name">
+                {{ lang == "en" ? client.nameEN : client.nameAR }}
+              </div>
+            </article>
+          </ng-template>
+        </p-carousel>
+
+        <!-- Custom Page Counter -->
+        <div
+          class="carousel-counter"
+          aria-live="polite"
+          [attr.aria-label]="
+            'Slide ' + (currentPage + 1) + ' of ' + clients.length
+          "
+        >
+          <span class="counter-current">{{ currentPage + 1 }}</span>
+          <span class="counter-sep">/</span>
+          <span class="counter-total">{{ clients.length }}</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

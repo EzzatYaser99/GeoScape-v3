@@ -1,0 +1,127 @@
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { SocialMediaInfoComponent } from "../social-media-info/social-media-info.component";
+import { TranslatePipe } from "@ngx-translate/core";
+import { LanguageService } from "../../core/service/language.service";
+import { Subscription } from "rxjs";
+
+export interface FooterNavLink {
+  label: string;
+  routerLink: string;
+  icon: string;
+}
+
+export interface WorkDays {
+  id: number;
+  openDaysEN: string;
+  openDaysAR: string;
+}
+
+export interface ContactDetailsInfo {
+  id: number;
+  icon: string;
+  titleEN: string;
+  titleAR: string;
+  href: string;
+}
+
+@Component({
+  selector: "app-footer",
+  imports: [SocialMediaInfoComponent, RouterLink, TranslatePipe],
+  templateUrl: "./footer.component.html",
+  standalone: true,
+  styleUrl: "./footer.component.scss",
+})
+export class FooterComponent implements OnInit, OnDestroy {
+  lang: "en" | "ar" = "en";
+  private langSubscription?: Subscription;
+
+  openDays: WorkDays[] = [];
+  contactDetailsInfo: ContactDetailsInfo[] = [];
+
+  readonly footerNavLinks: FooterNavLink[] = [
+    { label: "header.home", routerLink: "home", icon: "pi pi-home" },
+    { label: "header.services", routerLink: "services", icon: "pi pi-cog" },
+    {
+      label: "header.projects",
+      routerLink: "projects",
+      icon: "pi pi-building",
+    },
+    { label: "header.partners", routerLink: "partners", icon: "pi pi-users" },
+    { label: "header.nursery", routerLink: "nursery", icon: "pi pi-box" },
+    { label: "header.about", routerLink: "about", icon: "pi pi-info-circle" },
+    {
+      label: "header.contacts",
+      routerLink: "contacts",
+      icon: "pi pi-envelope",
+    },
+  ];
+
+  constructor(private readonly languageService: LanguageService) {}
+
+  ngOnInit(): void {
+    this.langSubscription = this.languageService.language.subscribe(
+      (language) => {
+        this.lang = language;
+      },
+    );
+
+    this.openDays = [
+      {
+        id: 1,
+        openDaysEN: "Sunday to Thursday",
+        openDaysAR: "من الأحد إلى الخميس",
+      },
+      {
+        id: 2,
+        openDaysEN: "9.00 Am - 6.00 Pm (KSA time)",
+        openDaysAR: "9:00 صباحًا إلى 6:00 مساءً (بتوقيت السعودية)",
+      },
+    ];
+
+    this.contactDetailsInfo = [
+      {
+        id: 1,
+        icon: "pi pi-map-marker",
+        titleEN: "King Fahd Rd, Al Olaya, Riyadh",
+        titleAR: "طريق الملك فهد، العليا، الرياض",
+        href: "https://maps.app.goo.gl/tAMe31CRJtVjrR717",
+      },
+      {
+        id: 2,
+        icon: "pi pi-envelope",
+        titleEN: "info@geoscape.net",
+        titleAR: "info@geoscape.net",
+        href: "mailto:info@geoscape.net",
+      },
+      {
+        id: 3,
+        icon: "pi pi-phone",
+        titleEN: "+966 546644283",
+        titleAR: "546644283 966+",
+        href: "https://wa.me/966546644283",
+      },
+    ];
+  }
+
+  ngOnDestroy(): void {
+    this.langSubscription?.unsubscribe();
+  }
+
+  getContactLabel(item: ContactDetailsInfo): string {
+    return this.lang === "en" ? item.titleEN : item.titleAR;
+  }
+
+  getOpenDayLabel(item: WorkDays): string {
+    return this.lang === "en" ? item.openDaysEN : item.openDaysAR;
+  }
+
+  getContactHeading(item: ContactDetailsInfo): string {
+    const headings: Record<number, string> = {
+      1: "footer.address",
+      2: "footer.email_address",
+      3: "footer.phone_no",
+    };
+    return headings[item.id] ?? "footer.contact_us";
+  }
+}

@@ -1,0 +1,10 @@
+@if (isLoading) {
+  <div class="loading-spinner">
+    <span class="loader"></span>
+  </div>
+}
+@if (!isLoading) {
+  <div class="w-11 pdf-content fadeinup">
+    <embed [src]="this.url" type="application/pdf" />
+  </div>
+}

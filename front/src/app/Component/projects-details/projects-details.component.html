@@ -1,0 +1,120 @@
+<div class="project-details-page">
+  @if (selectedProject) {
+    <section class="project-hero">
+      <div>
+        <h2 class="project-title">
+          {{ lang === "en" ? selectedProject.nameEN : selectedProject.nameAR }}
+        </h2>
+
+        <p class="project-subtitle">
+          {{ "projects.project" | translate }}
+        </p>
+      </div>
+
+      <span class="project-status">
+        {{
+          lang === "en" ? selectedProject.statusEN : selectedProject.statusAR
+        }}
+      </span>
+    </section>
+
+    <section class="project-info-grid">
+      <article class="info-card">
+        <span class="label">
+          {{ "projects.scope_of_work" | translate }}
+        </span>
+
+        <span class="value">
+          {{
+            lang === "en"
+              ? selectedProject.scopeOfWorkEN
+              : selectedProject.scopeOfWorkAR
+          }}
+        </span>
+      </article>
+
+      <article class="info-card">
+        <span class="label">
+          {{ "projects.main_contractor" | translate }}
+        </span>
+
+        <span class="value">
+          {{
+            lang === "en"
+              ? selectedProject.mainContractorEN
+              : selectedProject.mainContractorAR
+          }}
+        </span>
+      </article>
+
+      <article class="info-card">
+        <span class="label">
+          {{ "projects.consultant" | translate }}
+        </span>
+
+        <span class="value">
+          {{
+            lang === "en"
+              ? selectedProject.consultantEN
+              : selectedProject.consultantAR
+          }}
+        </span>
+      </article>
+    </section>
+
+    <section class="progress-card">
+      <div class="progress-header">
+        <span>
+          {{ "projects.progress" | translate }}
+        </span>
+
+        <strong> {{ selectedProject.progress }}% </strong>
+      </div>
+
+      <p-progressBar
+        [color]="'#3b82f6'"
+        [value]="selectedProject.progress"
+        [showValue]="false"
+      >
+      </p-progressBar>
+    </section>
+    @if (selectedProject.descriptionEN) {
+      <section class="description-card">
+        <h2>
+          {{ "projects.description" | translate }}
+        </h2>
+
+        <p>
+          {{
+            lang === "en"
+              ? selectedProject.descriptionEN
+              : selectedProject.descriptionAR
+          }}
+        </p>
+      </section>
+    }
+    <section class="gallery-section">
+      <h2 class="section-title">Project Gallery</h2>
+
+      <div class="gallery-grid">
+        @for (item of selectedProject.subImages; track item.image) {
+          <div class="gallery-card">
+            <img
+              [src]="'assets/images/projects-details/' + item.image"
+              [alt]="'Project Image'"
+              loading="lazy"
+            />
+          </div>
+        }
+      </div>
+    </section>
+
+    <div class="back-button-wrapper">
+      <p-button
+        icon="mx-2 pi {{ lang === 'en' ? 'pi-arrow-left' : 'pi-arrow-right' }}"
+        [label]="'generic.back' | translate"
+        routerLink="/main/projects"
+      />
+    </div>
+  }
+</div>

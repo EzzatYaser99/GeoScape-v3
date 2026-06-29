@@ -1,0 +1,132 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
+
+  <div class="footer-main">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <a
+            class="header-logo footer-brand-link"
+            routerLink="/main/home"
+            aria-label="GeoScape Home"
+          >
+            <div class="header-brand">
+              <img
+                alt="GeoSCAPE Logo"
+                class="header-logo-img"
+                loading="eager"
+                src="assets/images/logo-2.png"
+              />
+              <span class="header-brand-name">
+                <span class="header-brand-accent">{{
+                  "header.geo" | translate
+                }}</span
+                >{{ "header.scape" | translate }}
+              </span>
+              <span class="header-tagline">{{
+                "generic.landscape" | translate
+              }}</span>
+            </div>
+          </a>
+        </div>
+        <p class="footer-description">
+          {{ "footer.geoscape_delivers" | translate }}
+        </p>
+        <a class="footer-cta-btn" routerLink="/main/contacts">
+          <span>{{ "footer.contact_us" | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <div class="footer-col">
+        <h3 class="footer-heading">
+          <span class="footer-heading-accent" aria-hidden="true"></span>
+          {{ "footer.links" | translate }}
+        </h3>
+        <ul class="footer-links">
+          @for (link of footerNavLinks; track link.routerLink) {
+            <li>
+              <a class="footer-link" [routerLink]="'/main/' + link.routerLink">
+                <i [class]="link.icon" aria-hidden="true"></i>
+                <span>{{ link.label | translate }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div class="footer-col">
+        <h3 class="footer-heading">
+          <span class="footer-heading-accent" aria-hidden="true"></span>
+          {{ "footer.contact_us" | translate }}
+        </h3>
+        @for (item of contactDetailsInfo; track item.id) {
+          <div class="footer-contact-block">
+            <div class="footer-contact-icon" aria-hidden="true">
+              <i [class]="item.icon"></i>
+            </div>
+            <div class="footer-contact-body">
+              <h4 class="footer-subheading">
+                {{ getContactHeading(item) | translate }}
+              </h4>
+              <a
+                class="footer-contact-value"
+                [href]="item.href"
+                [attr.target]="
+                  item.id === 1 ? '_blank' : item.id === 2 ? '_self' : '_blank'
+                "
+                [attr.rel]="item.id !== 2 ? 'noopener noreferrer' : null"
+              >
+                {{ getContactLabel(item) }}
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Opening hours & social -->
+      <div class="footer-col">
+        <h3 class="footer-heading">
+          <span class="footer-heading-accent" aria-hidden="true"></span>
+          {{ "footer.opening_days" | translate }}
+        </h3>
+        <ul class="footer-hours">
+          @for (item of openDays; track item.id) {
+            <li>
+              <i class="pi pi-clock" aria-hidden="true"></i>
+              <span>{{ getOpenDayLabel(item) }}</span>
+            </li>
+          }
+        </ul>
+
+        <div class="footer-social-section">
+          <h3 class="footer-heading footer-heading-social">
+            <span class="footer-heading-accent" aria-hidden="true"></span>
+            {{ "footer.follow_us" | translate }}
+          </h3>
+          <app-social-media-info [lang]="lang"></app-social-media-info>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider" aria-hidden="true">
+    <hr class="divider" />
+  </div>
+
+  <!-- Copyright bar -->
+  <div class="footer-bottom">
+    <p class="footer-copyright">
+      {{ "footer.all_right" | translate }}
+
+      <span class="footer-brand-accent">{{ "generic.geo" | translate }}</span>
+      <span class="footer-brand-bold"
+        >{{ "generic.scape" | translate }}
+        {{ "generic.landscape" | translate }}</span
+      >
+    </p>
+  </div>
+</footer>

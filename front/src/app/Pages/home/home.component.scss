@@ -1,0 +1,505 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+:host {
+  display: block;
+}
+
+// ==============================
+// HERO (projected into carousel)
+// ==============================
+
+.animate-fade-in-down {
+  @include mx.fade-slide-in(0.6s, 0s);
+}
+
+.animate-fade-in-up {
+  @include mx.fade-slide-in(0.6s, 0.1s);
+}
+
+.hero-actions.animate-fade-in-up {
+  animation-delay: 0.22s;
+}
+
+.home-stats {
+  background: cv.$brand-dark;
+  padding: clamp(40px, 6vw, 72px) vr.$padding-24;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: -10%;
+    top: -10%;
+    width: 70%;
+    height: 120%;
+    background-image: radial-gradient(
+        circle at 85% 10%,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0.02) 20%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 95% 80%,
+        rgba(122, 174, 59, 0.06) 0%,
+        transparent 35%
+      );
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(cv.$nav-gold, 0.3),
+      transparent
+    );
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: vr.$padding-12;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  @include mx.media-up(vr.$breakpoint-md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: vr.$padding-16;
+  }
+}
+
+.home-section {
+  padding: clamp(48px, 8vw, 96px) vr.$spacing-24;
+}
+
+.home-section.light {
+  background: cv.$brand-white;
+  background: linear-gradient(
+    160deg,
+    cv.$gray-surface 0%,
+    cv.$blue-tint 40%,
+    cv.$brand-white 100%
+  );
+}
+
+.home-about-section {
+  position: relative;
+}
+
+.home-about {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 4vw, 40px);
+  background: cv.$brand-white;
+  border-radius: vr.$border-radius-2xl;
+  border: 1px solid cv.$brand-border;
+  box-shadow: 0 8px 40px cv.$shadow-black-06;
+}
+
+.about-lead {
+  font-size: clamp(17px, 2.5vw, 20px);
+  margin: 0 0 1rem;
+  color: cv.$brand-dark;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.about-text {
+  margin: 0;
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.85;
+  color: cv.$brand-text-muted;
+}
+
+.home-section.dark {
+  background: cv.$brand-dark-secondary;
+  color: cv.$brand-white;
+}
+
+// ==============================
+// PROJECTS CAROUSEL SECTION
+// ==============================
+
+.home-projects-carousel-section {
+  //margin: clamp(48px, 8vw, 80px) 0;
+  margin: vr.$margin-32;
+  padding: 0 vr.$spacing-24;
+  text-align: center;
+}
+
+.carousel-placeholder {
+  min-height: 420px;
+}
+
+.approvals-placeholder {
+  min-height: 520px;
+}
+
+.project-card {
+  padding: vr.$padding-24 vr.$padding-16;
+  @include mx.display-flex(column, center, center);
+  margin: vr.$margin-8;
+  border-radius: vr.$border-radius-xl;
+  background: cv.$brand-white;
+  border: 1px solid cv.$shadow-black-04;
+  transition:
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base,
+    border-color vr.$transition-base;
+  height: calc(100% - #{vr.$margin-16});
+  box-shadow: 0 4px 20px cv.$shadow-black-04;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px cv.$shadow-black-08;
+    border-color: cv.$brand-green-15;
+
+    .read-more-btn {
+      background: cv.$brand-green-dark;
+    }
+  }
+}
+
+.project-logo {
+  margin-bottom: vr.$margin-16;
+  padding: vr.$padding-12;
+  border-radius: vr.$border-radius-lg;
+  background: cv.$brand-surface;
+  width: 100%;
+  max-width: 160px;
+  @include mx.display-flex(row, center, center);
+  min-height: 100px;
+}
+
+.project-image {
+  max-height: 80px;
+  max-width: 100%;
+  border-radius: vr.$border-radius-md;
+  object-fit: contain;
+  filter: grayscale(15%);
+  transition:
+    transform vr.$transition-base,
+    filter vr.$transition-base;
+
+  .project-card:hover & {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+}
+
+.project-name {
+  font-size: vr.$size-3xl;
+  font-weight: 600;
+  color: cv.$brand-text;
+  text-align: center;
+  margin: 0 0 vr.$margin-8;
+  line-height: 1.35;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Carousel Styling */
+:host ::ng-deep .p-carousel {
+  .p-carousel-prev,
+  .p-carousel-next {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid cv.$shadow-black-10;
+    @include mx.circle(vr.$spacing-48);
+    box-shadow: cv.$brand-shadow-card;
+    transition: all 0.3s ease;
+
+    @include mx.media-down(vr.$breakpoint-sm) {
+      @include mx.circle(vr.$spacing-32);
+    }
+  }
+}
+
+/* Custom Carousel Counter */
+.carousel-counter {
+  visibility: hidden;
+  padding: vr.$padding-16 0 vr.$padding-8;
+  @include mx.display-flex(row, center, center);
+}
+
+.counter-current {
+  font-size: vr.$size-5xl;
+  font-weight: 700;
+  color: cv.$brand-green;
+  min-width: 28px;
+  text-align: center;
+  line-height: 1;
+}
+
+.counter-sep {
+  font-size: vr.$size-4xl;
+  font-weight: 400;
+  color: cv.$brand-text-muted;
+  line-height: 1;
+}
+
+.counter-total {
+  font-size: vr.$size-4xl;
+  font-weight: 500;
+  color: cv.$brand-text-muted;
+  min-width: 28px;
+  text-align: center;
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .carousel-counter {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+.header-row {
+  @include mx.display-flex(row, center, center);
+  gap: vr.$spacing-24;
+  max-width: 1200px;
+  margin: 0 auto clamp(24px, 4vw, 40px);
+  flex-wrap: wrap;
+
+  @include mx.media-up(vr.$breakpoint-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  app-section-heading {
+    flex: 1;
+    min-width: 240px;
+  }
+}
+
+.view-all-btn {
+  flex-shrink: 0;
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, start, center, inline-flex);
+  padding: vr.$padding-12 vr.$padding-20;
+  background: transparent;
+  border: 1.5px solid cv.$brand-green;
+  border-radius: vr.$border-radius-curvy;
+  color: cv.$brand-green-dark;
+  font-size: vr.$size-xxl;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background-color vr.$transition-base,
+    color vr.$transition-base,
+    transform vr.$transition-fast,
+    box-shadow vr.$transition-base;
+
+  i {
+    font-size: vr.$size-xl;
+    transition: transform vr.$transition-fast;
+  }
+
+  &:hover {
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px cv.$brand-green-25;
+
+    i {
+      transform: translateX(3px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.view-all {
+  flex-shrink: 0;
+  background: transparent !important;
+  border: 1px solid cv.$brand-accent !important;
+  color: cv.$brand-accent !important;
+
+  &:hover {
+    background: cv.$brand-accent !important;
+    color: cv.$brand-dark !important;
+  }
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: vr.$spacing-24;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include mx.media-up(vr.$breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mx.media-up(vr.$breakpoint-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.approvals-grid {
+  // semantic list reset
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: grid;
+  gap: vr.$spacing-24;
+  max-width: 1200px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mx.media-up(vr.$breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mx.media-up(vr.$breakpoint-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include mx.media-down(vr.$breakpoint-sm) {
+    gap: vr.$spacing-8;
+  }
+}
+
+.approval-card {
+  // each list item becomes a card container
+  display: block;
+}
+
+.approval-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  border-radius: vr.$border-radius-xl;
+  overflow: hidden;
+  background: cv.$brand-white;
+  @include mx.transition(box-shadow 200ms ease, transform 220ms ease);
+  box-shadow: 0 4px 20px cv.$shadow-black-04;
+  border: 1px solid cv.$brand-border;
+
+  // subtle hover/focus lift
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.08),
+      0 0 0 4px rgba(cv.$brand-accent, 0.12);
+  }
+
+  &:hover .approval-image,
+  &:focus-visible .approval-image {
+    box-shadow: cv.$brand-shadow-card;
+    transform: scale(1.02);
+  }
+}
+
+.approval-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: white;
+}
+
+.approval-image-wrap {
+  position: relative;
+  background: cv.$brand-surface;
+  border: none;
+  border-bottom: 1px solid cv.$brand-border;
+  padding: #{vr.$padding-16};
+  margin: 0;
+  @include mx.flex-center;
+  min-height: 220px;
+  transition:
+    transform 240ms ease,
+    box-shadow 200ms ease;
+}
+
+.approval-image {
+  max-height: 200px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: vr.$border-radius-md;
+  @include mx.transition(transform 220ms ease, box-shadow 200ms ease);
+}
+
+.approval-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  @include mx.display-flex(row, center, center, inline-flex);
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.approval-title {
+  margin: #{vr.$spacing-12} 0 0;
+  padding: #{vr.$spacing-8} #{vr.$spacing-8} #{vr.$spacing-24};
+  font-size: vr.$size-xxl;
+  font-weight: 600;
+  text-align: center;
+  color: cv.$brand-dark;
+  line-height: 1.4;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Utility: visually-hidden for accessibility (used if needed) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.read-more-btn {
+  @include mx.pill-action-btn;
+  margin-top: auto;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:host ::ng-deep [dir="rtl"] {
+  .view-all-btn:hover i,
+  .hero-cta:hover i {
+    transform: translateX(-3px);
+  }
+}

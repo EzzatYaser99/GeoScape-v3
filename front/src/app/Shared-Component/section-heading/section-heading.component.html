@@ -1,0 +1,14 @@
+<div
+  class="section-heading"
+  [class.left]="align === 'left'"
+  [class.dark]="theme === 'dark'"
+>
+  @if (subtitle) {
+    <span class="section-subtitle">{{ subtitle | translate }}</span>
+  }
+  @if (eyebrow) {
+    <div class="section-eyebrow">{{ eyebrow | translate }}</div>
+  }
+  <h2 class="section-title">{{ title | translate }}</h2>
+  <span class="section-title-accent" aria-hidden="true"></span>
+</div>

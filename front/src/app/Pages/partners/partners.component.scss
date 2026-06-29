@@ -1,0 +1,428 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+@import "primeflex/primeflex.css";
+
+/* Partners page - design system driven styles */
+
+.partners-hero {
+  @include mx.hero-section;
+}
+
+.trust-indicators {
+  display: flex;
+  gap: vr.$spacing-24;
+  margin-top: vr.$margin-24;
+  @include mx.display-flex(row, center, center);
+  flex-wrap: wrap;
+  padding: vr.$padding-16 vr.$padding-24;
+  border-radius: vr.$border-radius-xl;
+  //background: rgba(255, 255, 255, 0.06);
+  //border: 1px solid rgba(255, 255, 255, 0.1);
+  //backdrop-filter: blur(12px);
+}
+
+.trust-item {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.trust-divider {
+  width: 1px;
+  height: vr.$spacing-32;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.badge-icon {
+  color: cv.$nav-gold;
+}
+
+.partners-section {
+  max-width: vr.$max-content-width;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) vr.$page-gutter-sm;
+  background: linear-gradient(
+    160deg,
+    cv.$gray-surface 0%,
+    cv.$brand-white 100%
+  );
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.section-title {
+  font-size: clamp(26px, 3.8vw, 40px);
+  font-weight: 800;
+  color: cv.$brand-dark;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: vr.$spacing-16 auto 0;
+    border-radius: vr.$border-radius-curvy;
+    background: linear-gradient(90deg, cv.$brand-green, cv.$nav-gold);
+  }
+}
+
+.section-subtitle {
+  color: cv.$brand-text-muted;
+  max-width: 62ch;
+  margin: vr.$margin-12 auto 0;
+  line-height: 1.75;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: vr.$spacing-20;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.partner-card {
+  @include mx.enhanced-card;
+  padding: vr.$padding-24;
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-12;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  &-featured {
+    border: 2px solid cv.$brand-green;
+    background: linear-gradient(
+      145deg,
+      cv.$brand-white 0%,
+      cv.$brand-green-03 100%
+    );
+    box-shadow: 0 8px 32px cv.$brand-green-20;
+  }
+}
+
+.partner-inner {
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-12;
+  height: 100%;
+}
+
+.partner-header {
+  @include mx.display-flex(row, space-between, center);
+  gap: vr.$spacing-12;
+}
+
+.partner-logo {
+  flex-shrink: 0;
+}
+
+.partner-avatar {
+  width: vr.$spacing-64;
+  height: vr.$spacing-64;
+  border-radius: vr.$border-radius-lg;
+  padding: vr.$padding-8;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+}
+
+.partner-logo-img {
+  width: 100px;
+  height: vr.$spacing-64;
+  object-fit: contain;
+  border-radius: vr.$border-radius-lg;
+}
+
+.partner-badge {
+  display: inline-block;
+  padding: vr.$padding-8 vr.$padding-16;
+  border-radius: vr.$border-radius-curvy;
+  font-weight: 700;
+  font-size: vr.$size-xl;
+  background: cv.$brand-green-10;
+  color: cv.$brand-green-dark;
+
+  &-featured {
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+  }
+}
+
+.partner-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: cv.$brand-dark;
+  margin: 0;
+}
+
+.partner-description {
+  color: cv.$brand-text-muted;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.partner-details {
+  background: linear-gradient(180deg, cv.$brand-surface, cv.$brand-surface);
+  border-radius: vr.$border-radius-lg;
+  padding: vr.$padding-12;
+  border: 1px solid cv.$shadow-black-04;
+}
+
+.partner-footer {
+  margin-top: auto;
+  border-radius: vr.$border-radius-lg;
+  i {
+    color: cv.$brand-green;
+  }
+}
+
+.partner-detail-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: vr.$spacing-12;
+  padding: vr.$spacing-8 0;
+  border-bottom: 1px solid cv.$shadow-black-04;
+}
+
+.partner-detail-row:last-child {
+  border-bottom: none;
+}
+
+.partner-detail-label {
+  font-size: vr.$size-xl;
+  font-weight: 700;
+  color: cv.$brand-text-muted;
+  text-transform: uppercase;
+}
+
+.partner-detail-value {
+  font-size: vr.$size-4xl;
+  color: cv.$brand-dark;
+  font-weight: 600;
+  //text-align: right;
+}
+
+.partner-detail-link {
+  color: cv.$brand-green;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+}
+
+.partner-detail-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -(vr.$spacing-4);
+  width: 0;
+  height: vr.$spacing-4;
+  background: cv.$brand-green;
+  transition: width 0.28s ease;
+}
+
+.partner-detail-link:hover::after {
+  width: 100%;
+}
+
+.partner-meta {
+  display: flex;
+  gap: vr.$spacing-8;
+  align-items: center;
+  color: cv.$brand-text-muted;
+}
+
+.partner-meta-item {
+  display: flex;
+  gap: vr.$spacing-8;
+  align-items: center;
+  font-weight: 600;
+}
+
+.partner-meta-icon {
+  font-size: vr.$size-3xl;
+}
+
+.partner-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  @include mx.pill-action-btn;
+  background: cv.$brand-surface;
+  color: cv.$brand-green-dark;
+  border: 1.5px solid cv.$brand-green;
+  border-radius: vr.$border-radius-2xl !important;
+
+  &:hover {
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+  }
+  &:hover i {
+    color: cv.$brand-white;
+  }
+}
+
+.cta-section {
+  border-radius: vr.$border-radius-2xl;
+  padding: clamp(40px, 6vw, 64px) vr.$padding-32;
+  margin: vr.$margin-48 vr.$page-gutter-sm;
+  max-width: vr.$max-content-width;
+  margin-inline: auto;
+  background: linear-gradient(
+    135deg,
+    cv.$brand-green-05 0%,
+    cv.$blue-tint 50%,
+    cv.$brand-white 100%
+  );
+  border: 1px solid cv.$brand-border;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: clamp(20px, 3.2vw, 32px);
+  font-weight: 700;
+}
+
+.cta-subtitle {
+  color: cv.$brand-text-muted;
+  margin-top: vr.$margin-8;
+}
+
+.cta-button {
+  border: 0;
+  margin-top: vr.$margin-16;
+  display: inline-flex;
+  align-items: center;
+  gap: vr.$spacing-8;
+  @include mx.pill-action-btn;
+  padding: vr.$padding-12 vr.$padding-24;
+  font-size: vr.$size-3xl;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Animations */
+.animate-fade-in-down {
+  @include mx.fade-slide-in(0.6s, 0s);
+}
+
+.animate-fade-in-up {
+  @include mx.fade-slide-in(0.6s, 0.1s);
+}
+
+/* Responsive tweaks */
+@include mx.media-down(vr.$breakpoint-md) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  .partner-detail-row {
+    flex-direction: row-reverse;
+  }
+}
+
+:host ::ng-deep {
+  .p-avatar .p-avatar-image {
+    object-fit: contain;
+  }
+}
+
+.header-logo {
+  cursor: default;
+
+  .header-brand-name {
+    color: cv.$brand-dark;
+  }
+
+  .header-brand-accent {
+    color: cv.$nav-gold;
+  }
+
+  .header-tagline {
+    color: cv.$brand-dark;
+  }
+}
+
+
+// ==============================
+// PRODUCTS SECTION
+// ==============================
+
+.products-section {
+  @include mx.page-light-section;
+  padding: clamp(32px, 5vw, 64px) vr.$spacing-24;
+
+  .products-container {
+    max-width: vr.$max-content-width;
+    margin: 0 auto;
+  }
+}
+
+// ==============================
+// PRODUCTS CONTENT
+// ==============================
+
+.products-content {
+  margin: 0 auto;
+
+  @include mx.media-down(vr.$breakpoint-md) {
+    padding: vr.$padding-16 vr.$padding-12;
+  }
+}
+
+// ==============================
+// TAB PANEL
+// ==============================
+
+.tab-panel {
+  width: 100%;
+}
+
+// ==============================
+// TAB DESCRIPTION
+// ==============================
+
+.tab-description {
+  @include mx.tab-description;
+
+  .description-icon {
+    @include mx.description-icon(white);
+  }
+}
+
+// ==============================
+// PRIMENG OVERRIDES
+// ==============================
+
+:host ::ng-deep {
+  .p-image-toolbar {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    display: flex;
+  }
+
+  @media screen and (max-width: 990px) and (min-width: 570px) {
+    .trees .p-card .p-card-body {
+      min-height: 300px;
+    }
+  }
+}
+

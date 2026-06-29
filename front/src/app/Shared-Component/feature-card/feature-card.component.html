@@ -1,0 +1,9 @@
+<article class="card" [class.card-highlighted]="highlighted">
+  @if (icon) {
+    <div class="card-icon-wrap" aria-hidden="true">
+      <i [class]="icon"></i>
+    </div>
+  }
+  <h3 class="card-title">{{ titleKey | translate }}</h3>
+  <p class="card-description">{{ descriptionKey | translate }}</p>
+</article>

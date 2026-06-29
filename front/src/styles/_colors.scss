@@ -1,0 +1,67 @@
+// Brand palette
+$brand-green: #7aae3b;
+$brand-green-light: #86bb46;
+$brand-green-dark: #5a8f2a;
+$brand-accent: #f5b800;
+$brand-dark: #1a1a1a;
+$brand-dark-secondary: #2d2d2d;
+$brand-text: #0c0c0c;
+$brand-text-muted: #6b7280;
+$brand-white: #ffffff;
+$brand-surface: #f8f9fa;
+$brand-border: #e5e7eb;
+
+// Brand green opacity variants
+$brand-green-03: rgba(122, 174, 59, 0.03);
+$brand-green-05: rgba(122, 174, 59, 0.05);
+$brand-green-10: rgba(122, 174, 59, 0.1);
+$brand-green-15: rgba(122, 174, 59, 0.15);
+$brand-green-20: rgba(122, 174, 59, 0.2);
+$brand-green-25: rgba(122, 174, 59, 0.25);
+$brand-green-30: rgba(122, 174, 59, 0.3);
+$brand-green-40: rgba(122, 174, 59, 0.4);
+
+// Shadows (color composites)
+$brand-shadow: 0px 9px 31.3px 0px rgba(82, 146, 39, 0.29);
+$brand-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+// Additional colors discovered in global styles
+// semi-opaque surface (used as #eeecec54 in styles.scss)
+$brand-surface-33: rgba(238, 236, 236, 0.33);
+
+// utility / component colors
+$light-blue: #b9c8fc;
+$muted-gray: #d1d5db;
+$primary-blue: #3b82f6;
+$gray-surface: #f8fafc;
+$blue-tint: #eef4ff;
+$text-gray: #4b5563;
+
+// UCC-inspired accents
+$nav-gold: #d4a843;
+$danger-red: #c73b3b;
+$partner-gold: #dcc108;
+$partner-green: #08965e;
+$muted-indigo: #565382;
+
+// common overlays and shadows
+$shadow-black-04: rgba(0, 0, 0, 0.04);
+$shadow-black-06: rgba(0, 0, 0, 0.06);
+$shadow-black-08: rgba(0, 0, 0, 0.08);
+$shadow-black-10: rgba(0, 0, 0, 0.1);
+$shadow-black-12: rgba(0, 0, 0, 0.12);
+$shadow-black-15: rgba(0, 0, 0, 0.15);
+$shadow-black-20: rgba(0, 0, 0, 0.2);
+$scroll-thumb-color: rgba(0, 0, 0, 0.29);
+$shadow-black-35: rgba(0, 0, 0, 0.35);
+$backdrop-black-55: rgba(0, 0, 0, 0.55);
+$overlay-black-60: rgba(0, 0, 0, 0.6);
+$header-overlay: rgba(0, 0, 0, 0.3);
+$header-scrolled: rgba(13, 13, 13, 0.97);
+
+// Social platform colors
+$platform-facebook: #1877f2;
+$platform-whatsapp: #25d366;
+$platform-linkedin: #0a66c2;
+$platform-twitter: #e7e9ea;
+$platform-instagram: #e4405f;

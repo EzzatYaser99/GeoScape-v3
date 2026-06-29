@@ -1,0 +1,23 @@
+<div #counterRef class="stat-counter" [attr.aria-label]="label">
+  @if (icon) {
+    <div class="stat-counter-icon-wrap">
+      <img class="stat-counter-icon" [src]="icon" alt="" aria-hidden="true" />
+    </div>
+  }
+
+  <div class="stat-counter-body">
+    <div class="stat-counter-value" aria-live="polite">
+      @if (prefix) {
+        <span class="stat-counter-prefix">{{ prefix }}</span>
+      }
+      <span class="stat-counter-number">{{ displayValue }}</span>
+      @if (showPlus) {
+        <span class="stat-counter-plus" aria-hidden="true">+</span>
+      }
+      @if (suffix) {
+        <span class="stat-counter-suffix">{{ suffix }}</span>
+      }
+    </div>
+    <p class="stat-counter-label">{{ label }}</p>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<!-- ===========================
+     HERO SECTION (refactored to match About/Partners design)
+=========================== -->
+<app-hero-section
+  backgroundImage="assets/images/products-page/our-products.webp"
+  badgeIcon="fa-solid fa-leaf"
+  badgeTextKey="products.geoscape_nursery"
+  titleKey="products.geoscape_nursery"
+  subtitleKey="products.plants_products_dec"
+  customClass="products-hero"
+/>
+<!-- ===========================
+     PRODUCTS SECTION
+=========================== -->
+<section class="products-section">
+  <div class="products-container grid w-full">
+    <!-- Custom Tab Navigation -->
+    <div class="col-12 sm:col-9 md:col-3 lg:col-2">
+      <app-filter-navigation
+        [filterItems]="geoscapeProducts"
+        [(activeIndex)]="activeIndex"
+        (activeIndexChange)="setActiveTab($event)"
+        titleKey="generic.filter_by_section"
+      />
+    </div>
+    <!-- Tab Panels Content -->
+    <div class="products-content col-12 sm:col-9 md:col-9 lg:col-10">
+      <!-- Panel 1: Plants -->
+      @if (activeIndex === 0) {
+        <div
+          class="tab-panel"
+          id="panel-plants"
+          role="tabpanel"
+          aria-labelledby="tab-plants"
+        >
+          <div class="tab-description">
+            <div class="description-icon">
+              <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            </div>
+            <div class="description-body">
+              <h2 class="description-title">
+                {{ "products.plants" | translate }}
+              </h2>
+              <p class="description-text">
+                {{ "products.plants_products_dec" | translate }}
+              </p>
+            </div>
+          </div>
+          <app-plants [lang]="lang"></app-plants>
+        </div>
+      }
+
+      <!-- Panel 2: Trees -->
+      @if (activeIndex === 1) {
+        <div
+          class="tab-panel"
+          id="panel-trees"
+          role="tabpanel"
+          aria-labelledby="tab-trees"
+        >
+          <div class="tab-description">
+            <div class="description-icon">
+              <img src="assets/icons/tree.svg" alt="" />
+            </div>
+            <div class="description-body">
+              <h2 class="description-title">
+                {{ "products.trees" | translate }}
+              </h2>
+              <p class="description-text">
+                {{ "products.trees_products_dec" | translate }}
+              </p>
+            </div>
+          </div>
+          <app-trees [lang]="lang"></app-trees>
+        </div>
+      }
+    </div>
+  </div>
+</section>

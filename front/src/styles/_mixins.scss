@@ -1,0 +1,954 @@
+@use "colors" as cv;
+@use "variables" as vr;
+
+// Flex
+@mixin display-flex(
+  $flex-direction: row,
+  $justify-content: start,
+  $align-items: start,
+  $display: flex
+) {
+  display: $display;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flex-center {
+  @include display-flex(row, center, center);
+}
+
+// Position
+@mixin position(
+  $position: relative,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin fixed-full-width($z-index: vr.$z-header) {
+  @include position(fixed, 0, 0, auto, 0);
+  z-index: $z-index;
+  width: 100%;
+}
+
+// Shape
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: vr.$border-radius-circle;
+}
+
+@mixin border-view($width, $display: solid, $color, $radius: 0) {
+  border: $width $display $color;
+  border-radius: $radius;
+}
+
+// Responsive
+@mixin media-up($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Motion
+@mixin transition($properties...) {
+  transition: $properties;
+}
+
+@mixin hover-lift($distance: -4px) {
+  @include transition(
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base
+  );
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY($distance);
+    box-shadow: cv.$brand-shadow-card;
+    outline: none;
+  }
+}
+
+@mixin fade-slide-in($duration: 0.55s, $delay: 0s) {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: mx-fade-slide-in $duration vr.$ease-standard $delay forwards;
+}
+
+// Typography
+@mixin uppercase-label($size: vr.$size-xl, $spacing: 0.15em) {
+  font-size: $size;
+  font-weight: 600;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+}
+
+// Links & nav
+@mixin gold-underline($height: 2px, $bottom: vr.$size-xxs) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: $bottom;
+    left: 50%;
+    width: 0;
+    height: $height;
+    background: cv.$nav-gold;
+    transform: translateX(-50%);
+    transition: width vr.$ucc-nav-transition;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    width: calc(100% - #{vr.$spacing-16});
+  }
+}
+
+@mixin link-underline-grow {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: cv.$nav-gold;
+    transition: width vr.$ucc-nav-transition;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    width: 100%;
+  }
+}
+
+// Sections
+@mixin page-full-bleed {
+  margin-left: calc(-1 * #{vr.$page-gutter-sm});
+  margin-right: calc(-1 * #{vr.$page-gutter-sm});
+  width: calc(100% + 2 * #{vr.$page-gutter-sm});
+
+  @include media-up(vr.$breakpoint-md) {
+    margin-left: calc(-1 * #{vr.$page-gutter-md});
+    margin-right: calc(-1 * #{vr.$page-gutter-md});
+    width: calc(100% + 2 * #{vr.$page-gutter-md});
+  }
+}
+
+@mixin gold-divider($width: 40px) {
+  width: $width;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    cv.$nav-gold 0%,
+    rgba(cv.$nav-gold, 0.2) 100%
+  );
+}
+
+@keyframes mx-fade-slide-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mx-header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mx-hero-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes mx-scroll-hint {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.6);
+    transform-origin: top;
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@mixin pill-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vr.$padding-12 vr.$padding-16;
+  background: cv.$brand-green;
+  color: cv.$brand-white;
+  border: none;
+  border-radius: vr.$border-radius-curvy;
+  font-size: vr.$size-xxl;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform vr.$transition-fast,
+    background-color vr.$transition-base,
+    box-shadow vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: cv.$brand-green-dark;
+    box-shadow: 0 6px 20px cv.$brand-green-30;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin showcase-carousel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: vr.$padding-24 vr.$padding-16;
+  margin: vr.$margin-8;
+  border-radius: vr.$border-radius-xl;
+  background: cv.$brand-white;
+  border: 1px solid cv.$shadow-black-04;
+  box-shadow: 0 4px 20px cv.$shadow-black-04;
+  height: calc(100% - #{vr.$margin-16});
+  transition:
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base,
+    border-color vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px cv.$shadow-black-08;
+    border-color: cv.$brand-green-15;
+  }
+}
+
+@mixin page-light-section {
+  background: linear-gradient(
+    160deg,
+    cv.$gray-surface 0%,
+    cv.$blue-tint 35%,
+    cv.$brand-white 100%
+  );
+  min-height: 60vh;
+  position: relative;
+
+  @include section-top-border;
+}
+
+@mixin carousel-counter {
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: vr.$spacing-4;
+  padding: vr.$padding-16 0 vr.$padding-8;
+
+  .counter-current {
+    font-size: vr.$size-5xl;
+    font-weight: 700;
+    color: cv.$brand-green;
+    min-width: 28px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .counter-sep,
+  .counter-total {
+    font-size: vr.$size-4xl;
+    font-weight: 500;
+    color: cv.$brand-text-muted;
+    min-width: 28px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  @include media-down(480px) {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+@mixin enhanced-card {
+  background: cv.$brand-white;
+  border-radius: vr.$border-radius-xl;
+  border: 1px solid cv.$brand-border;
+  box-shadow: 0 4px 24px cv.$shadow-black-06;
+  transition:
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base,
+    border-color vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px cv.$shadow-black-08;
+    border-color: cv.$brand-green-15;
+  }
+}
+
+@mixin hero-section {
+  position: relative;
+  min-height: clamp(420px, 72vh, 680px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0;
+
+  @include media-down(vr.$breakpoint-md) {
+    min-height: clamp(360px, 62vh, 480px);
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    filter: brightness(0.58) saturate(1.05);
+
+    &:not(img) {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: mx-hero-ken-burns 18s ease-in-out infinite alternate;
+    }
+
+    &:is(img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: mx-hero-ken-burns 18s ease-in-out infinite alternate;
+    }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgb(2 6 23 / 0.55) 0%,
+        rgb(2 6 23 / 0.25) 45%,
+        rgb(2 6 23 / 0.65) 100%
+      ),
+      radial-gradient(
+        ellipse 80% 60% at 50% 40%,
+        rgb(122 174 59 / 0.08) 0%,
+        transparent 70%
+      );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: cv.$brand-white;
+    text-align: center;
+    padding: vr.$padding-48 vr.$padding-16 vr.$padding-32;
+    max-width: 900px;
+    width: 100%;
+    margin-top: vr.$margin-64;
+  }
+
+  .hero-badge {
+    @include flex-center;
+    gap: vr.$spacing-8;
+    display: inline-flex;
+    padding: vr.$padding-8 vr.$padding-16;
+    border-radius: vr.$border-radius-curvy;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: vr.$size-xl;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+
+    i {
+      color: cv.$brand-green-light;
+      font-size: vr.$size-xxl;
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    margin: vr.$margin-16 0 vr.$margin-12;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.75;
+    max-width: 58ch;
+    margin: 0 auto vr.$margin-24;
+    text-wrap: pretty;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: vr.$spacing-12;
+    margin-top: vr.$margin-8;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: vr.$spacing-8;
+    padding: vr.$padding-12 vr.$padding-24;
+    border-radius: vr.$border-radius-curvy;
+    font-size: vr.$size-xxl;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition:
+      transform vr.$transition-fast,
+      box-shadow vr.$transition-base,
+      background-color vr.$transition-base,
+      border-color vr.$transition-base,
+      color vr.$transition-base;
+
+    i {
+      font-size: vr.$size-xl;
+      transition: transform vr.$transition-fast;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+
+      i {
+        transform: translateX(3px);
+      }
+    }
+
+    [dir="rtl"] &:hover i {
+      transform: translateX(-3px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .hero-cta-primary {
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 24px rgba(122, 174, 59, 0.35);
+
+    &:hover {
+      background: cv.$brand-green-dark;
+      box-shadow: 0 12px 32px rgba(122, 174, 59, 0.4);
+    }
+  }
+
+  .hero-cta-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: cv.$brand-white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: vr.$spacing-24;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: vr.$spacing-8;
+    opacity: 0.7;
+    pointer-events: none;
+
+    @include media-down(vr.$breakpoint-md) {
+      display: none;
+    }
+  }
+
+  .hero-scroll-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 100%
+    );
+    animation: mx-scroll-hint 2s ease-in-out infinite;
+  }
+}
+
+// ==============================
+// PRODUCT CARD MIXIN
+// ==============================
+
+@mixin product-card {
+  background: cv.$brand-white;
+  border-radius: vr.$border-radius-xl;
+  border: 1px solid cv.$brand-border;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 24px cv.$shadow-black-06;
+  transition:
+    box-shadow vr.$transition-base,
+    border-color vr.$transition-base,
+    transform vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px cv.$shadow-black-08;
+    border-color: cv.$brand-green-15;
+  }
+
+  .card-image-wrap {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      cv.$brand-surface 0%,
+      rgba(248, 249, 250, 0.5) 100%
+    );
+
+    :host ::ng-deep .p-image {
+      display: block;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+  }
+
+  &:hover .card-image-wrap {
+    :host ::ng-deep .p-image img {
+      transform: scale(1.08);
+    }
+  }
+
+  .card-category-badge {
+    position: absolute;
+    top: vr.$spacing-12;
+    left: vr.$spacing-12;
+    display: inline-flex;
+    align-items: center;
+    gap: vr.$spacing-4;
+    backdrop-filter: blur(8px);
+    color: cv.$brand-green;
+    background: white;
+    padding: vr.$padding-4 vr.$padding-8;
+    border-radius: vr.$border-radius-curvy;
+    font-size: vr.$size-xl;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    transition: transform vr.$transition-base;
+  }
+
+  &:hover .card-category-badge {
+    transform: scale(1.05);
+  }
+
+  .card-body {
+    padding: vr.$padding-16 vr.$padding-16 vr.$padding-20;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: vr.$spacing-8;
+  }
+
+  .card-title {
+    font-size: vr.$size-4xl;
+    font-weight: 700;
+    color: cv.$brand-text;
+    margin: 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    transition: color vr.$transition-base;
+  }
+
+  .card-desc {
+    font-size: vr.$size-xxl;
+    color: cv.$brand-text-muted;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+}
+
+// ==============================
+// FILTER NAVIGATION MIXIN
+// ==============================
+
+@mixin filter-navigation {
+  .filter-box {
+    padding: vr.$padding-12;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: cv.$brand-white;
+    border: 1px solid cv.$brand-border;
+    border-radius: vr.$border-radius-xl;
+    box-shadow: 0 4px 20px cv.$shadow-black-04;
+
+    scrollbar-width: thin;
+    scrollbar-color: cv.$brand-green transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: cv.$brand-green;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: cv.$brand-green-dark;
+    }
+  }
+
+  .filter-title {
+    font-size: vr.$size-xxl;
+    font-weight: 700;
+    margin: 0 0 vr.$spacing-12 0;
+    color: cv.$brand-text;
+    padding: vr.$padding-12;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .filter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .filter-list-item {
+    margin: 0 0 vr.$spacing-8 0;
+  }
+
+  .filter-item {
+    display: block;
+    width: 100%;
+    text-align: start;
+    padding: vr.$padding-12 vr.$padding-16;
+    background: transparent;
+    border: 0;
+    color: cv.$brand-text-muted;
+    font-weight: 600;
+    border-radius: vr.$border-radius-lg;
+    border-left: 3px solid transparent;
+    transition:
+      background 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      transform 0.18s ease;
+
+    &:hover {
+      background: cv.$brand-green-03;
+      transform: translateX(2px);
+      outline: none;
+    }
+  }
+
+  .filter-item-active {
+    border-left-color: cv.$brand-green;
+    color: cv.$brand-green-dark;
+    font-weight: 700;
+    background: cv.$brand-green-05;
+    transform: translateX(0);
+  }
+}
+
+// ==============================
+// GALLERY STYLES MIXIN
+// ==============================
+
+@mixin gallery-styles {
+  .service-details-card {
+    display: grid;
+    gap: vr.$spacing-8;
+    background: cv.$brand-white;
+    border: 1px solid cv.$brand-border;
+    border-radius: 20px;
+    padding: vr.$padding-32;
+    box-shadow: 0 4px 20px cv.$shadow-black-08;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 450px;
+
+    &:hover {
+      box-shadow: 0 8px 30px cv.$shadow-black-12;
+    }
+
+    @include media-down(vr.$breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: vr.$spacing-24;
+      padding: vr.$padding-24;
+    }
+
+    @include media-down(vr.$breakpoint-md) {
+      gap: vr.$spacing-20;
+      padding: vr.$padding-20;
+      border-radius: 16px;
+    }
+  }
+
+  .service-details-visual {
+    display: flex;
+    flex-direction: column;
+    gap: vr.$spacing-20;
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: vr.$spacing-16;
+  }
+
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: vr.$spacing-12;
+    padding-bottom: vr.$spacing-12;
+    border-bottom: 2px solid cv.$brand-border;
+  }
+
+  .gallery-title {
+    font-size: vr.$size-xxl;
+    font-weight: 700;
+    color: cv.$brand-text;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: vr.$spacing-4;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: vr.$border-radius-xl;
+    background: cv.$brand-white;
+    border: 2px solid cv.$brand-border;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    aspect-ratio: 1.1;
+
+    &:hover {
+      box-shadow: 0 12px 28px cv.$shadow-black-15;
+      transform: translateY(-4px);
+      border-color: cv.$brand-green-20;
+    }
+
+    &:focus-visible {
+      outline-offset: 3px;
+    }
+
+    &-active {
+      border-color: cv.$brand-green;
+      box-shadow: 0 8px 24px cv.$brand-green-20;
+    }
+  }
+
+  :host ::ng-deep {
+    .gallery-card {
+      .p-image,
+      .p-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// ==============================
+// VIEWER STYLES MIXIN
+// ==============================
+
+@mixin viewer-styles {
+  .viewer-body {
+    padding: vr.$padding-24 vr.$padding-24 vr.$padding-32;
+  }
+
+  .viewer-desc {
+    font-size: vr.$size-xxl;
+    color: cv.$brand-text-muted;
+    line-height: 1.7;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+// ==============================
+// SECTION TOP BORDER MIXIN
+// ==============================
+
+@mixin section-top-border {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      cv.$brand-border 20%,
+      cv.$brand-border 80%,
+      transparent 100%
+    );
+  }
+}
+
+// ==============================
+// TAB DESCRIPTION MIXIN
+// ==============================
+
+@mixin tab-description {
+  display: flex;
+  align-items: flex-start;
+  gap: vr.$spacing-16;
+  background: cv.$brand-white;
+  border: 1px solid cv.$brand-border;
+  border-left: 4px solid cv.$brand-green;
+  border-radius: vr.$border-radius-xl;
+  padding: vr.$padding-24;
+  margin-bottom: vr.$spacing-32;
+  box-shadow: 0 4px 24px cv.$shadow-black-06;
+  transition:
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px cv.$shadow-black-08;
+  }
+
+  @include media-down(vr.$breakpoint-md) {
+    flex-direction: column;
+    gap: vr.$spacing-12;
+    padding: vr.$padding-16;
+    margin-bottom: vr.$spacing-20;
+  }
+
+  &:hover .description-icon {
+    transform: scale(1.05);
+  }
+
+  .description-body {
+    flex: 1;
+  }
+
+  .description-title {
+    font-size: vr.$size-5xl;
+    font-weight: 700;
+    color: cv.$brand-text;
+    margin: 0 0 vr.$spacing-8 0;
+    letter-spacing: -0.01em;
+  }
+
+  .description-text {
+    font-size: vr.$size-xxl;
+    color: cv.$brand-text-muted;
+    margin: 0;
+    line-height: 1.7;
+  }
+}
+
+// ==============================
+// DESCRIPTION ICON MIXIN
+// ==============================
+
+@mixin description-icon($gradient: white) {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: $gradient;
+  border-radius: vr.$border-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: vr.$size-5xl;
+  color: cv.$brand-green;
+  box-shadow: 0 4px 12px cv.$brand-green-30;
+  transition: transform vr.$transition-base;
+}

@@ -1,0 +1,25 @@
+<section [class]="'hero-section ' + (customClass || '')">
+  <div
+    class="hero-background"
+    [style.backgroundImage]="'url(' + backgroundImage + ')'"
+  ></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    @if (badgeTextKey) {
+      <div class="hero-badge animate-fade-in-down">
+        @if (badgeIcon) {
+          <i [class]="badgeIcon" aria-hidden="true"></i>
+        }
+        <span>{{ badgeTextKey | translate }}</span>
+      </div>
+    }
+
+    <h1 class="hero-title animate-fade-in-down">
+      {{ titleKey | translate }}
+    </h1>
+
+    <p class="hero-subtitle animate-fade-in-up">
+      {{ subtitleKey | translate }}
+    </p>
+  </div>
+</section>

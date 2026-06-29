@@ -1,0 +1,170 @@
+<div class="home-page">
+  <!-- ===========================
+       HERO CAROUSEL
+  =========================== -->
+  <app-hero-carousel [slides]="heroSlides"> </app-hero-carousel>
+  <!-- Stats bar -->
+  <section class="home-stats" aria-label="Company statistics">
+    <app-section-heading [title]="'home.our_impact_numbers'" theme="dark" />
+    <div class="stats-grid">
+      @for (stat of stats; track stat.labelKey) {
+        <app-stat-counter
+          [value]="stat.value"
+          [label]="stat.labelKey | translate"
+          [suffix]="stat.suffix ?? ''"
+          [prefix]="stat.prefix ?? ''"
+          [showPlus]="stat.showPlus ?? false"
+          [icon]="stat.icon"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="home-section light home-about-section">
+    <app-section-heading [title]="'home.at_a_glance' | translate" />
+    <div class="home-about">
+      <span class="about-quote-mark" aria-hidden="true"></span>
+      <p class="about-lead">
+        <strong>{{ "home.spaces_and_memories" | translate }}</strong>
+      </p>
+      <p class="about-text">{{ "home.spaces_and_memories_dec" | translate }}</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="home-section light">
+    <app-section-heading
+      [subtitle]="'home.welcome_to_geoscape'"
+      [title]="'home.why_choose_us'"
+    />
+    <div class="home-features">
+      @for (card of featureCards; track card.titleKey) {
+        <app-feature-card
+          [titleKey]="card.titleKey"
+          [descriptionKey]="card.descriptionKey"
+          [highlighted]="card.highlighted"
+          [icon]="card.icon"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- Featured Projects (Iconic Projects) -->
+  @defer (on viewport) {
+    <section class="home-projects-carousel-section">
+      <div class="header-row">
+        <app-section-heading
+          [subtitle]="'home.featured_projects_subtitle'"
+          [title]="'home.featured_projects'"
+        />
+      </div>
+
+      <div dir="ltr">
+        <p-carousel
+          [circular]="true"
+          [numScroll]="1"
+          [numVisible]="5"
+          [responsiveOptions]="projectCarouselOptions"
+          [showIndicators]="false"
+          [showNavigators]="false"
+          [value]="featuredProjects"
+          autoplayInterval="2000"
+          (onPage)="onProjectsPage($event)"
+        >
+          <ng-template let-project pTemplate="item">
+            <article class="project-card" aria-label="project">
+              <div class="project-logo">
+                <img
+                  [alt]="project.alt"
+                  [src]="'assets/images/projects-details/' + project.image"
+                  loading="lazy"
+                  class="project-image"
+                />
+              </div>
+              <div class="project-name">
+                {{ getProjectName(project) }}
+              </div>
+              <button
+                type="button"
+                class="read-more-btn"
+                (click)="navigateToProjectDetails(project)"
+              >
+                {{ "generic.read_more" | translate }}
+              </button>
+            </article>
+          </ng-template>
+        </p-carousel>
+        <div
+          class="carousel-counter"
+          aria-live="polite"
+          [attr.aria-label]="
+            'Slide ' + (currentPage + 1) + ' of ' + featuredProjects.length
+          "
+        >
+          <span class="counter-current">{{ currentPage + 1 }}</span>
+          <span class="counter-sep">/</span>
+          <span class="counter-total">{{ featuredProjects.length }}</span>
+        </div>
+      </div>
+    </section>
+  } @placeholder {
+    <section
+      class="home-projects-carousel-section carousel-placeholder"
+      aria-hidden="true"
+    ></section>
+  }
+
+  <!-- Company Approvals -->
+  @defer (on viewport) {
+    <section
+      class="home-section light home-approvals"
+      [attr.aria-label]="'home.company_approvals' | translate"
+    >
+      <app-section-heading
+        [subtitle]="'home.certifications_subtitle'"
+        [title]="'home.company_approvals'"
+      />
+
+      <ul class="approvals-grid">
+        @for (document of documents; track document.id) {
+          <li class="approval-card">
+            <a
+              class="approval-link"
+              [routerLink]="'/main/uploadPdf/' + document.id"
+              [attr.aria-label]="getDocumentName(document)"
+            >
+              <figure class="approval-figure">
+                <div class="approval-image-wrap" aria-hidden="true">
+                  <img
+                    class="approval-image"
+                    [src]="'assets/document-approvals/' + document.imgSrc"
+                    [alt]="document.alt"
+                    loading="lazy"
+                    decoding="async"
+                    width="280"
+                    height="200"
+                  />
+                  <span class="approval-badge" aria-hidden="true">
+                    <img src="assets/icons/badge.svg" alt="" />
+                  </span>
+                </div>
+                <figcaption
+                  class="approval-title"
+                  id="document-{{ document.id }}-title"
+                >
+                  {{ getDocumentName(document) }}
+                </figcaption>
+              </figure>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+  } @placeholder {
+    <section
+      class="home-section light home-approvals approvals-placeholder"
+      aria-hidden="true"
+    ></section>
+  }
+</div>

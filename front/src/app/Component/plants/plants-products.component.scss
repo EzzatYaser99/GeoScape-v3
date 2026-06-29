@@ -1,0 +1,26 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+// ==============================
+// GRID LAYOUT
+// ==============================
+
+.plants {
+  gap: 0;
+  row-gap: vr.$spacing-24;
+  margin: auto;
+}
+
+// ==============================
+// PRODUCT CARD
+// ==============================
+
+.product-card {
+  @include mx.product-card;
+
+  .card-category-badge {
+    //background: rgba(8, 150, 94, 0.95);
+    //box-shadow: 0 4px 12px rgba(8, 150, 94, 0.3);
+  }
+}

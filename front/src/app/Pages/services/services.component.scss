@@ -1,0 +1,238 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+@import "primeflex/primeflex.css";
+
+// ==============================
+// HERO SECTION
+// ==============================
+
+.services-hero {
+  @include mx.hero-section;
+}
+
+// ==============================
+// SERVICES SECTION
+// ==============================
+
+.services-section {
+  @include mx.page-light-section;
+  padding: clamp(32px, 5vw, 64px) vr.$spacing-24;
+
+  .services-container {
+    max-width: vr.$max-content-width;
+    margin: 0 auto;
+  }
+}
+
+// ==============================
+// SERVICES CONTENT
+// ==============================
+
+.services-content {
+  padding: vr.$padding-32;
+  max-width: vr.$max-content-width;
+  margin: 0 auto;
+
+  @include mx.media-down(vr.$breakpoint-md) {
+    padding: vr.$padding-16 vr.$padding-12;
+  }
+}
+
+// ==============================
+// TAB PANEL
+// ==============================
+
+.tab-panel {
+  width: 100%;
+}
+
+// ==============================
+// TAB DESCRIPTION
+// ==============================
+
+.tab-description {
+  @include mx.tab-description;
+
+  .description-icon {
+    @include mx.description-icon(
+      linear-gradient(135deg, cv.$brand-green 0%, cv.$brand-green-dark 100%)
+    );
+    color: cv.$brand-white;
+  }
+}
+
+// ==============================
+// SERVICE DETAILS CARD
+// ==============================
+
+.service-details-card {
+  @include mx.enhanced-card;
+  padding: vr.$padding-32;
+
+  @include mx.media-down(vr.$breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: vr.$spacing-24;
+    padding: vr.$padding-24;
+  }
+
+  @include mx.media-down(vr.$breakpoint-md) {
+    gap: vr.$spacing-20;
+    padding: vr.$padding-20;
+    border-radius: 16px;
+  }
+}
+
+// ==============================
+// SERVICE DETAILS VISUAL (Gallery)
+// ==============================
+
+@include mx.gallery-styles;
+
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: vr.$spacing-12;
+}
+
+.gallery-card {
+  aspect-ratio: 1;
+}
+
+:host ::ng-deep {
+  .gallery-card {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// ==============================
+// SERVICE DETAILS CONTENT
+// ==============================
+
+.service-details-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-24;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: vr.$spacing-16;
+  margin-bottom: vr.$spacing-8;
+}
+
+.content-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    cv.$brand-accent 50%,
+    cv.$brand-white 100%
+  );
+  border-radius: vr.$border-radius-lg;
+  @include mx.display-flex(row, center, center);
+  font-size: vr.$size-4xl;
+  color: cv.$brand-white;
+  box-shadow: 0 8px 20px rgba(122, 174, 59, 0.3);
+  flex-shrink: 0;
+}
+
+.detail-heading {
+  font-size: vr.$size-4xl;
+  font-weight: 700;
+  color: cv.$brand-text;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.content-body {
+  flex: 1;
+}
+
+.detail-text {
+  font-size: vr.$size-xxl;
+  color: cv.$brand-dark-secondary;
+  margin: 0;
+}
+
+.services-carousel-section {
+  margin: clamp(32px, 5vw, 64px) 0;
+  padding: 0 vr.$spacing-24;
+  text-align: center;
+}
+
+.service-card {
+  @include mx.showcase-carousel-card;
+}
+
+.service-logo {
+  margin-bottom: vr.$margin-16;
+  padding: vr.$padding-12;
+  border-radius: vr.$border-radius-lg;
+  background: cv.$brand-surface;
+  width: 100%;
+  max-width: 160px;
+  min-height: 100px;
+  @include mx.display-flex(row, center, center);
+}
+
+.service-image {
+  max-height: 80px;
+  max-width: 100%;
+  border-radius: vr.$border-radius-md;
+  object-fit: contain;
+  filter: grayscale(15%);
+  transition:
+    transform vr.$transition-base,
+    filter vr.$transition-base;
+
+  .service-card:hover & {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+}
+
+.service-name {
+  font-size: vr.$size-3xl;
+  font-weight: 600;
+  color: cv.$brand-text;
+  text-align: center;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Carousel Styling */
+:host ::ng-deep .p-carousel {
+  .p-carousel-prev,
+  .p-carousel-next {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid cv.$shadow-black-10;
+    @include mx.circle(vr.$spacing-48);
+    box-shadow: cv.$brand-shadow-card;
+    transition: all 0.3s ease;
+
+    @include mx.media-down(vr.$breakpoint-sm) {
+      @include mx.circle(vr.$spacing-32);
+    }
+  }
+}
+
+.carousel-counter {
+  @include mx.carousel-counter;
+}

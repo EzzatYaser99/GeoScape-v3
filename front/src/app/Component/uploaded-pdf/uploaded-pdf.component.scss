@@ -1,0 +1,23 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.loading-spinner {
+  @include mx.flex-center;
+  height: calc(70vh - 100px);
+}
+
+embed {
+  height: 665px;
+  width: 100%;
+}
+
+.pdf-content {
+  margin: 100px auto auto;
+}
+
+:host ::ng-deep {
+  .header {
+    background: cv.$header-scrolled;
+  }
+}

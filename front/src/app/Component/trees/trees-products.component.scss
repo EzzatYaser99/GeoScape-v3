@@ -1,0 +1,21 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+// ==============================
+// GRID LAYOUT
+// ==============================
+
+.trees {
+  gap: 0;
+  row-gap: vr.$spacing-24;
+  margin: auto;
+}
+
+// ==============================
+// PRODUCT CARD
+// ==============================
+
+.product-card {
+  @include mx.product-card;
+}

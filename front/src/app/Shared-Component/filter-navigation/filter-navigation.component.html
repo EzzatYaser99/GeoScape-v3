@@ -1,0 +1,22 @@
+<aside [ngClass]="[customClass]">
+  <div class="filter-box">
+    <h3 class="filter-title">
+      {{ titleKey | translate }}
+    </h3>
+    <ul class="filter-list">
+      @for (item of filterItems; track item.id; let idx = $index) {
+        <li class="filter-list-item">
+          <button
+            type="button"
+            class="filter-item"
+            [class.filter-item-active]="activeIndex === idx"
+            (click)="setActiveTab(idx)"
+          >
+            <span class="filter-item-label">{{ item.label | translate }}</span>
+          </button>
+          <div class="tab-indicator" aria-hidden="true"></div>
+        </li>
+      }
+    </ul>
+  </div>
+</aside>

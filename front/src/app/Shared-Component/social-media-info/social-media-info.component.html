@@ -1,0 +1,21 @@
+<nav class="social-media" aria-label="Social media">
+  <ul class="social-list">
+    @for (item of socialMediaInfo; track item.id; let i = $index) {
+      <li class="social-item" [style.--item-delay]="i * 0.07 + 's'">
+        <a
+          [class]="'social-link social-link-' + item.platform"
+          [href]="item.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="getLabel(item)"
+          [title]="getLabel(item)"
+        >
+          <span class="social-icon-wrap">
+            <i [class]="item.iconClass" aria-hidden="true"></i>
+          </span>
+          <span class="social-label">{{ getLabel(item) }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

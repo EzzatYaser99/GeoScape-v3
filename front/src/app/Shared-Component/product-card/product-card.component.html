@@ -1,0 +1,24 @@
+<article [ngClass]="[customClass]">
+  <div class="product-card">
+    <div class="card-image-wrap">
+      <p-image
+        [preview]="false"
+        [src]="imagePrefix + product.imageSrc"
+        [alt]="product.alt"
+        height="240px"
+        loading="lazy"
+        width="100%"
+      />
+      <span [class]="'card-category-badge'" [innerHTML]="iconContent"></span>
+    </div>
+
+    <div class="card-body">
+      <h3 class="card-title">
+        {{ lang == "en" ? product.nameEN : product.nameAR }}
+      </h3>
+      <p class="card-desc">
+        {{ lang == "en" ? product.descriptionEN : product.descriptionAR }}
+      </p>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,92 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.card {
+  position: relative;
+  background: cv.$brand-white;
+  padding: vr.$padding-32 vr.$padding-24;
+  height: 100%;
+  border-radius: vr.$border-radius-xl;
+  border: 1px solid cv.$brand-border;
+  overflow: hidden;
+  @include mx.transition(
+    transform vr.$transition-base,
+    box-shadow vr.$transition-base,
+    border-color vr.$transition-base
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, cv.$brand-green, cv.$brand-green-light);
+    opacity: 0;
+    transition: opacity vr.$transition-base;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px cv.$shadow-black-08;
+    border-color: cv.$brand-green-20;
+
+    &::before {
+      opacity: 1;
+    }
+
+    .card-icon-wrap {
+      transform: scale(1.05);
+      background: cv.$brand-green-10;
+    }
+  }
+}
+
+.card-highlighted {
+  background: linear-gradient(
+    145deg,
+    cv.$brand-white 0%,
+    cv.$brand-green-03 100%
+  );
+  border-color: cv.$brand-green-15;
+
+  &::before {
+    opacity: 1;
+  }
+
+  .card-icon-wrap {
+    background: cv.$brand-green-10;
+    color: cv.$brand-green-dark;
+  }
+}
+
+.card-icon-wrap {
+  @include mx.display-flex(row, center, center, inline-flex);
+  width: 48px;
+  height: 48px;
+  margin-bottom: vr.$spacing-16;
+  border-radius: vr.$border-radius-lg;
+  background: cv.$brand-surface;
+  color: cv.$brand-green;
+  font-size: vr.$size-5xl;
+  transition:
+    transform vr.$transition-base,
+    background-color vr.$transition-base;
+}
+
+.card-title {
+  margin: 0 0 #{vr.$spacing-12};
+  font-size: vr.$size-4xl;
+  font-weight: 700;
+  color: cv.$brand-dark;
+  letter-spacing: -0.01em;
+}
+
+.card-description {
+  margin: 0;
+  font-size: vr.$size-xxl;
+  line-height: 1.7;
+  color: cv.$brand-text-muted;
+}

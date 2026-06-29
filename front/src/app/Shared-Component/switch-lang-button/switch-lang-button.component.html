@@ -1,0 +1,17 @@
+<button
+  type="button"
+  [pTooltip]="'header.vist_our_site' | translate"
+  tooltipPosition="bottom"
+  class="lang theme-{{ theme }}"
+  [attr.aria-label]="'header.vist_our_site' | translate"
+  (click)="toggleLang()"
+>
+  <span>{{ toggleText | uppercase | translate }}</span>
+  <span class="mx-1" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
+</button>
+
+@if (isLoading) {
+  <div class="spinner-overlay">
+    <div class="loader"></div>
+  </div>
+}

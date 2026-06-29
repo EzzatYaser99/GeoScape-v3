@@ -1,0 +1,722 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+/* ============================================================================
+   PREMIUM SAAS CONTACT PAGE DESIGN - MODERN & PROFESSIONAL
+   ============================================================================ */
+.contacts-hero {
+  @include mx.hero-section;
+}
+
+// ============================================================================
+// MAIN CONTAINER
+// ============================================================================
+
+.contacts-container {
+  max-width: vr.$max-content-width;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) vr.$padding-32;
+  background: linear-gradient(
+    160deg,
+    cv.$gray-surface 0%,
+    cv.$brand-white 100%
+  );
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    padding: vr.$padding-48 vr.$padding-20;
+  }
+
+  @media (max-width: 480px) {
+    padding: vr.$padding-32 vr.$padding-16;
+  }
+}
+
+// ============================================================================
+// OFFICES SECTION
+// ============================================================================
+
+.offices-section {
+  margin-bottom: vr.$spacing-64;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    margin-bottom: vr.$spacing-48;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: vr.$spacing-48;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    margin-bottom: vr.$spacing-32;
+  }
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: cv.$brand-dark;
+  margin-bottom: vr.$spacing-12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: vr.$spacing-16 auto 0;
+    border-radius: vr.$border-radius-curvy;
+    background: linear-gradient(90deg, cv.$brand-green, cv.$nav-gold);
+  }
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
+}
+
+.section-description {
+  font-size: 16px;
+  color: cv.$brand-text-muted;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+// Office Grid
+.offices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: vr.$spacing-32;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: vr.$spacing-24;
+  }
+}
+
+// Office Card
+.office-card {
+  @include mx.enhanced-card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  .office-card-header {
+    padding: vr.$padding-32;
+    border-bottom: 1px solid cv.$brand-border;
+    gap: vr.$spacing-16;
+    @include mx.display-flex(row, start, center);
+
+    .office-icon {
+      @include mx.display-flex(row, center, center);
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(
+        135deg,
+        cv.$brand-green 0%,
+        cv.$brand-green-light 100%
+      );
+      border-radius: 10px;
+      color: cv.$brand-white;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .office-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: cv.$brand-dark;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  .office-card-body {
+    padding: vr.$padding-32;
+    flex-grow: 1;
+  }
+
+  .office-card-footer {
+    padding: vr.$padding-24 vr.$padding-16;
+    border-top: 1px solid cv.$brand-border;
+    display: flex;
+    gap: vr.$spacing-12;
+    flex-wrap: wrap;
+  }
+}
+
+// Contact Items
+.contact-item {
+  display: flex;
+  gap: vr.$spacing-16;
+  margin-bottom: vr.$spacing-24;
+  align-items: flex-start;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.location-item {
+    margin-bottom: vr.$spacing-32;
+    padding-bottom: vr.$spacing-24;
+    border-bottom: 1px solid cv.$brand-border;
+  }
+
+  .contact-icon {
+    @include mx.display-flex(row, center, center);
+    width: 40px;
+    height: 40px;
+    background: cv.$brand-green-10;
+    border-radius: 8px;
+    color: cv.$brand-green;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .contact-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: cv.$brand-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: vr.$spacing-4;
+  }
+
+  .contact-link {
+    display: block;
+    color: cv.$brand-dark;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-word;
+    transition: color vr.$transition-fast;
+
+    &:hover {
+      color: cv.$brand-green;
+    }
+  }
+}
+
+.cta-link-secondary {
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, start, center, inline-flex);
+  padding: vr.$padding-12 vr.$padding-16;
+  background: cv.$brand-surface;
+  color: cv.$brand-dark;
+  text-decoration: none;
+  border-radius: vr.$border-radius-curvy;
+  font-size: vr.$size-xxl;
+  font-weight: 600;
+  transition: all vr.$transition-fast;
+  border: 1px solid cv.$brand-border;
+
+  i {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: cv.$brand-green;
+    color: cv.$brand-white;
+    border-color: cv.$brand-green;
+  }
+}
+
+// ============================================================================
+// CONTACT FORM SECTION
+// ============================================================================
+
+.contact-form-section {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: vr.$spacing-48;
+
+  @media (max-width: vr.$breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: vr.$spacing-32;
+  }
+}
+
+.form-container {
+  @include mx.enhanced-card;
+  padding: clamp(32px, 5vw, 48px);
+  border-radius: vr.$border-radius-xl;
+
+  &:hover {
+    transform: none;
+  }
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    padding: vr.$padding-32;
+  }
+
+  @media (max-width: 480px) {
+    padding: vr.$padding-24;
+  }
+}
+
+.form-header {
+  margin-bottom: vr.$padding-48;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    margin-bottom: vr.$padding-32;
+  }
+}
+
+.form-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: cv.$brand-dark;
+  margin-bottom: vr.$spacing-12;
+  letter-spacing: -0.5px;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    font-size: 24px;
+  }
+}
+
+.form-subtitle {
+  font-size: 16px;
+  color: cv.$brand-text-muted;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: vr.$spacing-24;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  &.form-group-full {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: cv.$brand-dark;
+  margin-bottom: vr.$spacing-8;
+  display: flex;
+  align-items: center;
+  gap: vr.$spacing-4;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+
+  .required {
+    color: cv.$danger-red;
+  }
+}
+
+.form-input,
+.form-textarea {
+  padding: vr.$padding-12 vr.$padding-16;
+  border: 1px solid cv.$brand-border;
+  border-radius: vr.$border-radius-lg;
+  font-size: 14px;
+  font-family: inherit;
+  color: cv.$brand-dark;
+  background: cv.$brand-white;
+  transition: all vr.$transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: cv.$brand-green;
+    box-shadow: 0 0 0 3px cv.$brand-green-10;
+  }
+
+  &::placeholder {
+    color: cv.$brand-text-muted;
+  }
+
+  &.is-invalid {
+    border-color: cv.$danger-red;
+    background-color: rgba(199, 59, 59, 0.02);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(199, 59, 59, 0.1);
+    }
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  font-size: 13px;
+  color: cv.$danger-red;
+  margin-top: vr.$spacing-8;
+  opacity: 0;
+  transition: opacity vr.$transition-fast;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+// Custom MultiSelect Styling
+:host ::ng-deep {
+  .p-multiselect {
+    width: 100% !important;
+    background: cv.$brand-white !important;
+    border: 1px solid cv.$brand-border !important;
+
+    &.ng-invalid.ng-touched {
+      border-color: cv.$danger-red !important;
+    }
+
+    &:focus-within {
+      border-color: cv.$brand-green !important;
+      box-shadow: 0 0 0 3px rgba(122, 174, 59, 0.1) !important;
+    }
+
+    .p-multiselect-label {
+      padding: vr.$padding-12 vr.$padding-16 !important;
+      color: cv.$brand-dark !important;
+      font-size: 14px !important;
+    }
+
+    .p-multiselect-trigger {
+      color: cv.$brand-green !important;
+    }
+  }
+
+  .p-multiselect-items-wrapper {
+    max-height: 300px !important;
+  }
+
+  .p-multiselect-item {
+    padding: vr.$padding-12 vr.$padding-16 !important;
+    font-size: 14px !important;
+
+    &.p-highlight {
+      background: rgba(122, 174, 59, 0.1) !important;
+    }
+  }
+}
+
+.selected-items {
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, start, center);
+}
+
+.selected-count {
+  display: inline-block;
+  padding: vr.$padding-4 vr.$padding-8;
+  background: cv.$brand-green;
+  color: cv.$brand-white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.empty-selection {
+  color: cv.$brand-text-muted;
+}
+
+.service-option {
+  gap: vr.$spacing-12;
+  @include mx.display-flex(row, start, center);
+  padding: vr.$padding-8 0;
+}
+
+.service-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-name {
+  font-weight: 500;
+  color: cv.$brand-dark;
+}
+
+// Form Actions
+.form-actions {
+  margin-top: vr.$padding-32;
+  display: flex;
+  gap: vr.$spacing-16;
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    flex-direction: column;
+  }
+}
+
+.btn {
+  padding: vr.$padding-16 vr.$padding-32;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all vr.$transition-base;
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, center, center, inline-flex);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    cv.$brand-green 0%,
+    cv.$brand-green-light 100%
+  );
+  color: cv.$brand-white;
+  box-shadow: 0 4px 12px cv.$brand-green-30;
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(122, 174, 59, 0.4);
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+// Form Messages
+.form-messages {
+  margin-top: vr.$padding-32;
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-16;
+}
+
+.message-item {
+  display: flex;
+  gap: vr.$spacing-16;
+  padding: vr.$padding-16;
+  border-radius: 8px;
+  border-left: 4px solid;
+  align-items: flex-start;
+
+  i {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  &.success-message {
+    background: cv.$brand-green-10;
+    border-color: cv.$brand-green;
+    color: cv.$brand-green;
+  }
+
+  &.error-message {
+    background: rgba(199, 59, 59, 0.1);
+    border-color: cv.$danger-red;
+    color: cv.$danger-red;
+  }
+}
+
+.message-title {
+  font-weight: 600;
+  margin: 0 0 vr.$spacing-4 0;
+  font-size: 14px;
+}
+
+.message-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+// ============================================================================
+// FORM SIDEBAR - TRUST ELEMENTS
+// ============================================================================
+
+.form-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-32;
+
+  @media (max-width: vr.$breakpoint-tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: vr.$spacing-24;
+  }
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trust-section {
+  background: cv.$brand-white;
+  border: 1px solid cv.$brand-border;
+  border-radius: vr.$border-radius-xl;
+  padding: vr.$padding-32;
+  box-shadow: 0 4px 24px cv.$shadow-black-06;
+
+  @media (max-width: vr.$breakpoint-tablet) {
+    grid-column: 1 / -1;
+  }
+}
+
+.trust-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: cv.$brand-dark;
+  margin-bottom: vr.$padding-24;
+  line-height: 1.4;
+}
+
+.trust-item {
+  display: flex;
+  gap: vr.$spacing-16;
+  margin-bottom: vr.$padding-24;
+  align-items: flex-start;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .trust-icon {
+    @include mx.display-flex(row, center, center);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: cv.$brand-white;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: cv.$brand-green;
+  }
+
+  .trust-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: cv.$brand-dark;
+    margin: 0 0 vr.$spacing-4 0;
+    line-height: 1.4;
+  }
+
+  .trust-item-text {
+    font-size: 13px;
+    color: cv.$brand-text-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// Stats Section
+.stats-section {
+  @include mx.enhanced-card;
+  padding: vr.$padding-32;
+  display: flex;
+  flex-direction: column;
+  gap: vr.$spacing-24;
+
+  &:hover {
+    transform: none;
+  }
+
+  @media (max-width: vr.$breakpoint-tablet) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: vr.$spacing-16;
+  }
+
+  @media (max-width: vr.$breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-item {
+  text-align: center;
+  padding: vr.$padding-12 0;
+
+  .stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: cv.$brand-green;
+    line-height: 1.2;
+    margin-bottom: vr.$spacing-8;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: cv.$brand-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+}
+
+// ============================================================================
+// RESPONSIVE DESIGN TWEAKS
+// ============================================================================
+
+@media (max-width: vr.$breakpoint-mobile) {
+  .form-container {
+    border-radius: 16px;
+  }
+
+  .section-header {
+    margin-bottom: vr.$spacing-24;
+  }
+
+  .form-header {
+    margin-bottom: vr.$spacing-24;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 280px;
+  }
+
+  .contacts-container {
+    padding: vr.$padding-24 vr.$padding-12;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+}

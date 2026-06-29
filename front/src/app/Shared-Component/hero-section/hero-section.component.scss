@@ -1,0 +1,7 @@
+@use "../../../styles/mixins" as mx;
+@use "../../../styles/colors" as cv;
+@use "../../../styles/variables" as vr;
+
+.hero-section {
+  @include mx.hero-section;
+}

@@ -1,0 +1,471 @@
+@use "styles/variables" as vr;
+@use "styles/mixins" as mx;
+@use "styles/colors" as cv;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: vr.$z-header;
+  height: vr.$header-height;
+  background: rgba(13, 13, 13, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(cv.$brand-white, 0.08);
+  transition:
+    background-color vr.$ucc-nav-transition,
+    border-color vr.$ucc-nav-transition,
+    box-shadow vr.$ucc-nav-transition,
+    height vr.$ucc-nav-transition;
+  animation: mx-header-enter 0.7s vr.$ease-standard both;
+}
+
+.header-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    cv.$brand-green 25%,
+    cv.$nav-gold 50%,
+    cv.$brand-green 75%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition:
+    opacity vr.$ucc-nav-transition,
+    transform vr.$ucc-nav-transition;
+}
+
+.header.scrolled,
+.header.menu-open {
+  background: rgba(13, 13, 13, 0.94);
+  border-bottom-color: rgba(cv.$nav-gold, 0.22);
+  box-shadow: 0 8px 32px cv.$shadow-black-35;
+
+  .header-accent {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.header.scrolled {
+  height: vr.$header-height - 12px;
+}
+
+.header-inner {
+  gap: vr.$spacing-16;
+  @include mx.display-flex(row, space-between, center);
+  max-width: vr.$max-content-width;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 vr.$padding-24;
+
+  @include mx.media-down(vr.$breakpoint-lg) {
+    padding: 0 vr.$page-gutter-md;
+  }
+}
+
+.header-nav {
+  flex: 1;
+  min-width: 0;
+  @include mx.display-flex(row, flex-end, start);
+}
+
+@media screen and (max-width: vr.$breakpoint-lg) {
+  .header-nav {
+    display: none;
+  }
+}
+
+.header-nav-shell {
+  display: flex;
+  padding: vr.$padding-4;
+  border-radius: vr.$border-radius-curvy;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-nav-list {
+  gap: vr.$spacing-4;
+  @include mx.display-flex(row, start, center);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav-item {
+  position: relative;
+}
+
+.header-nav-link {
+  gap: vr.$spacing-8;
+  @include mx.display-flex(row, start, center);
+  padding: vr.$padding-8 vr.$padding-12;
+  text-decoration: none;
+  color: rgba(cv.$brand-white, 0.82);
+  font-size: vr.$size-xl;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: vr.$border-radius-curvy;
+  white-space: nowrap;
+  transition:
+    color vr.$transition-base,
+    background-color vr.$transition-base,
+    transform vr.$transition-fast,
+    box-shadow vr.$transition-base;
+
+  i {
+    font-size: vr.$size-xxl;
+    line-height: 1;
+    color: rgba(cv.$brand-green-light, 0.85);
+    transition:
+      color vr.$transition-base,
+      transform vr.$transition-fast;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: cv.$brand-white;
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+    transform: translateY(-1px);
+
+    i {
+      color: cv.$brand-green-light;
+      transform: scale(1.08);
+    }
+  }
+}
+
+.header-nav-link-active {
+  color: cv.$brand-white;
+  background: rgba(cv.$brand-green, 0.22);
+  border: 1px solid rgba(cv.$brand-green, 0.35);
+  box-shadow: 0 4px 16px rgba(122, 174, 59, 0.2);
+
+  i {
+    color: cv.$brand-green-light;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(cv.$brand-green, 0.28);
+  }
+}
+
+.header-actions {
+  gap: vr.$spacing-10;
+  @include mx.display-flex(row, start, center);
+  flex-shrink: 0;
+}
+
+.header-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  @include mx.display-flex(column, center, center,none);
+  width: 44px;
+  height: 44px;
+  padding: vr.$padding-8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(cv.$brand-white, 0.18);
+  border-radius: vr.$border-radius-curvy;
+  cursor: pointer;
+  transition:
+    border-color vr.$transition-base,
+    background-color vr.$transition-base,
+    transform vr.$transition-fast;
+
+  &:hover {
+    border-color: cv.$nav-gold;
+    background: rgba(cv.$nav-gold, 0.12);
+  }
+
+  &-open {
+    border-color: cv.$brand-green;
+    background: rgba(cv.$brand-green, 0.15);
+  }
+
+  @media screen and (max-width: vr.$breakpoint-lg) {
+    display: flex;
+  }
+}
+
+.header-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: cv.$brand-white;
+  border-radius: vr.$border-radius-curvy;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease;
+}
+
+.header-toggle-bar-open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.header-toggle-bar-open:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.header-toggle-bar-open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.header-mobile-panel {
+  position: fixed;
+  top: vr.$header-height;
+  right: 0;
+  width: min(340px, 88vw);
+  height: calc(100dvh - #{vr.$header-height});
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.98) 0%,
+    rgba(18, 22, 18, 0.98) 100%
+  );
+  border-left: 1px solid rgba(cv.$nav-gold, 0.18);
+  box-shadow: -12px 0 40px cv.$shadow-black-35;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  z-index: 1099;
+}
+
+.header-mobile-panel-open {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 993px) {
+  .header-mobile-panel {
+    display: none;
+  }
+}
+
+.header-mobile-nav {
+  min-height: 100%;
+  @include mx.display-flex(column, start, start);
+}
+
+.mobile-nav-header {
+  padding: vr.$padding-24 vr.$padding-32 vr.$padding-16;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-title {
+  display: block;
+  font-size: vr.$size-4xl;
+  font-weight: 800;
+  color: cv.$brand-white;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mobile-nav-subtitle {
+  display: block;
+  margin-top: vr.$spacing-4;
+  font-size: vr.$size-lg;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(cv.$brand-white, 0.55);
+}
+
+.header-mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: vr.$padding-16 vr.$padding-16 vr.$padding-8;
+  flex: 1;
+}
+
+.header-mobile-panel-open .header-mobile-item {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: mobileNavItemIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.header-mobile-link {
+  gap: vr.$spacing-16;
+  @include mx.display-flex(row, start, center);
+  padding: vr.$padding-12 vr.$padding-16;
+  margin-bottom: vr.$spacing-4;
+  text-decoration: none;
+  color: rgba(cv.$brand-white, 0.85);
+  font-size: vr.$size-xxl;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: vr.$border-radius-xl;
+  border: 1px solid transparent;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+
+  .mobile-link-icon {
+    @include mx.display-flex(row, center, center);
+    width: 36px;
+    height: 36px;
+    border-radius: vr.$border-radius-lg;
+    background: rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+
+    i {
+      font-size: vr.$size-3xl;
+      color: cv.$brand-green-light;
+    }
+  }
+}
+
+.header-mobile-link:hover,
+.header-mobile-link:focus-visible {
+  color: cv.$brand-white;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+  outline: none;
+}
+
+.header-mobile-link-active {
+  color: cv.$brand-white;
+  background: rgba(cv.$brand-green, 0.18);
+  border-color: rgba(cv.$brand-green, 0.35);
+
+  .mobile-link-icon {
+    background: rgba(cv.$brand-green, 0.25);
+  }
+}
+
+.mobile-nav-footer {
+  padding: vr.$padding-16 vr.$padding-24 vr.$padding-32;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+}
+
+.mobile-nav-cta {
+  width: 100%;
+  @include mx.display-flex(row, center, center);
+  gap: vr.$spacing-12;
+  padding: vr.$padding-12 vr.$padding-20;
+  border-radius: vr.$border-radius-curvy;
+  background: cv.$brand-green;
+  color: cv.$brand-white;
+  text-decoration: none;
+  font-size: vr.$size-xxl;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px cv.$brand-green-30;
+  transition:
+    transform vr.$transition-fast,
+    background-color vr.$transition-base;
+
+  i {
+    font-size: vr.$size-3xl;
+  }
+
+  &:hover {
+    background: cv.$brand-green-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.header-backdrop {
+  position: fixed;
+  inset: vr.$header-height 0 0 0;
+  background: cv.$backdrop-black-55;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  cursor: pointer;
+  z-index: 1098;
+  animation: backdropFadeIn 0.35s ease both;
+}
+
+.header.scrolled .header-logo-img {
+  transform: scale(0.9);
+}
+
+::ng-deep [dir="rtl"] {
+  .header-mobile-panel {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid rgba(cv.$nav-gold, 0.18);
+    box-shadow: 12px 0 40px cv.$shadow-black-35;
+    transform: translateX(-100%);
+  }
+
+  .header-mobile-panel-open {
+    transform: translateX(0);
+  }
+
+  .header-mobile-item {
+    transform: translateX(-20px);
+  }
+
+  .header-mobile-link:hover,
+  .header-mobile-link:focus-visible {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes mobileNavItemIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: vr.$breakpoint-lg) {
+  .header {
+    height: vr.$header-height-mobile;
+  }
+
+  .header.scrolled {
+    height: vr.$header-height-mobile - 8px;
+  }
+
+  .header-mobile-panel {
+    top: vr.$header-height-mobile;
+    height: calc(100dvh - #{vr.$header-height-mobile});
+  }
+
+  .header-backdrop {
+    inset: vr.$header-height-mobile 0 0 0;
+  }
+}
+
+@media screen and (max-width: vr.$breakpoint-xl) {
+  .header-nav-link {
+    padding: vr.$padding-8 vr.$spacing-10;
+    font-size: vr.$size-lg;
+    gap: vr.$spacing-4;
+  }
+}

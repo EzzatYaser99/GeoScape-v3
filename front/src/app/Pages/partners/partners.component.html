@@ -1,0 +1,363 @@
+<section class="partners-hero">
+  <div class="hero-background"
+       style="background-image: url('assets/images/partners-page/ourPartners.webp')">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge animate-fade-in-down">
+      <span class="badge-icon">✦</span>
+      <span>{{ "partners.trusted_partners" | translate }}</span>
+    </div>
+    <h1 class="hero-title animate-fade-in-down">
+      {{ "partners.geoscape_partners" | translate }}
+    </h1>
+    <p class="hero-subtitle animate-fade-in-up">
+      {{ "partners.geoscape_partners_dec" | translate }}
+    </p>
+
+    <div class="trust-indicators animate-fade-in-up">
+      <div class="trust-item">
+        <app-stat-counter
+          [value]="2"
+          [showPlus]="true"
+          [label]="'partners.global_partners' | translate"
+        ></app-stat-counter>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <app-stat-counter
+          [value]="24"
+          [suffix]="'/7'"
+          [label]="'partners.support' | translate"
+        ></app-stat-counter>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <app-stat-counter
+          [value]="99"
+          [suffix]="'%'"
+          [label]="'partners.satisfaction' | translate"
+        ></app-stat-counter>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <div class="section-header">
+    <h2 class="section-title">{{ "partners.our_ecosystem" | translate }}</h2>
+    <p class="section-subtitle">{{ "partners.ecosystem_desc" | translate }}</p>
+  </div>
+
+  <ul class="partners-grid">
+    <!-- Geoscape (informational) -->
+    <li
+      class="partner-card partner-card-featured"
+      aria-labelledby="partner-geo-title"
+      aria-describedby="partner-geo-desc"
+    >
+      <div class="partner-inner">
+        <header class="partner-header">
+          <div class="partner-logo">
+            <a class="header-logo" aria-label="GeoScape Home">
+              <div class="header-brand">
+                <img
+                  alt="GeoSCAPE Logo"
+                  class="header-logo-img"
+                  loading="eager"
+                  src="assets/images/logo-2.png"
+                />
+                <span class="header-brand-name">
+                  <span class="header-brand-accent">{{
+                    "header.geo" | translate
+                  }}</span
+                  >{{ "header.scape" | translate }}
+                </span>
+                <span class="header-tagline">{{
+                  "generic.landscape" | translate
+                }}</span>
+              </div>
+            </a>
+          </div>
+          <span class="partner-badge partner-badge-featured">
+            {{ "partners.flagship" | translate }}
+          </span>
+        </header>
+
+        <div class="partner-content">
+          <h3 id="partner-geo-title" class="partner-title">
+            {{ "partners.geoscape_partners" | translate }}
+          </h3>
+          <p id="partner-geo-desc" class="partner-description">
+            {{ "partners.geoscape_partners_dec" | translate }}
+          </p>
+        </div>
+
+        <footer class="partner-footer">
+          <div class="partner-meta">
+            <span class="partner-meta-item">
+              <span class="partner-meta-icon" aria-hidden="true">🌍</span>
+              <span>{{ "partners.global_reach" | translate }}</span>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </li>
+
+    <!-- Benito (external partner) -->
+    <li
+      class="partner-card"
+      aria-labelledby="partner-benito-title"
+      (keydown)="handleKeyNavigation($event, 'https://www.benito.com/')"
+    >
+      <div class="partner-inner">
+        <header class="partner-header">
+          <div class="partner-logo">
+            <div class="header-brand">
+              <img
+                [alt]="'partners.benito_urban' | translate"
+                class="partner-avatar"
+                loading="eager"
+                src="assets/images/benito-logo.webp"
+              />
+            </div>
+          </div>
+          <span class="partner-badge">
+            {{ "partners.urban_development" | translate }}
+          </span>
+        </header>
+
+        <div class="partner-content">
+          <h3 id="partner-benito-title" class="partner-title">
+            {{ "partners.benito_urban" | translate }}
+          </h3>
+          <p class="partner-description">
+            {{ "partners.benito_urban_dec" | translate }}
+          </p>
+
+          <dl class="partner-details">
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.website" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                <a
+                  href="https://www.benito.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="partner-detail-link"
+                  (click)="$event.stopPropagation()"
+                >
+                  benito.com
+                </a>
+              </dd>
+            </div>
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.specialty" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                {{ "partners.benito_specialty_dec" | translate }}
+              </dd>
+            </div>
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.commitment" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                {{ "partners.benito_commitment_dec" | translate }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <footer class="partner-footer">
+          <a
+            class="partner-cta"
+            href="https://www.benito.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'partners.benito_explore' | translate"
+            (click)="$event.stopPropagation()"
+          >
+            <span>{{ "partners.benito_explore" | translate }}</span>
+            @if (lang === "en") {
+              <i aria-hidden="true" class="fa-solid fa-share"></i>
+            } @else {
+              <i aria-hidden="true" class="fa-solid fa-reply"></i>
+            }
+          </a>
+        </footer>
+      </div>
+    </li>
+
+    <!-- Prasada (external partner) -->
+    <li
+      class="partner-card"
+      aria-labelledby="partner-prasada-title"
+      (keydown)="handleKeyNavigation($event, 'https://www.prasadaa.com/')"
+    >
+      <div class="partner-inner">
+        <header class="partner-header">
+          <div class="partner-logo">
+            <img
+              [alt]="'partners.prasada_agricultural' | translate"
+              src="assets/images/products-page/prasada.webp"
+              class="partner-logo-img"
+            />
+          </div>
+          <span class="partner-badge">
+            {{ "partners.agriculture" | translate }}
+          </span>
+        </header>
+
+        <div class="partner-content">
+          <h3 id="partner-prasada-title" class="partner-title">
+            {{ "partners.prasada_agricultural" | translate }}
+          </h3>
+          <p class="partner-description">
+            {{ "partners.prasada_agricultural_dec" | translate }}
+          </p>
+          <dl class="partner-details">
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.website" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                <a
+                  href="https://www.prasadaa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="partner-detail-link"
+                  (click)="$event.stopPropagation()"
+                >
+                  prasadaa.com
+                </a>
+              </dd>
+            </div>
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.specialty" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                {{ "partners.prasada_specialty_dec" | translate }}
+              </dd>
+            </div>
+            <div class="partner-detail-row">
+              <dt class="partner-detail-label">
+                {{ "partners.commitment" | translate }}
+              </dt>
+              <dd class="partner-detail-value">
+                {{ "partners.prasada_commitment_dec" | translate }}
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <footer class="partner-footer">
+          <a
+            class="partner-cta"
+            href="https://www.prasadaa.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'partners.prasada_explore' | translate"
+            (click)="$event.stopPropagation()"
+          >
+            <span>{{ "partners.prasada_explore" | translate }}</span>
+            @if (lang === "en") {
+              <i aria-hidden="true" class="fa-solid fa-share"></i>
+            } @else {
+              <i aria-hidden="true" class="fa-solid fa-reply"></i>
+            }
+          </a>
+        </footer>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">{{ "partners.become_partner_title" | translate }}</h2>
+    <p class="cta-subtitle">{{ "partners.become_partner_desc" | translate }}</p>
+    <button class="cta-button" routerLink="/main/contacts">
+      <span>{{ "partners.contact_us" | translate }}</span>
+      @if (lang === "en") {
+        <i aria-hidden="true" class="pi pi-arrow-right"></i>
+      } @else {
+        <i aria-hidden="true" class="pi pi-arrow-left"></i>
+      }
+    </button>
+  </div>
+</section>
+
+
+<section class="products-section">
+  <div class="section-header">
+    <h2 class="section-title">{{ "partners.products" | translate }}</h2>
+  </div>
+
+  <div class="products-container grid w-full">
+    <!-- Custom Tab Navigation -->
+    <div class="col-12 sm:col-9 md:col-3 lg:col-2">
+      <app-filter-navigation
+        [filterItems]="geoscapeProducts"
+        [(activeIndex)]="activeIndex"
+        (activeIndexChange)="setActiveTab($event)"
+        titleKey="generic.filter_by_section"
+      />
+    </div>
+    <!-- Tab Panels Content -->
+    <div class="products-content col-12 sm:col-9 md:col-9 lg:col-10">
+      <!-- Panel 1: Benito Urban -->
+      @if (activeIndex === 0) {
+        <div
+          class="tab-panel"
+          id="panel-benito"
+          role="tabpanel"
+          aria-labelledby="tab-benito"
+        >
+          <div class="tab-description">
+            <div class="description-icon">
+              <i class="fa-solid fa-city" aria-hidden="true"></i>
+            </div>
+            <div class="description-body">
+              <h2 class="description-title">
+                {{ "products.benito_urban" | translate }}
+              </h2>
+              <p class="description-text">
+                {{ "products.benito_products_dec" | translate }}
+              </p>
+            </div>
+          </div>
+          <app-benito-products [lang]="lang"></app-benito-products>
+        </div>
+      }
+
+      <!-- Panel 2: Prasada -->
+      @if (activeIndex === 1) {
+        <div
+          class="tab-panel"
+          id="panel-prasada"
+          role="tabpanel"
+          aria-labelledby="tab-prasada"
+        >
+          <div class="tab-description">
+            <div class="description-icon">
+              <i class="fa-solid fa-warehouse" aria-hidden="true"></i>
+            </div>
+            <div class="description-body">
+              <h2 class="description-title">
+                {{ "products.prasada_products" | translate }}
+              </h2>
+              <p class="description-text">
+                {{ "products.prasada_products_dec" | translate }}
+              </p>
+            </div>
+          </div>
+          <app-prasada-products [lang]="lang"></app-prasada-products>
+        </div>
+      }
+    </div>
+  </div>
+</section>

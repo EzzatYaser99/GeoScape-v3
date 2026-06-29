@@ -1,0 +1,66 @@
+<!-- ===========================
+     HERO SECTION
+=========================== -->
+<app-hero-section
+  backgroundImage="assets/images/projects-page/ourProjects.webp"
+  badgeIcon="fa-solid fa-hard-hat"
+  badgeTextKey="projects.geoscape_projects"
+  titleKey="projects.geoscape_projects"
+  subtitleKey="projects.geoscape_projects_dec"
+  customClass="projects-hero"
+/>
+
+<!-- ===========================
+     PROJECTS SECTION
+=========================== -->
+<section class="projects-section">
+  <div class="projects-container grid w-full">
+    <!-- Project Cards Aside - Shows filtered projects as cards -->
+    <div class="col-12 sm:col-9 md:col-4 lg:col-2">
+      <app-filter-navigation
+        [filterItems]="projectCategories"
+        [(activeIndex)]="activeIndex"
+        (activeIndexChange)="setActiveTab($event)"
+        titleKey="generic.filter_by_section"
+      />
+    </div>
+    <!-- Project Details Content -->
+    <div class="projects-content col-12 sm:col-9 md:col-8 lg:col-10">
+      <div class="project-cards-container">
+        @for (project of filteredProjects; track project.id) {
+          <div
+            class="project-card-mini"
+            [class.project-card-mini-active]="
+              selectedProject?.id === project.id
+            "
+            (click)="selectProject(project)"
+          >
+            <img
+              loading="lazy"
+              [alt]="project.alt"
+              [src]="'assets/images/projects-details/' + project.image"
+              class="project-card-mini-image"
+            />
+            <div class="project-card-mini-content">
+              <h4 class="project-card-mini-title">
+                {{ lang == "en" ? project.nameEN : project.nameAR }}
+              </h4>
+              <p class="project-card-mini-status">
+                {{ lang == "en" ? project.statusEN : project.statusAR }}
+              </p>
+              <button
+                type="button"
+                class="read-more-btn"
+                (click)="
+                  navigateToProjectDetails(project); $event.stopPropagation()
+                "
+              >
+                {{ "generic.read_more" | translate }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
