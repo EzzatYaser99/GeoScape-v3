@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd front && npm install && npm run build:prod",
+  "outputDirectory": "front/dist/geo-scape/browser",
+  "framework": null
+}
