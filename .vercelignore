@@ -1,9 +1,0 @@
-node_modules
-dist
-.angular
-.idea
-.git
-back/node_modules
-front/node_modules
-qodana.sarif.json
-qodana.yaml
