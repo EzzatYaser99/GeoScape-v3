@@ -7,52 +7,15 @@
         titleKey="generic.please_select_product"
       />
     </div>
-    <main class="col-12 md:col-9  px-0 md:p-1">
-      <article class="service-details-card">
-        <div class="service-details-visual">
-          <div class="gallery-container">
-            <header class="gallery-header">
-              <h4 class="gallery-title">
-                {{ "services_details.service_gallery" | translate }}
-              </h4>
-            </header>
-
-            <ul
-              class="gallery-grid"
-              [attr.aria-label]="'services_details.image_gallery' | translate"
-            >
-              @for (img of selectedProduct?.subImages; track img) {
-                <li>
-                  <div class="gallery-card">
-                    <p-image
-                      [preview]="false"
-                      [src]="
-                        'assets/images/products-page/prasada-products/' +
-                        selectedProduct?.category +
-                        '/' +
-                        img?.imageSrc
-                      "
-                      [alt]="
-                        img.alt || (lang == 'en' ? img.nameEN : img.nameAR)
-                      "
-                      loading="lazy"
-                    />
-                  </div>
-                </li>
-              }
-            </ul>
-          </div>
-        </div>
-
-        <div class="viewer-body">
-          <p class="viewer-desc">
-            {{
-              lang == "en"
-                ? selectedProduct?.descriptionEN
-                : selectedProduct?.descriptionAR
-            }}
-          </p>
-        </div>
-      </article>
+    <main class="col-12 md:col-9 px-0 md:p-1">
+      <app-gallery-detail
+        [data]="selectedProduct"
+        [lang]="lang"
+        [imagePath]="
+          'assets/images/products-page/prasada-products/' +
+          selectedProduct?.category +
+          '/'
+        "
+      />
     </main>
   </div>

@@ -17,7 +17,6 @@ import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-s
   styleUrl: "./projects.component.scss",
 })
 export class ProjectsComponent {
-  allProjects: Project[] = [];
   neomProjects: Project[] = [];
   riyadhProjects: Project[] = [];
   selectedProject: Project | undefined;
@@ -50,11 +49,6 @@ export class ProjectsComponent {
 
     this.neomProjects = this._geoscapeProjectsServices.getNeomProjects();
     this.riyadhProjects = this._geoscapeProjectsServices.getRiyadhProjects();
-
-    this.allProjects = [
-      ...this.neomProjects.map((p) => ({ ...p, category: "neom" })),
-      ...this.riyadhProjects.map((p) => ({ ...p, category: "riyadh" })),
-    ];
 
     if (this.neomProjects.length > 0) {
       this.selectedProject = this.neomProjects[0];

@@ -1,22 +1,20 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { TranslatePipe } from "@ngx-translate/core";
 import { BenitoProductsService } from "../../core/service/benito-products.service";
-import { Image } from "primeng/image";
 import {
   FilterNavigationComponent,
   FilterItem,
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
+import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
 
 @Component({
   selector: "app-benito-products",
-  imports: [TranslatePipe, Image, FilterNavigationComponent],
+  imports: [FilterNavigationComponent, GalleryDetailComponent],
   templateUrl: "./benito-products.component.html",
   styleUrl: "./benito-products.component.scss",
 })
 export class BenitoProductsComponent implements OnInit {
   benitoProducts: any[] = [];
   filterItems: FilterItem[] = [];
-  showSelectedProduct: boolean = false;
   selectedBenitoProduct: any;
   activeIndex: number = 0;
   @Input() lang: "en" | "ar" = "en";
@@ -28,8 +26,8 @@ export class BenitoProductsComponent implements OnInit {
       label: product.nameEN,
     }));
   }
+
   ngOnInit(): void {
-    this.showSelectedProduct = true;
     this.selectedBenitoProduct = this.benitoProducts[0];
   }
 

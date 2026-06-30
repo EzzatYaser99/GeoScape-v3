@@ -1,41 +1,7 @@
 @use "styles/variables" as vr;
-@use "styles/mixins" as mx;
-@use "styles/colors" as cv;
 @import "primeflex/primeflex.css";
-
-// ==============================
-// LAYOUT
-// ==============================
 
 .benito-layout {
   align-items: flex-start;
   margin: auto;
-}
-
-// ==============================
-// SERVICE DETAILS VISUAL (Gallery)
-// ==============================
-
-@include mx.gallery-styles;
-
-.gallery-grid {
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-}
-
-:host ::ng-deep {
-  .gallery-card {
-    .p-image {
-      width: 100%;
-      height: 100%;
-      min-height: 100%;
-      display: block;
-    }
-
-    .p-image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-  }
 }

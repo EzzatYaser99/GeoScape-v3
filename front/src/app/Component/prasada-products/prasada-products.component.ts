@@ -1,17 +1,16 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { TranslatePipe } from "@ngx-translate/core";
 import { GreenhouseService } from "../../core/service/greenhouse.service";
 import { SeedlingProductsService } from "../../core/service/seedling-products.service";
 import { CultivationProductsService } from "../../core/service/cultivation-products.service";
-import { Image } from "primeng/image";
 import {
   FilterNavigationComponent,
   FilterItem,
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
+import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
 
 @Component({
   selector: "app-prasada-products",
-  imports: [TranslatePipe, Image, FilterNavigationComponent],
+  imports: [FilterNavigationComponent, GalleryDetailComponent],
   templateUrl: "./prasada-products.component.html",
   styleUrl: "./prasada-products.component.scss",
 })
