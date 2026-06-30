@@ -10,12 +10,11 @@ import { SwitchLangButtonComponent } from "../switch-lang-button/switch-lang-but
 import { TranslatePipe } from "@ngx-translate/core";
 import { filter, Subscription } from "rxjs";
 import { SCROLL_CONFIG } from "../../core/config/constants";
+import { NavigationConfigService } from "../../core/service/navigation-config.service";
+import { NavigationItem } from "../../core/config/navigation.config";
 
-export interface HeaderNavItem {
-  label: string;
-  routerLink: string;
+export interface HeaderNavItem extends NavigationItem {
   isActive: boolean;
-  icon: string;
 }
 
 @Component({
@@ -27,6 +26,7 @@ export interface HeaderNavItem {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
+  private readonly navigationConfigService = inject(NavigationConfigService);
   private routerSubscription?: Subscription;
 
   headerItems: HeaderNavItem[] = [];
@@ -35,51 +35,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private readonly scrollThreshold = SCROLL_CONFIG.SCROLL_THRESHOLD;
 
   ngOnInit(): void {
-    this.headerItems = [
-      {
-        label: "header.home",
-        isActive: false,
-        routerLink: "home",
-        icon: "pi-home",
-      },
-
-      {
-        label: "header.services",
-        isActive: false,
-        routerLink: "services",
-        icon: "pi-briefcase",
-      },
-      {
-        label: "header.projects",
-        isActive: false,
-        routerLink: "projects",
-        icon: "pi-building",
-      },
-      {
-        label: "header.partners",
-        isActive: false,
-        routerLink: "partners",
-        icon: "pi-users",
-      },
-      {
-        label: "header.nursery",
-        isActive: false,
-        routerLink: "nursery",
-        icon: "pi-box",
-      },
-      {
-        label: "header.about",
-        isActive: false,
-        routerLink: "about",
-        icon: "pi-info-circle",
-      },
-      {
-        label: "header.contacts",
-        isActive: false,
-        routerLink: "contacts",
-        icon: "pi-envelope",
-      },
-    ];
+    this.headerItems = this.navigationConfigService.getNavItems().map(item => ({
+      ...item,
+      isActive: false,
+    }));
 
     this.updateActivePage();
     this.onWindowScroll();

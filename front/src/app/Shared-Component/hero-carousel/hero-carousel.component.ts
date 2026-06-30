@@ -1,9 +1,10 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject, OnInit } from "@angular/core";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { TranslatePipe } from "@ngx-translate/core";
 import { HeroSlide, LocalizedText } from "../../core/types/home.types";
 import { LanguageService } from "../../core/service/language.service";
+import { CarouselConfigService } from "../../core/service/carousel-config.service";
 
 @Component({
   selector: "app-hero-carousel",
@@ -11,34 +12,21 @@ import { LanguageService } from "../../core/service/language.service";
   templateUrl: "./hero-carousel.component.html",
   styleUrl: "./hero-carousel.component.scss",
 })
-export class HeroCarouselComponent {
+export class HeroCarouselComponent implements OnInit {
   @Input({ required: true }) slides!: HeroSlide[];
   @Input() overlayMode: "static" | "slide" = "slide";
   @Input() autoplayInterval = 3000;
 
+  private readonly languageService = inject(LanguageService);
+  private readonly carouselConfigService = inject(CarouselConfigService);
+
   lang: "en" | "ar" = "en";
   activeIndex = 0;
+  responsiveOptions: CarouselResponsiveOptions[] = [];
 
-  readonly responsiveOptions: CarouselResponsiveOptions[] = [
-    {
-      breakpoint: "1024px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "768px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "560px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
-
-  constructor(private readonly _languageService: LanguageService) {
-    this._languageService.language.subscribe((language) => {
+  ngOnInit(): void {
+    this.responsiveOptions = this.carouselConfigService.getResponsiveOptions('HERO_CAROUSEL');
+    this.languageService.language.subscribe((language) => {
       this.lang = language;
     });
   }

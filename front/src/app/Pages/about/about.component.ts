@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { Carousel } from "primeng/carousel";
+import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { NgOptimizedImage } from "@angular/common";
 import { GeoscapeClientsService } from "../../core/service/geoscape-clients.service";
+import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { Client } from "../../core/types/client.type";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
-import { CAROUSEL_PRESETS } from "../../core/config/constants";
 
 @Component({
   selector: "app-about",
@@ -22,23 +22,24 @@ import { CAROUSEL_PRESETS } from "../../core/config/constants";
   styleUrl: "./about.component.scss",
 })
 export class AboutComponent implements OnInit {
+  private readonly geoscapeClientsService = inject(GeoscapeClientsService);
+  private readonly carouselConfigService = inject(CarouselConfigService);
+  private readonly languageService = inject(LanguageService);
+
   clients: Client[];
   lang: "en" | "ar" = "en";
-  responsiveOptions: any[] | undefined;
+  responsiveOptions: CarouselResponsiveOptions[] = [];
   currentPage: number = 0;
 
-  constructor(
-    private readonly _geoscapeClients: GeoscapeClientsService,
-    private readonly _languageService: LanguageService,
-  ) {
-    this._languageService.language.subscribe((language) => {
+  constructor() {
+    this.languageService.language.subscribe((language) => {
       this.lang = language;
     });
-    this.clients = this._geoscapeClients.getGeoscapeClients();
+    this.clients = this.geoscapeClientsService.getGeoscapeClients();
   }
 
-  ngOnInit() {
-    this.responsiveOptions = CAROUSEL_PRESETS.TWO_COLUMN;
+  ngOnInit(): void {
+    this.responsiveOptions = this.carouselConfigService.getResponsiveOptions('TWO_COLUMN');
   }
 
   onClientsPage(event: any): void {

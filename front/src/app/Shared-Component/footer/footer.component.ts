@@ -1,16 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { inject } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { SocialMediaInfoComponent } from "../social-media-info/social-media-info.component";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
+import { NavigationConfigService } from "../../core/service/navigation-config.service";
 import { Subscription } from "rxjs";
 import { CONTACT_INFO } from "../../core/config/constants";
+import { NavigationItem } from "../../core/config/navigation.config";
 
-export interface FooterNavLink {
-  label: string;
-  routerLink: string;
-  icon: string;
-}
+export type FooterNavLink = NavigationItem;
 
 export interface WorkDays {
   id: number;
@@ -34,33 +33,18 @@ export interface ContactDetailsInfo {
   styleUrl: "./footer.component.scss",
 })
 export class FooterComponent implements OnInit, OnDestroy {
-  lang: "en" | "ar" = "en";
+  private readonly languageService = inject(LanguageService);
+  private readonly navigationConfigService = inject(NavigationConfigService);
   private langSubscription?: Subscription;
 
+  lang: "en" | "ar" = "en";
   openDays: WorkDays[] = [];
   contactDetailsInfo: ContactDetailsInfo[] = [];
-
-  readonly footerNavLinks: FooterNavLink[] = [
-    { label: "header.home", routerLink: "home", icon: "pi pi-home" },
-    { label: "header.services", routerLink: "services", icon: "pi pi-cog" },
-    {
-      label: "header.projects",
-      routerLink: "projects",
-      icon: "pi pi-building",
-    },
-    { label: "header.partners", routerLink: "partners", icon: "pi pi-users" },
-    { label: "header.nursery", routerLink: "nursery", icon: "pi pi-box" },
-    { label: "header.about", routerLink: "about", icon: "pi pi-info-circle" },
-    {
-      label: "header.contacts",
-      routerLink: "contacts",
-      icon: "pi pi-envelope",
-    },
-  ];
-
-  constructor(private readonly languageService: LanguageService) {}
+  footerNavLinks: FooterNavLink[] = [];
 
   ngOnInit(): void {
+    this.footerNavLinks = this.navigationConfigService.getNavItems();
+
     this.langSubscription = this.languageService.language.subscribe(
       (language) => {
         this.lang = language;

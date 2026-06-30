@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
+import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
 import { GeoscapeService } from "../../core/types/service.type";
@@ -11,7 +12,7 @@ import {
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
-import { CAROUSEL_PRESETS, ASSET_PATHS } from "../../core/config/constants";
+import { ASSET_PATHS } from "../../core/config/constants";
 
 @Component({
   selector: "app-services",
@@ -27,30 +28,31 @@ import { CAROUSEL_PRESETS, ASSET_PATHS } from "../../core/config/constants";
   styleUrl: "./services.component.scss",
 })
 export class ServicesComponent implements OnInit {
+  private readonly geoscapeServicesService = inject(GeoscapeServicesService);
+  private readonly carouselConfigService = inject(CarouselConfigService);
+  private readonly languageService = inject(LanguageService);
+
   geoscapeServices: GeoscapeService[] = [];
   filterItems: FilterItem[] = [];
   lang: "en" | "ar" = "en";
   activeIndex: number = 0;
-  protected responsiveOptions: CarouselResponsiveOptions[] | undefined;
+  responsiveOptions: CarouselResponsiveOptions[] = [];
   currentPage: number = 0;
   readonly servicePath = ASSET_PATHS.SERVICES;
 
-  constructor(
-    private readonly _geoscapeServices: GeoscapeServicesService,
-    private readonly _languageService: LanguageService,
-  ) {
-    this.geoscapeServices = this._geoscapeServices.getGeoscapeServices();
+  constructor() {
+    this.geoscapeServices = this.geoscapeServicesService.getGeoscapeServices();
     this.filterItems = this.geoscapeServices.map((service) => ({
       id: service.id,
       label: service.nameEN,
     }));
-    this._languageService.language.subscribe((language) => {
+    this.languageService.language.subscribe((language) => {
       this.lang = language;
     });
   }
 
   ngOnInit(): void {
-    this.responsiveOptions = CAROUSEL_PRESETS.SERVICES_CAROUSEL as CarouselResponsiveOptions[];
+    this.responsiveOptions = this.carouselConfigService.getResponsiveOptions('SERVICES_CAROUSEL');
   }
 
   setActiveTab(index: number): void {
