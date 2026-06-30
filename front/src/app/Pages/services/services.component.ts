@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
-import { Image } from "primeng/image";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
@@ -12,13 +11,13 @@ import {
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
+import { CAROUSEL_PRESETS, ASSET_PATHS } from "../../core/config/constants";
 
 @Component({
   selector: "app-services",
   imports: [
     Carousel,
     PrimeTemplate,
-    Image,
     TranslatePipe,
     FilterNavigationComponent,
     HeroSectionComponent,
@@ -34,6 +33,7 @@ export class ServicesComponent implements OnInit {
   activeIndex: number = 0;
   protected responsiveOptions: CarouselResponsiveOptions[] | undefined;
   currentPage: number = 0;
+  readonly servicePath = ASSET_PATHS.SERVICES;
 
   constructor(
     private readonly _geoscapeServices: GeoscapeServicesService,
@@ -50,23 +50,7 @@ export class ServicesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.responsiveOptions = [
-      {
-        breakpoint: "1199px",
-        numVisible: 1,
-        numScroll: 1,
-      },
-      {
-        breakpoint: "991px",
-        numVisible: 2,
-        numScroll: 1,
-      },
-      {
-        breakpoint: "767px",
-        numVisible: 1,
-        numScroll: 1,
-      },
-    ];
+    this.responsiveOptions = CAROUSEL_PRESETS.SERVICES_CAROUSEL as CarouselResponsiveOptions[];
   }
 
   setActiveTab(index: number): void {

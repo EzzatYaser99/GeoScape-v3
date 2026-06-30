@@ -7,6 +7,7 @@ import { GeoscapeClientsService } from "../../core/service/geoscape-clients.serv
 import { Client } from "../../core/types/client.type";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
+import { CAROUSEL_PRESETS } from "../../core/config/constants";
 
 @Component({
   selector: "app-about",
@@ -37,23 +38,7 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.responsiveOptions = [
-      {
-        breakpoint: "1199px",
-        numVisible: 1,
-        numScroll: 1,
-      },
-      {
-        breakpoint: "991px",
-        numVisible: 2,
-        numScroll: 1,
-      },
-      {
-        breakpoint: "767px",
-        numVisible: 1,
-        numScroll: 1,
-      },
-    ];
+    this.responsiveOptions = CAROUSEL_PRESETS.TWO_COLUMN;
   }
 
   onClientsPage(event: any): void {

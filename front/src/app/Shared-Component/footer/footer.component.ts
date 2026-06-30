@@ -4,6 +4,7 @@ import { SocialMediaInfoComponent } from "../social-media-info/social-media-info
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageService } from "../../core/service/language.service";
 import { Subscription } from "rxjs";
+import { CONTACT_INFO } from "../../core/config/constants";
 
 export interface FooterNavLink {
   label: string;
@@ -69,13 +70,13 @@ export class FooterComponent implements OnInit, OnDestroy {
     this.openDays = [
       {
         id: 1,
-        openDaysEN: "Sunday to Thursday",
-        openDaysAR: "من الأحد إلى الخميس",
+        openDaysEN: CONTACT_INFO.OPENING_HOURS.DAYS_EN,
+        openDaysAR: CONTACT_INFO.OPENING_HOURS.DAYS_AR,
       },
       {
         id: 2,
-        openDaysEN: "9.00 Am - 6.00 Pm (KSA time)",
-        openDaysAR: "9:00 صباحًا إلى 6:00 مساءً (بتوقيت السعودية)",
+        openDaysEN: CONTACT_INFO.OPENING_HOURS.HOURS_EN,
+        openDaysAR: CONTACT_INFO.OPENING_HOURS.HOURS_AR,
       },
     ];
 
@@ -83,23 +84,23 @@ export class FooterComponent implements OnInit, OnDestroy {
       {
         id: 1,
         icon: "pi pi-map-marker",
-        titleEN: "King Fahd Rd, Al Olaya, Riyadh",
-        titleAR: "طريق الملك فهد، العليا، الرياض",
-        href: "https://maps.app.goo.gl/tAMe31CRJtVjrR717",
+        titleEN: CONTACT_INFO.ADDRESS.EN,
+        titleAR: CONTACT_INFO.ADDRESS.AR,
+        href: CONTACT_INFO.ADDRESS.HREF,
       },
       {
         id: 2,
         icon: "pi pi-envelope",
-        titleEN: "info@geoscape.net",
-        titleAR: "info@geoscape.net",
-        href: "mailto:info@geoscape.net",
+        titleEN: CONTACT_INFO.EMAIL,
+        titleAR: CONTACT_INFO.EMAIL,
+        href: `mailto:${CONTACT_INFO.EMAIL}`,
       },
       {
         id: 3,
         icon: "pi pi-phone",
-        titleEN: "+966 546644283",
-        titleAR: "546644283 966+",
-        href: "https://wa.me/966546644283",
+        titleEN: CONTACT_INFO.PHONE.DISPLAY,
+        titleAR: CONTACT_INFO.PHONE.DISPLAY_AR,
+        href: `https://wa.me/${CONTACT_INFO.PHONE.WHATSAPP}`,
       },
     ];
   }

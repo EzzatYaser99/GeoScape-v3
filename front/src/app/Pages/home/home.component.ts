@@ -13,6 +13,7 @@ import { FeatureCard, HomeStat } from "../../core/types/home.types";
 import { HeroCarouselComponent } from "../../Shared-Component/hero-carousel/hero-carousel.component";
 import { HOME_HERO_SLIDES } from "./home-hero-slides.data";
 import { Subscription } from "rxjs";
+import { CAROUSEL_PRESETS, ASSET_PATHS, COMPANY_STATS } from "../../core/config/constants";
 
 interface ApprovalDocument {
   id: number;
@@ -58,52 +59,52 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   readonly stats: HomeStat[] = [
     {
-      value: 14,
+      value: COMPANY_STATS.YEARS_EXPERIENCE,
       labelKey: "home.stats.years_experience",
       showPlus: false,
-      icon: "assets/icons/calendar.svg",
+      icon: ASSET_PATHS.ICONS.CALENDAR,
     },
     {
-      value: 92,
+      value: COMPANY_STATS.PROJECTS_DELIVERED,
       labelKey: "home.stats.projects_delivered",
       showPlus: true,
-      icon: "assets/icons/target.svg",
+      icon: ASSET_PATHS.ICONS.TARGET,
     },
     {
-      value: 18,
+      value: COMPANY_STATS.CLIENTS,
       labelKey: "home.stats.clients",
       showPlus: false,
-      icon: "assets/icons/handshake.svg",
+      icon: ASSET_PATHS.ICONS.HANDSHAKE,
     },
     {
-      value: 9,
+      value: COMPANY_STATS.CERTIFICATIONS,
       labelKey: "home.stats.certifications",
       showPlus: false,
-      icon: "assets/icons/badge.svg",
+      icon: ASSET_PATHS.ICONS.BADGE,
     },
     {
-      value: 2,
+      value: COMPANY_STATS.GLOBAL_PARTNERS,
       labelKey: "home.stats.global_partners",
       showPlus: false,
-      icon: "assets/icons/globe.svg",
+      icon: ASSET_PATHS.ICONS.GLOBE,
     },
     {
-      value: 250,
+      value: COMPANY_STATS.TEAM_MEMBERS,
       labelKey: "home.stats.team_members",
       showPlus: true,
-      icon: "assets/icons/calendar.svg",
+      icon: ASSET_PATHS.ICONS.CALENDAR,
     },
     {
-      value: 92,
+      value: COMPANY_STATS.AWARDS,
       labelKey: "home.stats.awards",
       showPlus: true,
-      icon: "assets/icons/badge.svg",
+      icon: ASSET_PATHS.ICONS.BADGE,
     },
     {
-      value: 150,
+      value: COMPANY_STATS.BUILDINGS,
       labelKey: "home.stats.buildings",
       showPlus: true,
-      icon: "assets/icons/building.svg",
+      icon: ASSET_PATHS.ICONS.BUILDING,
     },
   ];
 
@@ -134,23 +135,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
   ];
 
-  readonly projectCarouselOptions: CarouselResponsiveOptions[] = [
-    {
-      breakpoint: "1199px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "991px",
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "767px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
+  readonly projectCarouselOptions: CarouselResponsiveOptions[] = CAROUSEL_PRESETS.TWO_COLUMN as CarouselResponsiveOptions[];
 
   constructor(
     private readonly documentService: DocumentService,

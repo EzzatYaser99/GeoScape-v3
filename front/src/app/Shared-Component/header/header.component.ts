@@ -9,6 +9,7 @@ import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { SwitchLangButtonComponent } from "../switch-lang-button/switch-lang-button.component";
 import { TranslatePipe } from "@ngx-translate/core";
 import { filter, Subscription } from "rxjs";
+import { SCROLL_CONFIG } from "../../core/config/constants";
 
 export interface HeaderNavItem {
   label: string;
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   headerItems: HeaderNavItem[] = [];
   isScrolled = false;
   isMobileMenuOpen = false;
-  private readonly scrollThreshold = 60;
+  private readonly scrollThreshold = SCROLL_CONFIG.SCROLL_THRESHOLD;
 
   ngOnInit(): void {
     this.headerItems = [

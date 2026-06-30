@@ -22,6 +22,7 @@ import { AddressInfoService } from "../../core/service/address-info.service";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { catchError, finalize, tap } from "rxjs/operators";
 import { of } from "rxjs";
+import { API_CONFIG, FORM_PATTERNS } from "../../core/config/constants";
 
 @Component({
   selector: "app-contacts",
@@ -45,11 +46,11 @@ export class ContactsComponent implements OnInit {
     name: new FormControl(null, Validators.required),
     email: new FormControl(null, [
       Validators.required,
-      Validators.pattern(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/),
+      Validators.pattern(FORM_PATTERNS.EMAIL),
     ]),
     phone: new FormControl(null, [
       Validators.required,
-      Validators.pattern(/^(?=(?!0{5,}))(?:\+?\d{1,3}[- ]?)?\d{10,11}$/),
+      Validators.pattern(FORM_PATTERNS.PHONE),
     ]),
     selectedServices: new FormControl(null),
     message: new FormControl(null),
