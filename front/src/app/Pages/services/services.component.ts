@@ -11,6 +11,7 @@ import {
   FilterItem,
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
+import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
 
 @Component({
   selector: "app-services",
@@ -21,6 +22,7 @@ import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-s
     TranslatePipe,
     FilterNavigationComponent,
     HeroSectionComponent,
+    GalleryDetailComponent,
   ],
   templateUrl: "./services.component.html",
   styleUrl: "./services.component.scss",

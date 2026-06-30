@@ -97,41 +97,13 @@
                 </p>
               </div>
             </div>
-            <div class="service-details-visual">
-              <div class="gallery-container">
-                <header class="gallery-header">
-                  <h4 class="gallery-title">
-                    {{ "services_details.service_gallery" | translate }}
-                  </h4>
-                </header>
+            <app-gallery-detail
+              [config]="{ images: service.subImages, imagePath: 'assets/images/service-details/' }"
+              [lang]="lang"
+              [itemName]="lang == 'en' ? service.nameEN : service.nameAR"
+              [showDescription]="false"
+            />
 
-                <ul
-                  class="gallery-grid"
-                  [attr.aria-label]="
-                    'services_details.image_gallery' | translate
-                  "
-                >
-                  @for (
-                    img of service.subImages;
-                    track $index;
-                  ) {
-                    <li>
-                      <div class="gallery-card">
-                        <p-image
-                          [preview]="false"
-                          [src]="'assets/images/service-details/' + img.image"
-                          [alt]="
-                            img.alt ||
-                            (lang == 'en' ? service.nameEN : service.nameAR)
-                          "
-                          loading="lazy"
-                        />
-                      </div>
-                    </li>
-                  }
-                </ul>
-              </div>
-            </div>
 
             <!-- Service Details Card -->
             <article class="service-details-card mt-3">

@@ -3,25 +3,21 @@
     <div class="gallery-container">
       <header class="gallery-header">
         <h4 class="gallery-title">
-          {{ 'services_details.service_gallery' | translate }}
+          {{ titleKey | translate }}
         </h4>
       </header>
 
       <ul
         class="gallery-grid"
-        [attr.aria-label]="
-          'services_details.image_gallery' | translate
-        "
+        [attr.aria-label]="ariaLabelKey | translate"
       >
-        @for (img of data.subImages; track img) {
+        @for (img of galleryImages; track img) {
           <li>
             <div class="gallery-card">
               <p-image
                 [preview]="false"
-                [src]="imagePath + img?.imageSrc"
-                [alt]="
-                  img.alt || (lang == 'en' ? img.nameEN : img.nameAR)
-                "
+                [src]="getImagePath(img)"
+                [alt]="getImageAlt(img)"
                 loading="lazy"
               />
             </div>
@@ -31,13 +27,12 @@
     </div>
   </div>
 
-  <div class="viewer-body">
-    <p class="viewer-desc">
-      {{
-        lang == 'en'
-          ? data.descriptionEN
-          : data.descriptionAR
-      }}
-    </p>
-  </div>
+  @if (showDescription && description) {
+    <div class="viewer-body">
+      <p class="viewer-desc">
+        {{ description }}
+      </p>
+    </div>
+  }
 </article>
+

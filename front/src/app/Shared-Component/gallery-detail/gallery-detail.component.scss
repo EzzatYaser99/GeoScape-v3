@@ -1,6 +1,14 @@
 @use "styles/mixins" as mx;
 @import "primeflex/primeflex.css";
 
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-card {
+  aspect-ratio: 1;
+}
 
 :host ::ng-deep {
   .gallery-card {
