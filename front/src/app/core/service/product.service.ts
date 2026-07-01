@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Product, ProductType } from "../types/product.type";
+import { Product, ProductType } from "../models/product.model";
 import { BenitoProductsService } from "./benito-products.service";
 import { PlantsProductsService } from "./plants-products.service";
 import { TreesProductsService } from "./trees-products.service";
@@ -33,27 +33,6 @@ export class ProductService {
       default:
         return [];
     }
-  }
-
-  getProductById(type: ProductType, id: number): Product | undefined {
-    const products = this.getProductsByType(type);
-    return products.find((product) => product.id === id);
-  }
-
-  getProductCategories(type: ProductType): string[] {
-    const products = this.getProductsByType(type);
-    const categories = new Set<string>();
-
-    products.forEach((product) => {
-      if (product.category) {
-        categories.add(product.category);
-      }
-      if (product.categoryEN) {
-        categories.add(product.categoryEN);
-      }
-    });
-
-    return Array.from(categories);
   }
 
   private getPrasadaProducts(): Product[] {
