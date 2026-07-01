@@ -10,7 +10,7 @@ import { LanguageStateService } from "../../core/service/language-state.service"
 import { SectionHeadingComponent } from "../../Shared-Component/section-heading/section-heading.component";
 import { StatCounterComponent } from "../../Shared-Component/stat-counter/stat-counter.component";
 import { FeatureCardComponent } from "../../Shared-Component/feature-card/feature-card.component";
-import { FeatureCard, HomeStat } from "../../core/types/home.types";
+import { FeatureCard, HomeStat } from "../../core/models/home.model";
 import { HeroCarouselComponent } from "../../Shared-Component/hero-carousel/hero-carousel.component";
 import { HOME_HERO_SLIDES } from "./home-hero-slides.data";
 import { Subscription } from "rxjs";

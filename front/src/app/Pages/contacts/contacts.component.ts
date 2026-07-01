@@ -17,8 +17,8 @@ import { GeoscapeServicesService } from "../../core/service/geoscape-services.se
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
-import { AddressInfo, MessageResponse } from "../../core/types/contact.type";
-import { GeoscapeService } from "../../core/types/service.type";
+import { AddressInfo, MessageResponse } from "../../core/models/contact.model";
+import { GeoscapeService } from "../../core/models/service.model";
 import { AddressInfoService } from "../../core/service/address-info.service";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { catchError, finalize, tap } from "rxjs/operators";

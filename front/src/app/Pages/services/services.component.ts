@@ -6,7 +6,7 @@ import { CarouselConfigService } from "../../core/service/carousel-config.servic
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
-import { GeoscapeService } from "../../core/types/service.type";
+import { GeoscapeService } from "../../core/models/service.model";
 import {
   FilterNavigationComponent,
   FilterItem,

@@ -1,4 +1,4 @@
-import { HeroSlide } from "../../core/types/home.types";
+import { HeroSlide } from "../../core/models/home.model";
 
 interface ProjectCopy {
   title: { en: string; ar: string };

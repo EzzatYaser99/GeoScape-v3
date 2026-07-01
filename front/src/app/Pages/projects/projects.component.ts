@@ -4,7 +4,7 @@ import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.se
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
-import { Project } from "../../core/types/project.type";
+import { Project } from "../../core/models/project.model";
 import {
   FilterNavigationComponent,
   FilterItem,

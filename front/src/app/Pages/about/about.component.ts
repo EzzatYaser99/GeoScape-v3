@@ -5,7 +5,7 @@ import { PrimeTemplate } from "primeng/api";
 import { NgOptimizedImage } from "@angular/common";
 import { GeoscapeClientsService } from "../../core/service/geoscape-clients.service";
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
-import { Client } from "../../core/types/client.type";
+import { Client } from "../../core/models/client.model";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
