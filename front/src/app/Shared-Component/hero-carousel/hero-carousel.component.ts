@@ -3,7 +3,7 @@ import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { TranslatePipe } from "@ngx-translate/core";
 import { HeroSlide, LocalizedText } from "../../core/types/home.types";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 
 @Component({
@@ -17,7 +17,7 @@ export class HeroCarouselComponent implements OnInit {
   @Input() overlayMode: "static" | "slide" = "slide";
   @Input() autoplayInterval = 3000;
 
-  private readonly languageService = inject(LanguageService);
+  private readonly languageStateService = inject(LanguageStateService);
   private readonly carouselConfigService = inject(CarouselConfigService);
 
   lang: "en" | "ar" = "en";
@@ -26,7 +26,7 @@ export class HeroCarouselComponent implements OnInit {
 
   ngOnInit(): void {
     this.responsiveOptions = this.carouselConfigService.getResponsiveOptions('HERO_CAROUSEL');
-    this.languageService.language.subscribe((language) => {
+    this.languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
   }

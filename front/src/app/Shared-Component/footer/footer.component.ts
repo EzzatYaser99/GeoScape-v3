@@ -3,7 +3,7 @@ import { inject } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { SocialMediaInfoComponent } from "../social-media-info/social-media-info.component";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { NavigationConfigService } from "../../core/service/navigation-config.service";
 import { Subscription } from "rxjs";
 import { CONTACT_INFO } from "../../core/config/constants";
@@ -33,7 +33,7 @@ export interface ContactDetailsInfo {
   styleUrl: "./footer.component.scss",
 })
 export class FooterComponent implements OnInit, OnDestroy {
-  private readonly languageService = inject(LanguageService);
+  private readonly languageStateService = inject(LanguageStateService);
   private readonly navigationConfigService = inject(NavigationConfigService);
   private langSubscription?: Subscription;
 
@@ -45,7 +45,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.footerNavLinks = this.navigationConfigService.getNavItems();
 
-    this.langSubscription = this.languageService.language.subscribe(
+    this.langSubscription = this.languageStateService.language$.subscribe(
       (language) => {
         this.lang = language;
       },

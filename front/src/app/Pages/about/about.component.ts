@@ -7,7 +7,7 @@ import { GeoscapeClientsService } from "../../core/service/geoscape-clients.serv
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { Client } from "../../core/types/client.type";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 
 @Component({
   selector: "app-about",
@@ -24,7 +24,7 @@ import { LanguageService } from "../../core/service/language.service";
 export class AboutComponent implements OnInit {
   private readonly geoscapeClientsService = inject(GeoscapeClientsService);
   private readonly carouselConfigService = inject(CarouselConfigService);
-  private readonly languageService = inject(LanguageService);
+  private readonly languageStateService = inject(LanguageStateService);
 
   clients: Client[];
   lang: "en" | "ar" = "en";
@@ -32,7 +32,7 @@ export class AboutComponent implements OnInit {
   currentPage: number = 0;
 
   constructor() {
-    this.languageService.language.subscribe((language) => {
+    this.languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
     this.clients = this.geoscapeClientsService.getGeoscapeClients();

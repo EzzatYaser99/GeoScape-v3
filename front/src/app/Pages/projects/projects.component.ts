@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { Project } from "../../core/types/project.type";
 import {
   FilterNavigationComponent,
@@ -41,9 +41,9 @@ export class ProjectsComponent {
   constructor(
     private readonly _router: Router,
     private readonly _geoscapeProjectsServices: GeoscapeProjectsService,
-    private readonly _languageService: LanguageService,
+    private readonly _languageStateService: LanguageStateService,
   ) {
-    this._languageService.language.subscribe((language) => {
+    this._languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
 

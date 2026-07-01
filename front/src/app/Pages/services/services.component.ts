@@ -4,7 +4,7 @@ import { PrimeTemplate } from "primeng/api";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { GeoscapeService } from "../../core/types/service.type";
 import {
   FilterNavigationComponent,
@@ -30,7 +30,7 @@ import { ASSET_PATHS } from "../../core/config/constants";
 export class ServicesComponent implements OnInit {
   private readonly geoscapeServicesService = inject(GeoscapeServicesService);
   private readonly carouselConfigService = inject(CarouselConfigService);
-  private readonly languageService = inject(LanguageService);
+  private readonly languageStateService = inject(LanguageStateService);
 
   geoscapeServices: GeoscapeService[] = [];
   filterItems: FilterItem[] = [];
@@ -46,7 +46,7 @@ export class ServicesComponent implements OnInit {
       id: service.id,
       label: service.nameEN,
     }));
-    this.languageService.language.subscribe((language) => {
+    this.languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
   }

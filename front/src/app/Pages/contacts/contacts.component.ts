@@ -15,7 +15,7 @@ import { MultiSelect } from "primeng/multiselect";
 import { PrimeTemplate } from "primeng/api";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { AddressInfo, MessageResponse } from "../../core/types/contact.type";
 import { GeoscapeService } from "../../core/types/service.type";
 import { AddressInfoService } from "../../core/service/address-info.service";
@@ -66,11 +66,11 @@ export class ContactsComponent implements OnInit {
   constructor(
     private readonly _http: HttpClient,
     private readonly _geoscapeServices: GeoscapeServicesService,
-    private readonly _languageService: LanguageService,
+    private readonly _languageStateService: LanguageStateService,
     private readonly _addressInfoService: AddressInfoService,
   ) {
     this.geoscapeServices = this._geoscapeServices.getGeoscapeServices();
-    this._languageService.language.subscribe((language) => {
+    this._languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
   }

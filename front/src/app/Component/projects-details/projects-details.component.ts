@@ -5,7 +5,7 @@ import { Button } from "primeng/button";
 import { ProgressBar } from "primeng/progressbar";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 
 @Component({
   selector: "app-projects-details",
@@ -22,10 +22,10 @@ export class ProjectsDetailsComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly _geoscapeProjectsServices: GeoscapeProjectsService,
-    private readonly _languageService: LanguageService,
+    private readonly _languageStateService: LanguageStateService,
   ) {
     this.projects = this._geoscapeProjectsServices.getAllProjects();
-    this._languageService.language.subscribe((language) => {
+    this._languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
   }

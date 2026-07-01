@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from "@angular/core";
+import { Component, OnInit, OnDestroy, inject } from "@angular/core";
 import { Router, RouterLink } from "@angular/router";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
@@ -6,7 +6,7 @@ import { DocumentService } from "../../core/service/document.service";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { SectionHeadingComponent } from "../../Shared-Component/section-heading/section-heading.component";
 import { StatCounterComponent } from "../../Shared-Component/stat-counter/stat-counter.component";
 import { FeatureCardComponent } from "../../Shared-Component/feature-card/feature-card.component";
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly documentService = inject(DocumentService);
   private readonly projectsService = inject(GeoscapeProjectsService);
   private readonly carouselConfigService = inject(CarouselConfigService);
-  private readonly languageService = inject(LanguageService);
+  private readonly languageStateService = inject(LanguageStateService);
   private readonly router = inject(Router);
   
   documents: ApprovalDocument[] = [];
@@ -147,7 +147,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.projectCarouselOptions = this.carouselConfigService.getResponsiveOptions('TWO_COLUMN');
 
-    this.langSubscription = this.languageService.language.subscribe(
+    this.langSubscription = this.languageStateService.language$.subscribe(
       (language: 'en' | 'ar') => {
         this.lang = language;
       },

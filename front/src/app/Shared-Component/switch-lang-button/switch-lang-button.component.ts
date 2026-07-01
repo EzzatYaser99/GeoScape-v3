@@ -1,7 +1,7 @@
 import { UpperCasePipe } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { TranslateModule } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { Tooltip } from "primeng/tooltip";
 
 @Component({
@@ -12,13 +12,12 @@ import { Tooltip } from "primeng/tooltip";
   styleUrl: "./switch-lang-button.component.scss",
 })
 export class SwitchLangButtonComponent {
-  constructor(private readonly _languageService: LanguageService) {
-    this.currentLang = localStorage.getItem("lang") ?? "en";
+  constructor(private readonly _languageStateService: LanguageStateService) {
+    this.currentLang = this._languageStateService.getCurrentLanguage();
   }
 
   currentLang: string = "en";
 
-  /** light = white text (overlay header), dark = dark text (solid header) */
   @Input() theme: "dark" | "light" = "light";
 
   get toggleText() {
@@ -29,7 +28,7 @@ export class SwitchLangButtonComponent {
   toggleLang() {
     this.isLoading = true;
     this.currentLang = this.currentLang === "en" ? "ar" : "en";
-    this._languageService.switchLanguage(this.currentLang);
+    this._languageStateService.setLanguage(this.currentLang as "en" | "ar");
     this.isLoading = false;
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { TranslatePipe } from "@ngx-translate/core";
-import { LanguageService } from "../../core/service/language.service";
+import { LanguageStateService } from "../../core/service/language-state.service";
 import { RouterLink } from "@angular/router";
 import { StatCounterComponent } from "../../Shared-Component/stat-counter/stat-counter.component";
 import {BenitoProductsComponent} from "../../Component/benito-products/benito-products.component";
@@ -26,8 +26,8 @@ export class PartnersComponent {
       id: "prasada",
     },
   ];
-  constructor(private readonly _languageService: LanguageService) {
-    this._languageService.language.subscribe((language) => {
+  constructor(private readonly _languageStateService: LanguageStateService) {
+    this._languageStateService.language$.subscribe((language) => {
       this.lang = language;
     });
   }
