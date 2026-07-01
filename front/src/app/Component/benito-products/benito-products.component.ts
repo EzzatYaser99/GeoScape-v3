@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { BenitoProductsService } from "../../core/service/benito-products.service";
+import { ProductService } from "../../core/service/product.service";
 import {
   FilterNavigationComponent,
   FilterItem,
@@ -19,8 +19,8 @@ export class BenitoProductsComponent implements OnInit {
   activeIndex: number = 0;
   @Input() lang: "en" | "ar" = "en";
 
-  constructor(private readonly _benitoServices: BenitoProductsService) {
-    this.benitoProducts = this._benitoServices.getBenitoProducts();
+  constructor(private readonly _productService: ProductService) {
+    this.benitoProducts = this._productService.getProductsByType("benito");
     this.filterItems = this.benitoProducts.map((product) => ({
       id: product.id,
       label: product.nameEN,

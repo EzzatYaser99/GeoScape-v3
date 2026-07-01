@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { PlantsProductsService } from "../../core/service/plants-products.service";
+import { ProductService } from "../../core/service/product.service";
 import {
   ProductCardComponent,
   ProductCardData,
@@ -14,9 +14,9 @@ import {
 export class PlantsProductsComponent {
   geoscapePlants: ProductCardData[] = [];
   @Input() lang: "en" | "ar" = "en";
-  constructor(private readonly _plantsServices: PlantsProductsService) {
-    this.geoscapePlants = this._plantsServices
-      .getPlants()
+  constructor(private readonly _productService: ProductService) {
+    this.geoscapePlants = this._productService
+      .getProductsByType("plants")
       .map((plant: any) => ({
         ...plant,
         iconType: "seedling" as const,

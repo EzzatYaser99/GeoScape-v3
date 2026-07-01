@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
+import { Product } from "../types/product.type";
 
 @Injectable({
   providedIn: "root",
 })
 export class CultivationProductsService {
-  cultivationProduct: any[] = [
+  cultivationProduct: Product[] = [
     {
       id: 1,
       nameEN: "NFT Hydroponic for Leafy Vegetables",

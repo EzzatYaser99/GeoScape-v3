@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
+import { Product } from "../types/product.type";
 
 @Injectable({
   providedIn: "root",
 })
 export class TreesProductsService {
-  trees = [
+  trees: Product[] = [
     {
       id: 1,
       categoryEN: "Trees",

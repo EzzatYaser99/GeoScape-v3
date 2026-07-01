@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { GreenhouseService } from "../../core/service/greenhouse.service";
-import { SeedlingProductsService } from "../../core/service/seedling-products.service";
-import { CultivationProductsService } from "../../core/service/cultivation-products.service";
+import { ProductService } from "../../core/service/product.service";
 import {
   FilterNavigationComponent,
   FilterItem,
@@ -21,22 +19,10 @@ export class PrasadaProductsComponent implements OnInit {
   activeIndex: number = 0;
   @Input() lang: "en" | "ar" = "en";
 
-  constructor(
-    private readonly _greenhouseService: GreenhouseService,
-    private readonly _seedlingService: SeedlingProductsService,
-    private readonly _cultivationService: CultivationProductsService,
-  ) {}
+  constructor(private readonly _productService: ProductService) {}
 
   ngOnInit(): void {
-    const greenhouseProducts = this._greenhouseService.getGreenhouseProducts();
-    const seedlingProducts = this._seedlingService.getSeedlingProducts();
-    const cultivationProducts =
-      this._cultivationService.getCultivationProductProducts();
-    this.allProducts = [
-      ...greenhouseProducts.map((p) => ({ ...p, category: "Greenhouse" })),
-      ...cultivationProducts.map((p) => ({ ...p, category: "cultivation" })),
-      ...seedlingProducts.map((p) => ({ ...p, category: "Seedling" })),
-    ];
+    this.allProducts = this._productService.getProductsByType("prasada");
 
     this.filterItems = this.allProducts.map((product) => ({
       id: product.id,
