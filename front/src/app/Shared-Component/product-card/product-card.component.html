@@ -14,10 +14,10 @@
 
     <div class="card-body">
       <h3 class="card-title">
-        {{ lang == "en" ? product.nameEN : product.nameAR }}
+        {{ product.nameEN | localized:lang:'AR':product.nameAR }}
       </h3>
       <p class="card-desc">
-        {{ lang == "en" ? product.descriptionEN : product.descriptionAR }}
+        {{ product.descriptionEN | localized:lang:'AR':product.descriptionAR }}
       </p>
     </div>
   </div>

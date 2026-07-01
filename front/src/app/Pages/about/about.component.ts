@@ -8,6 +8,7 @@ import { CarouselConfigService } from "../../core/service/carousel-config.servic
 import { Client } from "../../core/types/client.type";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 
 @Component({
   selector: "app-about",
@@ -17,6 +18,7 @@ import { LanguageStateService } from "../../core/service/language-state.service"
     PrimeTemplate,
     NgOptimizedImage,
     TranslatePipe,
+    LocalizedPipe,
   ],
   templateUrl: "./about.component.html",
   styleUrl: "./about.component.scss",

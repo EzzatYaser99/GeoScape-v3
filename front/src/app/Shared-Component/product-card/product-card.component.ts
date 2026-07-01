@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Image } from "primeng/image";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 
 export interface ProductCardData {
   imageSrc: string;
@@ -16,7 +17,7 @@ export interface ProductCardData {
 
 @Component({
   selector: "app-product-card",
-  imports: [CommonModule, Image],
+  imports: [CommonModule, Image, LocalizedPipe],
   templateUrl: "./product-card.component.html",
   styleUrl: "./product-card.component.scss",
 })

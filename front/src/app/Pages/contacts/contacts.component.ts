@@ -16,6 +16,7 @@ import { PrimeTemplate } from "primeng/api";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 import { AddressInfo, MessageResponse } from "../../core/types/contact.type";
 import { GeoscapeService } from "../../core/types/service.type";
 import { AddressInfoService } from "../../core/service/address-info.service";
@@ -36,6 +37,7 @@ import { API_CONFIG, FORM_PATTERNS } from "../../core/config/constants";
     PrimeTemplate,
     ReactiveFormsModule,
     TranslatePipe,
+    LocalizedPipe,
     HeroSectionComponent,
   ],
   templateUrl: "./contacts.component.html",

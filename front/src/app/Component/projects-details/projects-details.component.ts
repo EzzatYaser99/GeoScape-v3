@@ -6,10 +6,11 @@ import { ProgressBar } from "primeng/progressbar";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 
 @Component({
   selector: "app-projects-details",
-  imports: [FormsModule, RouterLink, Button, TranslatePipe, ProgressBar],
+  imports: [FormsModule, RouterLink, Button, TranslatePipe, LocalizedPipe, ProgressBar],
   templateUrl: "./projects-details.component.html",
   styleUrl: "./projects-details.component.scss",
 })

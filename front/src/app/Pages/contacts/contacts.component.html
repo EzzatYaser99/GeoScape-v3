@@ -29,7 +29,7 @@
               <i class="pi pi-map-marker"></i>
             </div>
             <h3 class="office-name">
-              {{ lang == "en" ? item.officeNameEN : item.officeNameAR }}
+              {{ item.officeNameEN | localized:lang:'AR':item.officeNameAR }}
             </h3>
           </div>
 
@@ -48,7 +48,7 @@
                   target="_blank"
                   class="contact-link"
                 >
-                  {{ lang == "en" ? item.addressNameEN : item.addressNameAR }}
+                  {{ item.addressNameEN | localized:lang:'AR':item.addressNameAR }}
                 </a>
               </div>
             </div>
@@ -78,7 +78,7 @@
                   "contacts.phone_no" | translate
                 }}</span>
                 <a [href]="item.phoneHref" target="_blank" class="contact-link">
-                  {{ lang == "en" ? item.phoneEN : item.phoneAR }}
+                  {{ item.phoneEN | localized:lang:'AR':item.phoneAR }}
                 </a>
               </div>
             </div>
@@ -249,7 +249,7 @@
                   />
                   <div class="service-info">
                     <div class="service-name">
-                      {{ lang == "en" ? service.nameEN : service.nameAR }}
+                      {{ service.nameEN | localized:lang:'AR':service.nameAR }}
                     </div>
                   </div>
                 </div>

@@ -350,7 +350,7 @@
                 />
               </div>
               <div class="client-name">
-                {{ lang == "en" ? client.nameEN : client.nameAR }}
+                {{ client.nameEN | localized:lang:'AR':client.nameAR }}
               </div>
             </article>
           </ng-template>

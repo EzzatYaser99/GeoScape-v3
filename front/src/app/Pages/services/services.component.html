@@ -39,7 +39,7 @@
             />
           </div>
           <div class="service-name">
-            {{ lang == "en" ? service.nameEN : service.nameAR }}
+            {{ service.nameEN | localized:lang:'AR':service.nameAR }}
           </div>
         </article>
       </ng-template>
@@ -88,11 +88,11 @@
               </div>
               <div class="description-body">
                 <h2 class="description-title">
-                  {{ lang == "en" ? service.nameEN : service.nameAR }}
+                   {{ service.nameEN | localized:lang:'AR':service.nameAR }}
                 </h2>
                 <p class="description-text">
                   {{
-                    lang == "en" ? service.descriptionEN : service.descriptionAR
+                     service.descriptionEN | localized:lang:'AR':service.descriptionAR
                   }}
                 </p>
               </div>
@@ -100,7 +100,7 @@
             <app-gallery-detail
               [config]="{ images: service.subImages, imagePath: 'assets/images/service-details/' }"
               [lang]="lang"
-              [itemName]="lang == 'en' ? service.nameEN : service.nameAR"
+              [itemName]="service.nameEN | localized:lang:'AR':service.nameAR"
               [showDescription]="false"
             />
 
@@ -121,7 +121,7 @@
                   <div class="content-body">
                     <p class="detail-text">
                       {{
-                        lang == "en" ? service.whatWeDoEN : service.whatWeDoAR
+                        service.whatWeDoEN | localized:lang:'AR':service.whatWeDoAR
                       }}
                     </p>
                   </div>

@@ -43,10 +43,10 @@
             />
             <div class="project-card-mini-content">
               <h4 class="project-card-mini-title">
-                {{ lang == "en" ? project.nameEN : project.nameAR }}
+                {{ project.nameEN | localized:lang:'AR':project.nameAR }}
               </h4>
               <p class="project-card-mini-status">
-                {{ lang == "en" ? project.statusEN : project.statusAR }}
+                {{ project.statusEN | localized:lang:'AR':project.statusAR }}
               </p>
               <button
                 type="button"

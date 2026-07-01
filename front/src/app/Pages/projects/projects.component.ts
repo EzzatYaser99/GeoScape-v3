@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 import { Project } from "../../core/types/project.type";
 import {
   FilterNavigationComponent,
@@ -12,7 +13,7 @@ import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-s
 
 @Component({
   selector: "app-projects",
-  imports: [TranslatePipe, FilterNavigationComponent, HeroSectionComponent],
+  imports: [TranslatePipe, LocalizedPipe, FilterNavigationComponent, HeroSectionComponent],
   templateUrl: "./projects.component.html",
   styleUrl: "./projects.component.scss",
 })

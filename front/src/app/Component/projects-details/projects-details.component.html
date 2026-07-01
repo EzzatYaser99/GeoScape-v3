@@ -3,7 +3,7 @@
     <section class="project-hero">
       <div>
         <h2 class="project-title">
-          {{ lang === "en" ? selectedProject.nameEN : selectedProject.nameAR }}
+          {{ selectedProject.nameEN | localized:lang:'AR':selectedProject.nameAR }}
         </h2>
 
         <p class="project-subtitle">
@@ -13,7 +13,7 @@
 
       <span class="project-status">
         {{
-          lang === "en" ? selectedProject.statusEN : selectedProject.statusAR
+          selectedProject.statusEN | localized:lang:'AR':selectedProject.statusAR
         }}
       </span>
     </section>
@@ -26,9 +26,7 @@
 
         <span class="value">
           {{
-            lang === "en"
-              ? selectedProject.scopeOfWorkEN
-              : selectedProject.scopeOfWorkAR
+            selectedProject.scopeOfWorkEN | localized:lang:'AR':selectedProject.scopeOfWorkAR
           }}
         </span>
       </article>
@@ -40,9 +38,7 @@
 
         <span class="value">
           {{
-            lang === "en"
-              ? selectedProject.mainContractorEN
-              : selectedProject.mainContractorAR
+            selectedProject.mainContractorEN | localized:lang:'AR':selectedProject.mainContractorAR
           }}
         </span>
       </article>
@@ -54,9 +50,7 @@
 
         <span class="value">
           {{
-            lang === "en"
-              ? selectedProject.consultantEN
-              : selectedProject.consultantAR
+            selectedProject.consultantEN | localized:lang:'AR':selectedProject.consultantAR
           }}
         </span>
       </article>
@@ -86,9 +80,7 @@
 
         <p>
           {{
-            lang === "en"
-              ? selectedProject.descriptionEN
-              : selectedProject.descriptionAR
+            selectedProject.descriptionEN | localized:lang:'AR':selectedProject.descriptionAR
           }}
         </p>
       </section>

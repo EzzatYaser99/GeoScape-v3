@@ -5,6 +5,7 @@ import { GeoscapeServicesService } from "../../core/service/geoscape-services.se
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
+import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 import { GeoscapeService } from "../../core/types/service.type";
 import {
   FilterNavigationComponent,
@@ -20,6 +21,7 @@ import { ASSET_PATHS } from "../../core/config/constants";
     Carousel,
     PrimeTemplate,
     TranslatePipe,
+    LocalizedPipe,
     FilterNavigationComponent,
     HeroSectionComponent,
     GalleryDetailComponent,
