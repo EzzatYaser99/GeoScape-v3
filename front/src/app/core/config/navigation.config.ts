@@ -14,36 +14,36 @@ export const NAV_ITEMS: NavigationItem[] = [
   {
     label: 'header.home',
     routerLink: 'home',
-    icon: 'pi-home',
+    icon: 'pi pi-home',
   },
   {
     label: 'header.services',
     routerLink: 'services',
-    icon: 'pi-briefcase',
+    icon: 'pi pi-briefcase',
   },
   {
     label: 'header.projects',
     routerLink: 'projects',
-    icon: 'pi-building',
+    icon: 'pi pi-building',
   },
   {
     label: 'header.partners',
     routerLink: 'partners',
-    icon: 'pi-users',
+    icon: 'pi pi-users',
   },
   {
     label: 'header.nursery',
     routerLink: 'nursery',
-    icon: 'pi-box',
+    icon: 'pi pi-box',
   },
   {
     label: 'header.about',
     routerLink: 'about',
-    icon: 'pi-info-circle',
+    icon: 'pi pi-info-circle',
   },
   {
     label: 'header.contacts',
     routerLink: 'contacts',
-    icon: 'pi-envelope',
+    icon: 'pi pi-envelope',
   },
 ];
