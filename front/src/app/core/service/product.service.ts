@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Product, ProductType } from "../models/product.model";
+import { Product, ProductType } from "../models";
 import { BenitoProductsService } from "./benito-products.service";
 import { PlantsProductsService } from "./plants-products.service";
 import { TreesProductsService } from "./trees-products.service";

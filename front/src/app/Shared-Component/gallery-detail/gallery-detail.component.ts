@@ -11,13 +11,6 @@ export interface GalleryImage {
   alt?: string;
 }
 
-export interface GalleryItem {
-  imageSrc: string;
-  nameEN: string;
-  nameAR: string;
-  alt?: string;
-}
-
 export interface GalleryDetailData {
   descriptionEN?: string;
   descriptionAR?: string;

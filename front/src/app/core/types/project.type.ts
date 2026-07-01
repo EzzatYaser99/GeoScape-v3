@@ -24,9 +24,3 @@ export interface Project {
   subImages: ProjectSubImage[];
   category?: string;
 }
-
-export interface ProjectCategory {
-  id: number;
-  label: string;
-  image: string;
-}

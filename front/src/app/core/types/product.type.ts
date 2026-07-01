@@ -1,9 +1,3 @@
-export interface SubImage {
-  id: number;
-  imageSrc: string;
-  alt?: string;
-}
-
 export interface Product {
   id: number;
   nameEN: string;
@@ -18,4 +12,9 @@ export interface Product {
   subImages?: SubImage[];
 }
 
-export type ProductType = "benito" | "plants" | "trees" | "prasada";
+export interface SubImage {
+  id: number;
+  imageSrc: string;
+  alt?: string;
+}
+

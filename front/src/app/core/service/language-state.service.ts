@@ -31,7 +31,4 @@ export class LanguageStateService {
     this.languageService.switchLanguage(lang);
   }
 
-  getLanguage$(): Observable<"en" | "ar"> {
-    return this.language$;
-  }
 }

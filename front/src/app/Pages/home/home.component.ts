@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly languageStateService = inject(LanguageStateService);
   private readonly router = inject(Router);
   private readonly destroy$ = new Subject<void>();
-  
+
   documents: ApprovalDocument[] = [];
   featuredProjects: FeaturedProject[] = [];
   lang: "en" | "ar" = "en";

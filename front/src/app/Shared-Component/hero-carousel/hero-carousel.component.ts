@@ -2,7 +2,7 @@ import { Component, Input, inject, OnInit, OnDestroy } from "@angular/core";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { TranslatePipe } from "@ngx-translate/core";
-import { HeroSlide, LocalizedText } from "../../core/models/home.model";
+import { HeroSlide, LocalizedText } from "../../core/models";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { CarouselConfigService } from "../../core/service/carousel-config.service";
 import { Subject, takeUntil } from "rxjs";

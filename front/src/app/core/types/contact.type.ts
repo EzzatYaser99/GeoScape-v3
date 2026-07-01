@@ -11,9 +11,3 @@ export interface AddressInfo {
   phoneAR: string;
   phoneHref: string;
 }
-
-export interface MessageResponse {
-  severity: string;
-  summary?: string;
-  detail?: string;
-}

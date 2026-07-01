@@ -22,7 +22,7 @@
       @for (item of addressInfo; track $index; let i = $index) {
         <div
           class="office-card animate-fade-in"
-          [style.animationDelay]="i * 100 + 'ms'"
+          [style.animation-delay]="i * 100 + 'ms'"
         >
           <div class="office-card-header">
             <div class="office-icon">
@@ -41,8 +41,8 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                  "contacts.location" | translate
-                }}</span>
+                    "contacts.location" | translate
+                  }}</span>
                 <a
                   [href]="item.locationHref"
                   target="_blank"
@@ -60,8 +60,8 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                  "contacts.email" | translate
-                }}</span>
+                    "contacts.email" | translate
+                  }}</span>
                 <a [href]="item.mailHref" class="contact-link">
                   {{ item.mail }}
                 </a>
@@ -75,8 +75,8 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                  "contacts.phone_no" | translate
-                }}</span>
+                    "contacts.phone_no" | translate
+                  }}</span>
                 <a [href]="item.phoneHref" target="_blank" class="contact-link">
                   {{ item.phoneEN | localized:lang:'AR':item.phoneAR }}
                 </a>
@@ -118,7 +118,7 @@
         </h2>
         <p
           class="form-subtitle animate-fade-in-left"
-          [style.animationDelay]="'100ms'"
+          [style.animation-delay]="'100ms'"
         >
           {{ "contacts.form_subtitle" | translate }}
         </p>
@@ -129,7 +129,7 @@
         [formGroup]="getTouchForm"
         (ngSubmit)="submitForm()"
         class="contact-form animate-fade-in"
-        [style.animationDelay]="'200ms'"
+        [style.animation-delay]="'200ms'"
       >
         <!-- Form Grid -->
         <div class="form-grid">
@@ -233,7 +233,7 @@
                 @if (value && value.length > 0) {
                   <div class="selected-items">
                     <span class="selected-count"
-                      >{{ value.length }}
+                    >{{ value.length }}
                       {{ "contacts.selected" | translate }}</span
                     >
                   </div>
@@ -324,7 +324,7 @@
     <div class="form-sidebar">
       <div
         class="trust-section animate-fade-in"
-        [style.animationDelay]="'300ms'"
+        [style.animation-delay]="'300ms'"
       >
         <h3 class="trust-title">{{ "contacts.why_choose_us" | translate }}</h3>
 
@@ -374,7 +374,7 @@
       <!-- Stats Section -->
       <div
         class="stats-section animate-fade-in"
-        [style.animationDelay]="'400ms'"
+        [style.animation-delay]="'400ms'"
       >
         <div class="stat-item">
           <div class="stat-number">18+</div>

@@ -17,13 +17,13 @@ import { GeoscapeServicesService } from "../../core/service/geoscape-services.se
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
-import { AddressInfo, MessageResponse } from "../../core/models/contact.model";
-import { GeoscapeService } from "../../core/models/service.model";
+import { GeoscapeService } from "../../core/models";
 import { AddressInfoService } from "../../core/service/address-info.service";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { catchError, finalize, tap, takeUntil } from "rxjs/operators";
 import { of, Subject } from "rxjs";
-import { API_CONFIG, FORM_PATTERNS } from "../../core/config/constants";
+import { FORM_PATTERNS } from "../../core/config/constants";
+import type { AddressInfo, MessageResponse } from "../../core/models";
 
 @Component({
   selector: "app-contacts",
@@ -94,7 +94,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     const selectedServiceNames = this.getTouchForm.controls[
       "selectedServices"
-    ].value?.map((item: GeoscapeService) => item.nameEN);
+      ].value?.map((item: GeoscapeService) => item.nameEN);
     const data = {
       name: this.getTouchForm.controls["name"].value || "",
       phone: this.getTouchForm.controls["phone"].value || "",
