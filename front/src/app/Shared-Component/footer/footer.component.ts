@@ -5,7 +5,7 @@ import { SocialMediaInfoComponent } from "../social-media-info/social-media-info
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { NavigationConfigService } from "../../core/service/navigation-config.service";
-import { Subscription } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { CONTACT_INFO } from "../../core/config/constants";
 import { NavigationItem } from "../../core/config/navigation.config";
 
@@ -35,7 +35,7 @@ export interface ContactDetailsInfo {
 export class FooterComponent implements OnInit, OnDestroy {
   private readonly languageStateService = inject(LanguageStateService);
   private readonly navigationConfigService = inject(NavigationConfigService);
-  private langSubscription?: Subscription;
+  private readonly destroy$ = new Subject<void>();
 
   lang: "en" | "ar" = "en";
   openDays: WorkDays[] = [];
@@ -45,11 +45,11 @@ export class FooterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.footerNavLinks = this.navigationConfigService.getNavItems();
 
-    this.langSubscription = this.languageStateService.language$.subscribe(
-      (language) => {
+    this.languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language) => {
         this.lang = language;
-      },
-    );
+      });
 
     this.openDays = [
       {
@@ -90,7 +90,8 @@ export class FooterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.langSubscription?.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getContactLabel(item: ContactDetailsInfo): string {

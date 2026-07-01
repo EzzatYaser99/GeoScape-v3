@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { RouterLink } from "@angular/router";
@@ -6,6 +6,7 @@ import { StatCounterComponent } from "../../Shared-Component/stat-counter/stat-c
 import {BenitoProductsComponent} from "../../Component/benito-products/benito-products.component";
 import {FilterItem, FilterNavigationComponent} from "../../Shared-Component/filter-navigation/filter-navigation.component";
 import {PrasadaProductsComponent} from "../../Component/prasada-products/prasada-products.component";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: "app-partners",
@@ -13,7 +14,9 @@ import {PrasadaProductsComponent} from "../../Component/prasada-products/prasada
   templateUrl: "./partners.component.html",
   styleUrl: "./partners.component.scss",
 })
-export class PartnersComponent {
+export class PartnersComponent implements OnDestroy {
+  private readonly destroy$ = new Subject<void>();
+  
   lang: "en" | "ar" = "en";
   activeIndex: number = 0;
   geoscapeProducts: FilterItem[] = [
@@ -27,9 +30,16 @@ export class PartnersComponent {
     },
   ];
   constructor(private readonly _languageStateService: LanguageStateService) {
-    this._languageStateService.language$.subscribe((language) => {
-      this.lang = language;
-    });
+    this._languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language) => {
+        this.lang = language;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   handleKeyNavigation(event: KeyboardEvent, url: string): void {

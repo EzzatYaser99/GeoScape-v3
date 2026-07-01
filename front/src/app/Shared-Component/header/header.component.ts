@@ -8,7 +8,7 @@ import {
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { SwitchLangButtonComponent } from "../switch-lang-button/switch-lang-button.component";
 import { TranslatePipe } from "@ngx-translate/core";
-import { filter, Subscription } from "rxjs";
+import { filter, Subject, takeUntil } from "rxjs";
 import { SCROLL_CONFIG } from "../../core/config/constants";
 import { NavigationConfigService } from "../../core/service/navigation-config.service";
 import { NavigationItem } from "../../core/config/navigation.config";
@@ -27,7 +27,7 @@ export interface HeaderNavItem extends NavigationItem {
 export class HeaderComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly navigationConfigService = inject(NavigationConfigService);
-  private routerSubscription?: Subscription;
+  private readonly destroy$ = new Subject<void>();
 
   headerItems: HeaderNavItem[] = [];
   isScrolled = false;
@@ -43,8 +43,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.updateActivePage();
     this.onWindowScroll();
 
-    this.routerSubscription = this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$),
+      )
       .subscribe(() => {
         this.updateActivePage();
         this.closeMobileMenu();
@@ -52,7 +55,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.routerSubscription?.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
     document.body.classList.remove("mobile-nav-open");
   }
 

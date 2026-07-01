@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { GeoscapeProjectsService } from "../../core/service/geoscape-projects.service";
 import { TranslatePipe } from "@ngx-translate/core";
@@ -10,6 +10,7 @@ import {
   FilterItem,
 } from "../../Shared-Component/filter-navigation/filter-navigation.component";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: "app-projects",
@@ -17,7 +18,9 @@ import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-s
   templateUrl: "./projects.component.html",
   styleUrl: "./projects.component.scss",
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnDestroy {
+  private readonly destroy$ = new Subject<void>();
+  
   neomProjects: Project[] = [];
   riyadhProjects: Project[] = [];
   selectedProject: Project | undefined;
@@ -44,9 +47,11 @@ export class ProjectsComponent {
     private readonly _geoscapeProjectsServices: GeoscapeProjectsService,
     private readonly _languageStateService: LanguageStateService,
   ) {
-    this._languageStateService.language$.subscribe((language) => {
-      this.lang = language;
-    });
+    this._languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language) => {
+        this.lang = language;
+      });
 
     this.neomProjects = this._geoscapeProjectsServices.getNeomProjects();
     this.riyadhProjects = this._geoscapeProjectsServices.getRiyadhProjects();
@@ -54,6 +59,11 @@ export class ProjectsComponent {
     if (this.neomProjects.length > 0) {
       this.selectedProject = this.neomProjects[0];
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   setActiveTab(index: number): void {

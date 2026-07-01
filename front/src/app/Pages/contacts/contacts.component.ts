@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import {
   FormControl,
   FormGroup,
@@ -21,8 +21,8 @@ import { AddressInfo, MessageResponse } from "../../core/models/contact.model";
 import { GeoscapeService } from "../../core/models/service.model";
 import { AddressInfoService } from "../../core/service/address-info.service";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
-import { catchError, finalize, tap } from "rxjs/operators";
-import { of } from "rxjs";
+import { catchError, finalize, tap, takeUntil } from "rxjs/operators";
+import { of, Subject } from "rxjs";
 import { API_CONFIG, FORM_PATTERNS } from "../../core/config/constants";
 
 @Component({
@@ -43,7 +43,9 @@ import { API_CONFIG, FORM_PATTERNS } from "../../core/config/constants";
   templateUrl: "./contacts.component.html",
   styleUrl: "./contacts.component.scss",
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit, OnDestroy {
+  private readonly destroy$ = new Subject<void>();
+
   getTouchForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
     email: new FormControl(null, [
@@ -72,13 +74,20 @@ export class ContactsComponent implements OnInit {
     private readonly _addressInfoService: AddressInfoService,
   ) {
     this.geoscapeServices = this._geoscapeServices.getGeoscapeServices();
-    this._languageStateService.language$.subscribe((language) => {
-      this.lang = language;
-    });
+    this._languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language) => {
+        this.lang = language;
+      });
   }
 
   ngOnInit(): void {
     this.addressInfo = this._addressInfoService.getAddressInfo();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   submitForm() {
@@ -114,7 +123,8 @@ export class ContactsComponent implements OnInit {
             this.showMessage = false;
             this.isLoading = false;
           }, 3000);
-        })
+        }),
+        takeUntil(this.destroy$),
       )
       .subscribe();
   }

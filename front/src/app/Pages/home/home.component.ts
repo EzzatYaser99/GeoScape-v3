@@ -13,7 +13,7 @@ import { FeatureCardComponent } from "../../Shared-Component/feature-card/featur
 import { FeatureCard, HomeStat } from "../../core/models/home.model";
 import { HeroCarouselComponent } from "../../Shared-Component/hero-carousel/hero-carousel.component";
 import { HOME_HERO_SLIDES } from "./home-hero-slides.data";
-import { Subscription } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { ASSET_PATHS, COMPANY_STATS } from "../../core/config/constants";
 
 interface ApprovalDocument {
@@ -55,11 +55,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly carouselConfigService = inject(CarouselConfigService);
   private readonly languageStateService = inject(LanguageStateService);
   private readonly router = inject(Router);
+  private readonly destroy$ = new Subject<void>();
   
   documents: ApprovalDocument[] = [];
   featuredProjects: FeaturedProject[] = [];
   lang: "en" | "ar" = "en";
-  private langSubscription?: Subscription;
   currentPage: number = 0;
 
   readonly heroSlides = HOME_HERO_SLIDES;
@@ -147,11 +147,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.projectCarouselOptions = this.carouselConfigService.getResponsiveOptions('TWO_COLUMN');
 
-    this.langSubscription = this.languageStateService.language$.subscribe(
-      (language: 'en' | 'ar') => {
+    this.languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language: 'en' | 'ar') => {
         this.lang = language;
-      },
-    );
+      });
 
     this.documents = this.documentService
       .getDocuments()
@@ -167,7 +167,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.langSubscription?.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getDocumentName(document: ApprovalDocument): string {

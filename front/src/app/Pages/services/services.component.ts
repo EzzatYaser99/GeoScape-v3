@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnInit, OnDestroy, inject } from "@angular/core";
 import { Carousel, CarouselResponsiveOptions } from "primeng/carousel";
 import { PrimeTemplate } from "primeng/api";
 import { GeoscapeServicesService } from "../../core/service/geoscape-services.service";
@@ -14,6 +14,7 @@ import {
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
 import { ASSET_PATHS } from "../../core/config/constants";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: "app-services",
@@ -29,10 +30,11 @@ import { ASSET_PATHS } from "../../core/config/constants";
   templateUrl: "./services.component.html",
   styleUrl: "./services.component.scss",
 })
-export class ServicesComponent implements OnInit {
+export class ServicesComponent implements OnInit, OnDestroy {
   private readonly geoscapeServicesService = inject(GeoscapeServicesService);
   private readonly carouselConfigService = inject(CarouselConfigService);
   private readonly languageStateService = inject(LanguageStateService);
+  private readonly destroy$ = new Subject<void>();
 
   geoscapeServices: GeoscapeService[] = [];
   filterItems: FilterItem[] = [];
@@ -48,13 +50,20 @@ export class ServicesComponent implements OnInit {
       id: service.id,
       label: service.nameEN,
     }));
-    this.languageStateService.language$.subscribe((language) => {
-      this.lang = language;
-    });
+    this.languageStateService.language$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((language) => {
+        this.lang = language;
+      });
   }
 
   ngOnInit(): void {
     this.responsiveOptions = this.carouselConfigService.getResponsiveOptions('SERVICES_CAROUSEL');
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   setActiveTab(index: number): void {
