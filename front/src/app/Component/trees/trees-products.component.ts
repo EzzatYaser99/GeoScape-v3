@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { ProductService } from "../../core/service/product.service";
+import { Product } from "../../core/models";
 import {
   ProductCardComponent,
   ProductCardData,
@@ -17,8 +18,10 @@ export class TreesProductsComponent {
   constructor(private readonly _productService: ProductService) {
     this.geoscapeTrees = this._productService
       .getProductsByType("trees")
-      .map((tree: any) => ({
+      .map((tree: Product) => ({
         ...tree,
+        imageSrc: tree.imageSrc || "",
+        alt: tree.alt || "",
         iconType: "tree" as const,
       }));
   }

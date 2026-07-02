@@ -9,11 +9,11 @@
     </div>
     <main class="col-12 md:col-9 px-0 md:p-1">
       <app-gallery-detail
-        [data]="selectedProduct"
+        [data]="getGalleryData()"
         [lang]="lang"
         [imagePath]="
           'assets/images/products-page/prasada-products/' +
-          selectedProduct?.category +
+          (selectedProduct?.category ?? '') +
           '/'
         "
       />

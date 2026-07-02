@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
+import { Document } from "../models/document.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class DocumentService {
-  private readonly documents: any[] = [
+  private readonly documents: Document[] = [
     {
       id: 1,
       nameEN: "GEOSCAPE Profile",
@@ -87,11 +88,11 @@ export class DocumentService {
     },
   ];
 
-  getDocuments() {
+  getDocuments(): Document[] {
     return this.documents;
   }
 
-  getDocumentById(id: number) {
+  getDocumentById(id: number): Document | undefined {
     return this.documents.find((document) => document.id === id);
   }
 }

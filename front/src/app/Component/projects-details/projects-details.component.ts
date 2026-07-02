@@ -8,6 +8,7 @@ import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 import { Subject, takeUntil } from "rxjs";
+import { Project } from "../../core/models";
 
 @Component({
   selector: "app-projects-details",
@@ -18,8 +19,8 @@ import { Subject, takeUntil } from "rxjs";
 export class ProjectsDetailsComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
-  projects: any[] = [];
-  selectedProject: any;
+  projects: Project[] = [];
+  selectedProject: Project | undefined;
   isLoading: boolean = true;
   lang: "en" | "ar" = "en";
 
@@ -48,11 +49,8 @@ export class ProjectsDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private getProjects() {
-    this.selectedProject = [];
-    let id: string | null = this.route.snapshot.paramMap.get("id");
-    this.selectedProject = this._geoscapeProjectsServices.getProjectsById(
-      Number(id),
-    );
+  private getProjects(): void {
+    const id: string | null = this.route.snapshot.paramMap.get("id");
+    this.selectedProject = this._geoscapeProjectsServices.getProjectsById(Number(id));
   }
 }

@@ -10,6 +10,7 @@ import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
 import { Subject, takeUntil } from "rxjs";
+import { PaginatorStateChangeEvent } from "../../core/types/paginator.type";
 
 @Component({
   selector: "app-about",
@@ -53,7 +54,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  onClientsPage(event: any): void {
-    this.currentPage = event.page;
+  onClientsPage(event: PaginatorStateChangeEvent): void {
+    this.currentPage = event.page ?? 0;
   }
 }

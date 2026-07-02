@@ -74,11 +74,11 @@ export class ProjectsComponent implements OnDestroy {
     }
   }
 
-  selectProject(project: any): void {
+  selectProject(project: Project): void {
     this.selectedProject = project;
   }
 
-  navigateToProjectDetails(project: any) {
+  navigateToProjectDetails(project: Project): void {
     this._router.navigate(["main/projects/" + project.id]).then();
   }
 }

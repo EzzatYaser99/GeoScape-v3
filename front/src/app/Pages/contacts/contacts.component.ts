@@ -17,13 +17,13 @@ import { GeoscapeServicesService } from "../../core/service/geoscape-services.se
 import { TranslatePipe } from "@ngx-translate/core";
 import { LanguageStateService } from "../../core/service/language-state.service";
 import { LocalizedPipe } from "../../core/pipes/localized.pipe";
-import { GeoscapeService } from "../../core/models";
+import { GeoscapeService, MessageResponse } from "../../core/models";
 import { AddressInfoService } from "../../core/service/address-info.service";
 import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-section.component";
 import { catchError, finalize, tap, takeUntil } from "rxjs/operators";
-import { of, Subject } from "rxjs";
+import { of, Subject, Observable } from "rxjs";
 import { FORM_PATTERNS } from "../../core/config/constants";
-import type { AddressInfo, MessageResponse } from "../../core/models";
+import type { AddressInfo } from "../../core/models";
 
 @Component({
   selector: "app-contacts",
@@ -90,7 +90,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  submitForm() {
+  submitForm(): void {
     this.isLoading = true;
     const selectedServiceNames = this.getTouchForm.controls[
       "selectedServices"
@@ -129,9 +129,8 @@ export class ContactsComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  sendEmail(data: any) {
-    let emailUrl = "send-email";
-
+  sendEmail(data: { name: string; email: string; phone: string; service: string[]; message: string }): Observable<any> {
+    const emailUrl = "send-email";
     return this._http.post(emailUrl, data);
   }
 }

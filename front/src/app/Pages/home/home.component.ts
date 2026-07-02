@@ -15,6 +15,7 @@ import { HeroCarouselComponent } from "../../Shared-Component/hero-carousel/hero
 import { HOME_HERO_SLIDES } from "./home-hero-slides.data";
 import { Subject, takeUntil } from "rxjs";
 import { ASSET_PATHS, COMPANY_STATS } from "../../core/config/constants";
+import { PaginatorStateChangeEvent } from "../../core/types/paginator.type";
 
 interface ApprovalDocument {
   id: number;
@@ -183,7 +184,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigate(["main/projects/" + project.id]).then();
   }
 
-  onProjectsPage(event: any): void {
-    this.currentPage = event.page;
+  onProjectsPage(event: PaginatorStateChangeEvent): void {
+    this.currentPage = event.page ?? 0;
   }
 }

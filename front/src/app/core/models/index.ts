@@ -25,5 +25,8 @@ export type { Client } from './client.model';
 // Contact models
 export type { AddressInfo } from './contact.model';
 
+// Document models
+export type { Document } from './document.model';
+
 // Home models
 export type { HeroSlide, HomeStat, FeatureCard } from './home.model';

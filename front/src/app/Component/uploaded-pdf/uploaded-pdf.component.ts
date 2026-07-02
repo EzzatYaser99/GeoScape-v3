@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { DocumentService } from "../../core/service/document.service";
+import { Document } from "../../core/models";
 
 @Component({
   selector: "app-uploaded-pdf",
@@ -10,8 +11,8 @@ import { DocumentService } from "../../core/service/document.service";
   styleUrl: "./uploaded-pdf.component.scss",
 })
 export class UploadedPdfComponent implements OnInit {
-  selectedDocument: any;
-  url: any;
+  selectedDocument: Document | undefined;
+  url: SafeResourceUrl | undefined;
   isLoading: boolean = true;
 
   constructor(
@@ -28,10 +29,11 @@ export class UploadedPdfComponent implements OnInit {
   }
 
   private getDocument() {
-    this.selectedDocument = [];
-    let id: string | null = this.route.snapshot.paramMap.get("id");
+    const id: string | null = this.route.snapshot.paramMap.get("id");
     this.selectedDocument = this._documentService.getDocumentById(Number(id));
-    this.url = "assets/document-approvals/" + this.selectedDocument.pdfSrc;
-    this.url = this._sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    if (this.selectedDocument) {
+      const urlString = "assets/document-approvals/" + this.selectedDocument.pdfSrc;
+      this.url = this._sanitizer.bypassSecurityTrustResourceUrl(urlString);
+    }
   }
 }

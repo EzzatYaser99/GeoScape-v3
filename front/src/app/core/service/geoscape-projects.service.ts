@@ -1018,23 +1018,23 @@ export class GeoscapeProjectsService {
       ],
     },
   ];
-  allGeoscapeProjects: any;
+  allGeoscapeProjects: Project[] = [];
 
-  getNeomProjects() {
+  getNeomProjects(): Project[] {
     return this.neomProjects;
   }
 
-  getRiyadhProjects() {
+  getRiyadhProjects(): Project[] {
     return this.riyadhProjects;
   }
 
-  getAllProjects() {
+  getAllProjects(): Project[] {
     this.allGeoscapeProjects = [...this.neomProjects, ...this.riyadhProjects];
     return this.allGeoscapeProjects;
   }
 
-  getProjectsById(id: number) {
+  getProjectsById(id: number): Project | undefined {
     this.allGeoscapeProjects = [...this.neomProjects, ...this.riyadhProjects];
-    return this.allGeoscapeProjects.find((project: any) => project.id === id);
+    return this.allGeoscapeProjects.find((project: Project) => project.id === id);
   }
 }

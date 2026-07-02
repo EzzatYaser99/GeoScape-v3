@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ProductService } from "../../core/service/product.service";
+import { Product, SubImage } from "../../core/models";
 import {
   FilterNavigationComponent,
   FilterItem,
@@ -13,9 +14,9 @@ import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/ga
   styleUrl: "./prasada-products.component.scss",
 })
 export class PrasadaProductsComponent implements OnInit {
-  allProducts: any[] = [];
+  allProducts: Product[] = [];
   filterItems: FilterItem[] = [];
-  selectedProduct: any;
+  selectedProduct: Product | undefined;
   activeIndex: number = 0;
   @Input() lang: "en" | "ar" = "en";
 
@@ -37,5 +38,13 @@ export class PrasadaProductsComponent implements OnInit {
   setActiveTab(index: number): void {
     this.activeIndex = index;
     this.selectedProduct = this.allProducts[index];
+  }
+
+  getGalleryData(): { subImages: SubImage[]; descriptionEN?: string; descriptionAR?: string } {
+    return {
+      subImages: this.selectedProduct?.subImages ?? [],
+      descriptionEN: this.selectedProduct?.descriptionEN,
+      descriptionAR: this.selectedProduct?.descriptionAR,
+    };
   }
 }

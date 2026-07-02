@@ -15,6 +15,7 @@ import { HeroSectionComponent } from "../../Shared-Component/hero-section/hero-s
 import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/gallery-detail.component";
 import { ASSET_PATHS } from "../../core/config/constants";
 import { Subject, takeUntil } from "rxjs";
+import { PaginatorStateChangeEvent } from "../../core/types/paginator.type";
 
 @Component({
   selector: "app-services",
@@ -70,7 +71,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.activeIndex = index;
   }
 
-  onClientsPage(event: any): void {
-    this.currentPage = event.page;
+  onClientsPage(event: PaginatorStateChangeEvent): void {
+    this.currentPage = event.page ?? 0;
   }
 }

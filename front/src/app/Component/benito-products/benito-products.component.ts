@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ProductService } from "../../core/service/product.service";
+import { Product, SubImage } from "../../core/models";
 import {
   FilterNavigationComponent,
   FilterItem,
@@ -13,9 +14,9 @@ import { GalleryDetailComponent } from "../../Shared-Component/gallery-detail/ga
   styleUrl: "./benito-products.component.scss",
 })
 export class BenitoProductsComponent implements OnInit {
-  benitoProducts: any[] = [];
+  benitoProducts: Product[] = [];
   filterItems: FilterItem[] = [];
-  selectedBenitoProduct: any;
+  selectedBenitoProduct: Product | undefined;
   activeIndex: number = 0;
   @Input() lang: "en" | "ar" = "en";
 
@@ -34,5 +35,13 @@ export class BenitoProductsComponent implements OnInit {
   setActiveTab(index: number): void {
     this.activeIndex = index;
     this.selectedBenitoProduct = this.benitoProducts[index];
+  }
+
+  getGalleryData(): { subImages: SubImage[]; descriptionEN?: string; descriptionAR?: string } {
+    return {
+      subImages: this.selectedBenitoProduct?.subImages ?? [],
+      descriptionEN: this.selectedBenitoProduct?.descriptionEN,
+      descriptionAR: this.selectedBenitoProduct?.descriptionAR,
+    };
   }
 }
