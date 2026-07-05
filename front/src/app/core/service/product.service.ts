@@ -43,7 +43,7 @@ export class ProductService {
 
     return [
       ...greenhouseProducts.map((p) => ({ ...p, category: "Greenhouse" })),
-      ...cultivationProducts.map((p) => ({ ...p, category: "Cultivation" })),
+      ...cultivationProducts.map((p) => ({ ...p, category: "cultivation" })),
       ...seedlingProducts.map((p) => ({ ...p, category: "Seedling" })),
     ];
   }
