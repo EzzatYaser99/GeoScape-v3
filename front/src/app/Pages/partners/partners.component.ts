@@ -16,16 +16,18 @@ import { Subject, takeUntil } from "rxjs";
 })
 export class PartnersComponent implements OnDestroy {
   private readonly destroy$ = new Subject<void>();
-  
+
   lang: "en" | "ar" = "en";
   activeIndex: number = 0;
   geoscapeProducts: FilterItem[] = [
     {
-      label: "products.benito_urban",
+      labelEN: "products.benito_urban",
+      labelAR: "products.benito_urban",
       id: "benito",
     },
     {
-      label: "products.prasada_products",
+      labelEN: "products.prasada_products",
+      labelAR: "products.prasada_products",
       id: "prasada",
     },
   ];

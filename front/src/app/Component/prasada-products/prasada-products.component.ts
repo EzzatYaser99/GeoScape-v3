@@ -27,7 +27,8 @@ export class PrasadaProductsComponent implements OnInit {
 
     this.filterItems = this.allProducts.map((product) => ({
       id: product.id,
-      label: product.nameEN,
+      labelEN: product.nameEN,
+      labelAR: product.nameAR,
     }));
 
     if (this.allProducts.length > 0) {

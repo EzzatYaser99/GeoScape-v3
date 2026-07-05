@@ -29,11 +29,13 @@ export class ProductsComponent implements OnDestroy {
   lang: "en" | "ar" = "en";
   geoscapeProducts: FilterItem[] = [
     {
-      label: "products.plants",
+      labelEN: "products.plants",
+      labelAR: "products.plants",
       id: "plants",
     },
     {
-      label: "products.trees",
+      labelEN: "products.trees",
+      labelAR: "products.trees",
       id: "trees",
     },
   ];

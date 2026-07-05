@@ -24,7 +24,8 @@ export class BenitoProductsComponent implements OnInit {
     this.benitoProducts = this._productService.getProductsByType("benito");
     this.filterItems = this.benitoProducts.map((product) => ({
       id: product.id,
-      label: product.nameEN,
+      labelEN: product.nameEN,
+      labelAR: product.nameAR,
     }));
   }
 

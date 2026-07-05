@@ -12,7 +12,7 @@
             [class.filter-item-active]="activeIndex === idx"
             (click)="setActiveTab(idx)"
           >
-            <span class="filter-item-label">{{ item.label | translate }}</span>
+            <span class="filter-item-label"> {{ (lang === 'en' ? item.labelEN : item.labelAR) | translate }}</span>
           </button>
           <div class="tab-indicator" aria-hidden="true"></div>
         </li>

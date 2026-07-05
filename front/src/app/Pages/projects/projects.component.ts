@@ -20,7 +20,7 @@ import { Subject, takeUntil } from "rxjs";
 })
 export class ProjectsComponent implements OnDestroy {
   private readonly destroy$ = new Subject<void>();
-  
+
   neomProjects: Project[] = [];
   riyadhProjects: Project[] = [];
   selectedProject: Project | undefined;
@@ -30,11 +30,13 @@ export class ProjectsComponent implements OnDestroy {
   projectCategories: FilterItem[] = [
     {
       id: 0,
-      label: "projects.neom_projects",
+      labelEN: "projects.neom_projects",
+      labelAR: "projects.neom_projects",
     },
     {
       id: 1,
-      label: "projects.riyadh_projects",
+      labelEN: "projects.riyadh_projects",
+      labelAR: "projects.riyadh_projects",
     },
   ];
 

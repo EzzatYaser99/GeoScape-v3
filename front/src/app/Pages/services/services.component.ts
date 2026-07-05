@@ -49,7 +49,8 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.geoscapeServices = this.geoscapeServicesService.getGeoscapeServices();
     this.filterItems = this.geoscapeServices.map((service) => ({
       id: service.id,
-      label: service.nameEN,
+      labelEN: service.nameEN,
+      labelAR: service.nameAR,
     }));
     this.languageStateService.language$
       .pipe(takeUntil(this.destroy$))
