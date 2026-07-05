@@ -104,9 +104,9 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   getContactHeading(item: ContactDetailsInfo): string {
     const headings: Record<number, string> = {
-      1: "footer.address",
-      2: "footer.email_address",
-      3: "footer.phone_no",
+      1: "labels.address",
+      2: "labels.email",
+      3: "labels.phone",
     };
     return headings[item.id] ?? "footer.contact_us";
   }

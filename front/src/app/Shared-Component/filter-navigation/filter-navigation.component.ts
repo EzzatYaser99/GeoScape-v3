@@ -16,7 +16,7 @@ export interface FilterItem {
 export class FilterNavigationComponent {
   @Input() filterItems: FilterItem[] = [];
   @Input() activeIndex: number = 0;
-  @Input() titleKey: string = "generic.filter_by_section";
+  @Input() titleKey: string = "common.filter_by_section";
   @Input() customClass: string = "";
   @Output() activeIndexChange = new EventEmitter<number>();
   @Output() tabClick = new EventEmitter<number>();

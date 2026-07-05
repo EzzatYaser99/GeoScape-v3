@@ -39,11 +39,11 @@ export class GalleryDetailComponent {
   @Input() showDescription = true;
 
   get titleKey(): string {
-    return this.config?.galleryTitleKey ?? 'services_details.service_gallery';
+    return this.config?.galleryTitleKey ?? 'services.service_gallery';
   }
 
   get ariaLabelKey(): string {
-    return this.config?.galleryAriaLabelKey ?? 'services_details.image_gallery';
+    return this.config?.galleryAriaLabelKey ?? 'services.image_gallery';
   }
 
   get galleryImages(): GalleryImage[] {

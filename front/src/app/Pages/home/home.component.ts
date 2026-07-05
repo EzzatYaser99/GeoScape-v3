@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       titleKey: "home.sustainability",
-      descriptionKey: "home.sustainability_dec",
+      descriptionKey: "home.sustainability_desc",
       highlighted: false,
       icon: "fa-solid fa-seedling",
     },

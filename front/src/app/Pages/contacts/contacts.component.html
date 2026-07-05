@@ -41,7 +41,7 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                    "contacts.location" | translate
+                    "labels.location" | translate
                   }}</span>
                 <a
                   [href]="item.locationHref"
@@ -60,7 +60,7 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                    "contacts.email" | translate
+                    "labels.email" | translate
                   }}</span>
                 <a [href]="item.mailHref" class="contact-link">
                   {{ item.mail }}
@@ -75,7 +75,7 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">{{
-                    "contacts.phone_no" | translate
+                    "labels.phone" | translate
                   }}</span>
                 <a [href]="item.phoneHref" target="_blank" class="contact-link">
                   {{ item.phoneEN | localized:lang:'AR':item.phoneAR }}
@@ -100,7 +100,7 @@
               class="cta-link-secondary"
             >
               <i class="pi pi-whatsapp"></i>
-              {{ "contacts.whatsapp" | translate }}
+              {{ "common.whatsapp" | translate }}
             </a>
           </div>
         </div>
@@ -136,7 +136,7 @@
           <!-- Name Field -->
           <div class="form-group">
             <label class="form-label">
-              {{ "contacts.name" | translate }}
+              {{ "labels.name" | translate }}
               <span class="required">*</span>
             </label>
             <input
@@ -146,7 +146,7 @@
                 getTouchForm.get('name')?.invalid &&
                 getTouchForm.get('name')?.touched
               "
-              placeholder="{{ 'contacts.placeholder_name' | translate }}"
+              placeholder="{{ 'placeholders.enter_name' | translate }}"
               type="text"
               pInputText
             />
@@ -157,14 +157,14 @@
                 getTouchForm.get('name')?.touched
               "
             >
-              {{ "contacts.mandatory_name" | translate }}
+              {{ "validation.mandatory_name" | translate }}
             </div>
           </div>
 
           <!-- Email Field -->
           <div class="form-group">
             <label class="form-label">
-              {{ "contacts.email" | translate }}
+              {{ "labels.email" | translate }}
               <span class="required">*</span>
             </label>
             <input
@@ -174,7 +174,7 @@
                 getTouchForm.get('email')?.invalid &&
                 getTouchForm.get('email')?.touched
               "
-              placeholder="{{ 'contacts.placeholder_email' | translate }}"
+              placeholder="{{ 'placeholders.enter_email' | translate }}"
               type="email"
               pInputText
             />
@@ -185,14 +185,14 @@
                 getTouchForm.get('email')?.touched
               "
             >
-              {{ "contacts.mandatory_email" | translate }}
+              {{ "validation.mandatory_email" | translate }}
             </div>
           </div>
 
           <!-- Phone Field -->
           <div class="form-group">
             <label class="form-label">
-              {{ "contacts.phone_no" | translate }}
+              {{ "labels.phone" | translate }}
               <span class="required">*</span>
             </label>
             <input
@@ -202,7 +202,7 @@
                 getTouchForm.get('phone')?.invalid &&
                 getTouchForm.get('phone')?.touched
               "
-              placeholder="{{ 'contacts.placeholder_phone' | translate }}"
+              placeholder="{{ 'placeholders.enter_phone' | translate }}"
               type="text"
               pInputText
             />
@@ -213,7 +213,7 @@
                 getTouchForm.get('phone')?.touched
               "
             >
-              {{ "contacts.mandatory_phone" | translate }}
+              {{ "validation.mandatory_phone" | translate }}
             </div>
           </div>
 
@@ -234,7 +234,7 @@
                   <div class="selected-items">
                     <span class="selected-count"
                     >{{ value.length }}
-                      {{ "contacts.selected" | translate }}</span
+                      {{ "common.selected" | translate }}</span
                     >
                   </div>
                 }
@@ -260,7 +260,7 @@
           <!-- Message Field (Full Width) -->
           <div class="form-group form-group-full">
             <label class="form-label">
-              {{ "contacts.placeholder_message" | translate }}
+              {{ "placeholders.enter_message" | translate }}
             </label>
             <textarea
               formControlName="message"
@@ -269,7 +269,7 @@
                 getTouchForm.get('message')?.invalid &&
                 getTouchForm.get('message')?.touched
               "
-              placeholder="{{ 'contacts.placeholder_message' | translate }}"
+              placeholder="{{ 'placeholders.enter_message' | translate }}"
               rows="5"
               pInputTextarea
             ></textarea>
@@ -284,7 +284,7 @@
             class="btn btn-primary"
             pButton
             pRipple
-            [label]="'contacts.sent' | translate"
+            [label]="'buttons.send' | translate"
           >
             <i class="pi pi-send"></i>
           </button>
@@ -298,7 +298,7 @@
                 <i class="pi pi-check-circle"></i>
                 <div>
                   <p class="message-title">
-                    {{ "contacts.success" | translate }}
+                    {{ "messages.success" | translate }}
                   </p>
                   <p class="message-text">{{ successMessage[0]?.summary }}</p>
                 </div>
@@ -309,7 +309,7 @@
                 <i class="pi pi-exclamation-circle"></i>
                 <div>
                   <p class="message-title">
-                    {{ "contacts.error" | translate }}
+                    {{ "messages.error" | translate }}
                   </p>
                   <p class="message-text">{{ errorMessage[0]?.detail }}</p>
                 </div>

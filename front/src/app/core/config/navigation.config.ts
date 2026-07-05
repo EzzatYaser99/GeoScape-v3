@@ -12,37 +12,37 @@ export interface NavigationItem {
 
 export const NAV_ITEMS: NavigationItem[] = [
   {
-    label: 'header.home',
+    label: 'navigation.home',
     routerLink: 'home',
     icon: 'pi pi-home',
   },
   {
-    label: 'header.services',
+    label: 'navigation.services',
     routerLink: 'services',
     icon: 'pi pi-briefcase',
   },
   {
-    label: 'header.projects',
+    label: 'navigation.projects',
     routerLink: 'projects',
     icon: 'pi pi-building',
   },
   {
-    label: 'header.partners',
+    label: 'navigation.partners',
     routerLink: 'partners',
     icon: 'pi pi-users',
   },
   {
-    label: 'header.nursery',
+    label: 'navigation.nursery',
     routerLink: 'nursery',
     icon: 'pi pi-box',
   },
   {
-    label: 'header.about',
+    label: 'navigation.about',
     routerLink: 'about',
     icon: 'pi pi-info-circle',
   },
   {
-    label: 'header.contacts',
+    label: 'navigation.contacts',
     routerLink: 'contacts',
     icon: 'pi pi-envelope',
   },
