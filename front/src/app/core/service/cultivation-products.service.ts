@@ -56,11 +56,11 @@ export class CultivationProductsService {
     {
       id: 2,
       nameEN: "Vine Crop Gutter Planting System",
-      nameAR: "نظام زراعة المحاصيل الكرومية في قنوات الصرف",
+      nameAR: "نظام زراعة المحاصيل المتسلقة في قنوات الصرف",
       descriptionEN:
         "A specialized planting system designed for vine crops like tomatoes and cucumbers. It uses gutters for precise irrigation and drainage, ensuring healthy root systems and higher yields.",
       descriptionAR:
-        "نظام زراعة متخصص مصمم لمحاصيل الكروم مثل الطماطم والخيار. يستخدم نظام قنوات للري والصرف الدقيق، مما يضمن أنظمة جذرية صحية وإنتاجية أعلى.",
+        "نظام زراعة متخصص مصمم للمحاصيل المتسلقة مثل الطماطم والخيار. يستخدم نظام قنوات للري والصرف الدقيق، مما يضمن أنظمة جذرية صحية وإنتاجية أعلى.",
       subImages: [
         {
           id: 1,
@@ -109,11 +109,11 @@ export class CultivationProductsService {
     {
       id: 3,
       nameEN: "Vertical A-Frame System",
-      nameAR: "نظام الإطار العمودي على شكل حرف A",
+      nameAR: "نظام الإطار العمودي A-Frame",
       descriptionEN:
         "An innovative vertical cultivation system with an A-frame design. Perfect for maximizing space in greenhouses, it supports multiple layers of crops while ensuring efficient nutrient delivery.",
       descriptionAR:
-        "نظام زراعة عمودي مبتكر بتصميم على شكل إطار حرف A. مثالي لتعظيم المساحة في البيوت المحمية، يدعم عدة طبقات من المحاصيل مع ضمان توصيل فعال للعناصر الغذائية.",
+        "نظام زراعة عمودي مبتكر بتصميم A-Frame. مثالي لتعظيم المساحة في البيوت المحمية، يدعم عدة طبقات من المحاصيل مع ضمان توصيل فعال للعناصر الغذائية.",
       subImages: [
         {
           id: 1,

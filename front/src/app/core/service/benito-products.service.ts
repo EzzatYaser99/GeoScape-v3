@@ -9,12 +9,12 @@ export class BenitoProductsService {
     {
       id: 1,
       nameEN: "Urban Furniture",
-      nameAR: "الأثاث الحضري ",
+      nameAR: "الأثاث الحضري",
       imageSrc: "",
       descriptionEN:
         "Elegant and durable furniture solutions for both public and private" +
         " settings.",
-      descriptionAR: "حلول أثاث أنيقة ومتينة للاماكن العامة والخاصة.",
+      descriptionAR: "حلول أثاث أنيقة ومتينة للأماكن العامة والخاصة.",
       subImages: [
         { id: 1, imageSrc: "Urban-Furniture/Urban-Furniture-1.webp" },
         { id: 2, imageSrc: "Urban-Furniture/Urban-Furniture-2.webp" },
@@ -29,7 +29,7 @@ export class BenitoProductsService {
       imageSrc: "",
       descriptionEN:
         "Safe and captivating play structures suitable for children of all ages.",
-      descriptionAR: "العاب آمنة وجذابة مناسبة للأطفال من جميع الأعمار.",
+      descriptionAR: "ألعاب آمنة وجذابة مناسبة للأطفال من جميع الأعمار.",
       subImages: [
         { id: 1, imageSrc: "Play-Equipment/Play-Equipment-1.webp" },
         { id: 2, imageSrc: "Play-Equipment/Play-Equipment-2.webp" },
@@ -101,7 +101,7 @@ export class BenitoProductsService {
     {
       id: 5,
       nameEN: "Street Lighting",
-      nameAR: "إنارة الشوارع",
+      nameAR: "إضاءة الشوارع",
       imageSrc: "",
       descriptionEN:
         "Innovative and efficient street lighting solutions for safer and" +
@@ -217,7 +217,7 @@ export class BenitoProductsService {
     {
       id: 11,
       nameEN: "(Benches - Chairs) RIGA",
-      nameAR: "(مقاعد - كراسي)RIGA ",
+      nameAR: "(مقاعد - كراسي) RIGA",
       imageSrc: "",
       descriptionEN:
         "Innovative solutions for urban development and beautification.",
@@ -232,7 +232,7 @@ export class BenitoProductsService {
     {
       id: 12,
       nameEN: "(Benches - Chairs) ARKO",
-      nameAR: "(مقاعد - كراسي)ARKO ",
+      nameAR: "(مقاعد - كراسي) ARKO",
       imageSrc: "",
       descriptionEN: "Durable and stylish urban furniture and accessories.",
       descriptionAR: "أثاث وإكسسوارات حضرية متينة وأنيقة.",
@@ -246,10 +246,10 @@ export class BenitoProductsService {
     {
       id: 13,
       nameEN: "(Benches - Chairs) ARKA",
-      nameAR: "(مقاعد - كراسي)ARKA ",
+      nameAR: "(مقاعد - كراسي) ARKA",
       imageSrc: "",
       descriptionEN: "High-quality, modern street furniture for public spaces.",
-      descriptionAR: "أثاث شوارع حديث وعالي الجودة للمساحات العامة. ",
+      descriptionAR: "أثاث شوارع حديث وعالي الجودة للمساحات العامة.",
       subImages: [
         { id: 1, imageSrc: "Arka/Arka-1.webp" },
         { id: 2, imageSrc: "Arka/Arka-2.webp" },
@@ -274,7 +274,7 @@ export class BenitoProductsService {
     {
       id: 15,
       nameEN: "(Benches - Chairs) ARTE",
-      nameAR: "(مقاعد - كراسي)ARTE ",
+      nameAR: "(مقاعد - كراسي) ARTE",
 
       imageSrc: "",
       descriptionEN: "Creative and artistic urban design solutions.",
@@ -303,7 +303,7 @@ export class BenitoProductsService {
     {
       id: 17,
       nameEN: "(Benches - Chairs) CORO METAL",
-      nameAR: "(مقاعد - كراسي)CORO METAL ",
+      nameAR: "(مقاعد - كراسي) CORO METAL",
 
       imageSrc: "",
       descriptionEN: "Elegant and durable urban furniture solutions.",
@@ -318,7 +318,7 @@ export class BenitoProductsService {
     {
       id: 18,
       nameEN: "(Benches - Chairs -bins) Minsk",
-      nameAR: " (مقاعد - كراسي - صناديق قمامة)Minsk",
+      nameAR: "(مقاعد - كراسي - صناديق قمامة) Minsk",
       imageSrc: "",
       descriptionEN: "High-quality urban design products for public spaces.",
       descriptionAR: "منتجات تصميم حضري عالية الجودة للمساحات العامة.",
@@ -331,7 +331,7 @@ export class BenitoProductsService {
     },
     {
       id: 19,
-      nameEN: " Lounger PIRO",
+      nameEN: "Lounger PIRO",
       nameAR: "كرسي استرخاء PIRO",
       imageSrc: "",
       descriptionEN: "Functional and stylish urban furniture.",
@@ -359,7 +359,7 @@ export class BenitoProductsService {
     {
       id: 21,
       nameEN: "(Benches - Chairs) Quatro",
-      nameAR: " (مقاعد - كراسي)Quatro",
+      nameAR: "(مقاعد - كراسي) Quatro",
       imageSrc: "",
       descriptionEN: "Innovative urban furniture solutions for public spaces.",
       descriptionAR: "حلول مبتكرة للأثاث الحضري للمساحات العامة.",
@@ -372,7 +372,7 @@ export class BenitoProductsService {
     {
       id: 22,
       nameEN: "(Benches - Chairs) Leman",
-      nameAR: "(مقاعد - كراسي)Leman ",
+      nameAR: "(مقاعد - كراسي) Leman",
       imageSrc: "",
       descriptionEN:
         "Elegant and durable urban furniture for various applications.",
@@ -400,7 +400,7 @@ export class BenitoProductsService {
     {
       id: 24,
       nameEN: "(Benches - Chairs) Gavarres",
-      nameAR: "(مقاعد - كراسي)Gavarres ",
+      nameAR: "(مقاعد - كراسي) Gavarres",
 
       imageSrc: "",
       descriptionEN: "Creative and artistic urban furniture solutions.",
@@ -415,7 +415,7 @@ export class BenitoProductsService {
     {
       id: 25,
       nameEN: "(Benches - Chairs) Petrus",
-      nameAR: "(مقاعد - كراسي)Petrus",
+      nameAR: "(مقاعد - كراسي) Petrus",
       imageSrc: "",
       descriptionEN: "High-quality, durable urban design elements.",
       descriptionAR: "عناصر تصميم حضري عالية الجودة ودائمة.",

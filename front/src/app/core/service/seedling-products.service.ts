@@ -9,11 +9,11 @@ export class SeedlingProductsService {
     {
       id: 1,
       nameEN: "Ebb and Flow Bench",
-      nameAR: "مقعد  المد والجزر",
+      nameAR: "طاولة المد والجزر",
       descriptionEN:
         "A water-efficient bench system that utilizes bottom-up irrigation for uniform watering and nutrient delivery. Ideal for various plant types, it reduces water usage and enhances growth rates.",
       descriptionAR:
-        "نظام مقعد  موفر للمياه يستخدم الري من الأسفل إلى الأعلى لضمان الري المنتظم وتوصيل المغذيات. مثالي لأنواع مختلفة من النباتات، فهو يقلل من استخدام المياه ويعزز معدلات النمو.",
+        "نظام طاولة موفر للمياه يستخدم الري من الأسفل إلى الأعلى لضمان الري المنتظم وتوصيل المغذيات. مثالي لأنواع مختلفة من النباتات، فهو يقلل من استخدام المياه ويعزز معدلات النمو.",
       subImages: [
         {
           id: 1,
@@ -49,7 +49,7 @@ export class SeedlingProductsService {
       descriptionEN:
         "A versatile system designed for efficient space utilization in seedling cultivation. With multiple tiers, it maximizes planting capacity while providing uniform watering and light exposure for healthy seedling growth.",
       descriptionAR:
-        "نظام متعدد الاستخدامات مصمم لاستغلال المساحة بكفاءة في زراعة الشتلات. بفضل الطبقات المتعددة، فإنه يزيد من سعة الزراعة مع توفير الري المنتظم والتعرض للضوء لنمو الشتلات الصحي.",
+        "نظام متعدد الاستخدامات مصمم لاستغلال المساحة بكفاءة في زراعة الشتلات. بفضل الطبقات المتعددة، فإنه يزيد من سعة الزراعة مع توفير الري المنتظم والتعرض للضوء لنمو الشتلات الصحية.",
       subImages: [
         {
           id: 1,
@@ -86,13 +86,12 @@ export class SeedlingProductsService {
     {
       id: 3,
       nameEN: "T-Rail Bench",
-      nameAR: "مقعد T-Rail",
+      nameAR: "طاولة T-Rail",
       descriptionEN:
         "A flexible bench system allowing easy tray movement, reducing aisle space, and increasing planting density. Its efficient" +
         " design improves crop handling and optimizes greenhouse productivity.",
       descriptionAR:
-        "نظام مقاعد مرن يسمح بسهولة تحريك الصينية، مما يقلل من مساحة الممر ويزيد من كثافة الزراعة. يعمل تصميمه الفعال على" +
-        " تحسين التعامل مع المحاصيل وتحسين إنتاجية الصوبه",
+        "نظام طاولة مرن يسمح بسهولة تحريك الصينية، مما يقلل من مساحة الممر ويزيد من كثافة الزراعة. يعمل تصميمه الفعال على تحسين التعامل مع المحاصيل وتحسين إنتاجية الصوبة.",
       subImages: [
         {
           id: 1,
@@ -124,11 +123,11 @@ export class SeedlingProductsService {
     {
       id: 4,
       nameEN: "Wire Bottom Seeding Bench",
-      nameAR: "طاولة زراعة بأسلاك في الأسفل",
+      nameAR: "طاولة زراعة بقاعدة سلكية",
       descriptionEN:
         "A durable and breathable bench with a wire mesh base that ensures optimal drainage and aeration for seedlings. Its sturdy construction is ideal for both small-scale and commercial greenhouse operations.",
       descriptionAR:
-        "مقعد متين وقابل للتنفس بقاعدة من شبكة سلكية تضمن تصريفًا وتهوية مثاليين للشتلات. بنيته المتينة مثالية لكل من العمليات الزراعية الصغيرة والتجارية في البيوت المحمية.",
+        "طاولة متينة وقابلة للتنفس بقاعدة من شبكة سلكية تضمن تصريفًا وتهوية مثاليين للشتلات. بنيته المتينة مثالية لكل من العمليات الزراعية الصغيرة والتجارية في البيوت المحمية.",
       subImages: [
         {
           id: 1,

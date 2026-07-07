@@ -10,15 +10,15 @@ export class GeoscapeProjectsService {
       id: 1,
       nameEN: "NEOM Residential Community 1 (NRC 1)",
       nameAR: "مجتمع نيوم السكني 1 (NRC 1)",
-      scopeOfWorkAR: "المناظر الطبيعية، المناظر الصلبة، ونظام الري",
+      scopeOfWorkAR: "تنسيق الحدائق، الأعمال الصلبة، ونظام الري",
       mainContractorAR: "نسما وشركاهم",
       consultantAR: "Bechtel",
       statusAR: "مكتمل",
       descriptionAR:
-        "يشمل هذا المشروع تنسيق الحدائق والري الشامل لمجتمع سكني. يشمل تصميم وتنفيذ عناصر تنسيق الحدائق مثل العشب والأشجار والشجيرات، بالإضافة إلى ميزات التجميل الصلبة مثل الممرات والفناءات والهياكل الأخرى. يضمن نظام الري إدارة مستدامة للمياه.",
+        "يشمل هذا المشروع تنسيق الحدائق الشامل ونظام الري لمجتمع سكني متكامل. نقدم تصميمًا وتنفيذًا احترافيًا لعناصر تنسيق الحدائق الناعمة مثل العشب والأشجار والشجيرات، بالإضافة إلى الأعمال الصلبة التي تشمل الممرات والفناءات والهياكل المعمارية. يضمن نظام الري المتقدم إدارة مستدامة وفعالة للمياه.",
       image: "neom-projects/NRC1/nrc-1.webp",
       alt: "NEOM Residential Community 1 (NRC 1) image",
-      scopeOfWorkEN: " Softscape, Hardscape, and Irrigation system",
+      scopeOfWorkEN: "Softscape, Hardscape, and Irrigation System",
       mainContractorEN: "Nesma & Partners",
       consultantEN: "Bechtel",
       progress: "100",
@@ -75,23 +75,23 @@ export class GeoscapeProjectsService {
       id: 2,
       nameEN: "NEOM Residential Community 2 (NRC 2)",
       nameAR: "مجتمع نيوم السكني 2 (NRC 2)",
-      scopeOfWorkAR: "المناظر الطبيعية، المناظر الصلبة، ونظام الري",
+      scopeOfWorkAR: "تنسيق الحدائق، الأعمال الصلبة، ونظام الري",
       mainContractorAR: "نسما وشركاهم",
       consultantAR: "Bechtel",
       statusAR: "مكتمل",
       descriptionAR:
-        "على غرار مشروع NRC 1، يركز هذا المشروع على تحسين المناظر الطبيعية والبنية التحتية للري في مجتمع سكني آخر. فريقنا يقوم بإنشاء مساحات خارجية جميلة وظيفياً وجمالياً تساهم في الرفاهية العامة للسكان.",
+        "بالتوازي مع مشروع NRC 1، يركز هذا المشروع على تطوير المناظر الطبيعية والبنية التحتية للري في مجتمع سكني آخر. يقوم فريقنا بإنشاء مساحات خارجية تجمع بين الجمالية والوظيفية، مما يساهم في تعزيز جودة الحياة والرفاهية العامة للسكان.",
       image: "neom-projects/NRC2/nrc-5.webp",
       alt: "NEOM Residential Community 2 (NRC 2) image",
-      scopeOfWorkEN: " Softscape, Hardscape, and Irrigation system",
+      scopeOfWorkEN: "Softscape, Hardscape, and Irrigation System",
       mainContractorEN: "Nesma & Partners",
       consultantEN: "Bechtel",
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        "Similar to NRC 1, this project focuses on enhancing the landscape and irrigation" +
-        " infrastructure of another residential community. Our team is creating aesthetically" +
-        " pleasing and functional outdoor spaces that contribute to the overall well-being of the residents.",
+        "Building on the success of NRC 1, this project focuses on enhancing the landscape and irrigation " +
+        "infrastructure of another residential community. Our team creates outdoor spaces that blend aesthetics " +
+        "with functionality, contributing to the overall quality of life and well-being of residents.",
       subImages: [
         {
           id: 1,
@@ -144,24 +144,24 @@ export class GeoscapeProjectsService {
       id: 3,
       nameEN: "Infrastructure Package for Staff Accommodation (4200000151/001)",
       nameAR: "حزمة البنية التحتية لسكن الموظفين (4200000151/001)",
-      scopeOfWorkAR: "المناظر الطبيعية، المناظر الصلبة، ونظام الري",
+      scopeOfWorkAR: "تنسيق الحدائق، الأعمال الصلبة، ونظام الري",
       mainContractorAR: "PCC",
       consultantAR: "AECOM",
       statusAR: "مكتمل",
       descriptionAR:
-        "يهدف هذا المشروع إلى تحسين ظروف المعيشة للموظفين من خلال حلول متقدمة في تنسيق الحدائق والري. يشمل إنشاء مساحات خضراء ومناطق ترفيهية وأنظمة ري فعالة لدعم بيئة معيشية مريحة.",
+        "يهدف هذا المشروع إلى تحسين بيئة المعيشة للموظفين من خلال حلول متقدمة في تنسيق الحدائق والري. يشمل العمل إنشاء مساحات خضراء واسعة ومناطق ترفيهية متكاملة، بالإضافة إلى أنظمة ري فعالة لدعم بيئة معيشية مريحة ومستدامة.",
       image:
         "neom-projects/infrastructure-package/infrastructure-package-8.webp",
       alt: "Infrastructure Package for Staff Accommodation (4200000151/001) image",
-      scopeOfWorkEN: " Softscape, Hardscape, and Irrigation system",
+      scopeOfWorkEN: "Softscape, Hardscape, and Irrigation System",
       mainContractorEN: "PCC",
       consultantEN: "AECOM",
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        "This project is aimed at improving the living conditions for staff through advanced " +
-        "landscaping and irrigation solutions. It includes the creation of green spaces, " +
-        "recreational areas, and efficient irrigation systems to support a comfortable living environment",
+        "This project aims to enhance the living environment for staff through advanced landscaping " +
+        "and irrigation solutions. It includes creating extensive green spaces, integrated recreational areas, " +
+        "and efficient irrigation systems to support a comfortable and sustainable living environment.",
       subImages: [
         {
           id: 1,
@@ -218,12 +218,12 @@ export class GeoscapeProjectsService {
       nameEN: "Oxagon to Red Desert Early Works Roads Package 1 (WO#49)",
       nameAR:
         "منطقة أوكساغون إلى حزمة الطرق للأعمال المبكرة في الصحراء الحمراء 1 (WO#49)",
-      scopeOfWorkAR: "زراعة الأشجار",
+      scopeOfWorkAR: "نقل وزراعة الأشجار المحلية",
       mainContractorAR: "سبك",
       consultantAR: "Bechtel",
       statusAR: "مكتمل",
       descriptionAR:
-        "شمل هذا المشروع زراعة الأشجار المحلية كجزء من الأعمال الأولية لإنشاء الطرق. كان الهدف هو الحفاظ على النباتات المحلية مع تسهيل تطوير البنية التحتية الجديدة.",
+        "شمل هذا المشروع نقل وزراعة الأشجار المحلية كجزء من الأعمال التمهيدية لإنشاء الطرق. كان الهدف الأساسي الحفاظ على الغطاء النباتي المحلي مع تسهيل تطوير البنية التحتية الجديدة بشكل مستدام.",
       image: "neom-projects/wo49/wo49-7.webp",
       alt: "Oxagon to Red Desert Early Works Roads Package 1 (WO#49) image",
       scopeOfWorkEN: "Native Tree Transplanting",
@@ -232,9 +232,8 @@ export class GeoscapeProjectsService {
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        "This project involved the transplanting of native trees as part of the early works for " +
-        "road construction. The aim was to preserve the local flora while facilitating the development" +
-        " of new infrastructure.",
+        "This project involved transplanting native trees as part of preliminary works for road construction. " +
+        "The primary objective was to preserve local flora while facilitating sustainable development of new infrastructure.",
       subImages: [
         {
           id: 1,
@@ -294,12 +293,12 @@ export class GeoscapeProjectsService {
         "Oxagon to Red Desert Early Works Construction of Access Roads Package 2 (WO#50)",
       nameAR:
         "أوكساغون إلى الصحراء الحمراء الأعمال المبكرة لبناء طرق الوصول الحزمة 2 (WO#50)",
-      scopeOfWorkAR: "زراعة الأشجار",
+      scopeOfWorkAR: "نقل وزراعة الأشجار المحلية",
       mainContractorAR: "سبك",
       consultantAR: "Bechtel",
       statusAR: "مكتمل",
       descriptionAR:
-        "بعد نجاح الحزمة الأولى، واصل هذا المشروع الجهود لزرع الأشجار المحلية أثناء بناء طرق الوصول. كان التركيز على تقليل الأثر البيئي مع تمكين تطوير البنية التحتية الأساسية.",
+        "بناءً على نجاح الحزمة الأولى، واصل هذا المشروع جهود نقل وزراعة الأشجار المحلية أثناء بناء طرق الوصول. ركز العمل على تقليل التأثير البيئي مع تمكين تطوير البنية التحتية الأساسية بشكل متوازن.",
       image: "neom-projects/wo50/wo50-8.webp",
       alt: "(WO#50) image",
       scopeOfWorkEN: "Native Tree Transplanting",
@@ -308,9 +307,9 @@ export class GeoscapeProjectsService {
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        " Following the success of Package 1, this project continued the effort to transplant" +
-        " native trees during the construction of access roads. The focus was on minimizing environmental " +
-        "impact while enabling essential infrastructure development.",
+        "Building on the success of Package 1, this project continued transplanting native trees during " +
+        "access road construction. The focus was on minimizing environmental impact while enabling essential " +
+        "infrastructure development in a balanced manner.",
       subImages: [
         {
           id: 1,
@@ -393,13 +392,13 @@ export class GeoscapeProjectsService {
       id: 6,
       nameEN: "Advanced Enabling Works (Phase 1) (WO#53)",
       nameAR: "الأعمال التمكينية المتقدمة (المرحلة 1) (WO#53)",
-      scopeOfWorkAR: "زراعة الأشجار",
+      scopeOfWorkAR: "نقل وزراعة الأشجار المحلية",
       mainContractorAR: "AECOM",
       consultantAR: "Bechtel",
       statusAR: "مكتمل",
       descriptionAR:
-        "تضمن هذا المشروع أعمال تمكين متقدمة تتطلب الزراعة الدقيقة للأشجار المحلية. تأكد فريقنا من نقل الأشجار وإعادة زراعتها" +
-        " بطريقة تحافظ على صحتها وتدعم الأهداف البيئية العامة للمشروع.",
+        "تضمن هذا المشروع أعمال تمكين متقدمة تتطلب نقلًا دقيقًا للأشجار المحلية. تأكد فريقنا من نقل الأشجار وإعادة زراعتها" +
+        " بطريقة تحافظ على صحتها وتدعم الأهداف البيئية الشاملة للمشروع.",
       image: "neom-projects/wo53/wo53-1.webp",
       alt: "Advanced Enabling Works (Phase 1) (WO#53) image",
       scopeOfWorkEN: "Native Tree Transplanting",
@@ -409,9 +408,9 @@ export class GeoscapeProjectsService {
       statusEN: "Completed",
 
       descriptionEN:
-        "This project involved advanced enabling works that required the careful " +
-        "transplantation of native trees. Our team ensured that the trees were moved and replanted " +
-        "in a manner that preserved their health and supported the overall environmental goals of the project.",
+        "This project involved advanced enabling works requiring precise transplantation of native trees. " +
+        "Our team ensured trees were moved and replanted in a manner that preserved their health and supported " +
+        "the comprehensive environmental goals of the project.",
       subImages: [
         {
           id: 1,
@@ -451,22 +450,22 @@ export class GeoscapeProjectsService {
       nameEN:
         "Sindalah Island – Marina Promenade & Utility Backbone (000001020/147)",
       nameAR: "جزيرة سندالة – ممشى المارينا وشبكة المرافق (000001020/147)",
-      scopeOfWorkAR: "  المناظر الطبيعية ونظام الري",
+      scopeOfWorkAR: "تنسيق الحدائق ونظام الري",
       mainContractorAR: "نسما وشركاهم",
       consultantAR: "AECOM",
       statusAR: "مكتمل",
       descriptionAR:
-        "هذا المشروع يركز على تطوير ممشى المارينا. يشمل ذلك تنسيقًا واسع النطاق للحدائق وتركيب نظام ري متقدم لضمان الحفاظ على المناظر الطبيعية الخضراء المورقة.",
+        "يركز هذا المشروع على تطوير ممشى المارينا بشكل متكامل. يشمل العمل تنسيق حدائق واسع النطاق وتركيب نظام ري متقدم لضمان الحفاظ على المناظر الطبيعية الخضراء المورقة على مدار السنة.",
       image: "neom-projects/sindalah-island/sindalah-island-1.webp",
       alt: "Sindalah Island – Marina Promenade & Utility Backbone (000001020/147) image",
-      scopeOfWorkEN: "Softscape and Irrigation system",
+      scopeOfWorkEN: "Softscape and Irrigation System",
       mainContractorEN: "Nesma & Partners",
       consultantEN: "AECOM",
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        "This project is focused on developing the marina promenade. It includes " +
-        "extensive softscaping and the installation of an advanced irrigation system to ensure the maintenance of lush, green landscapes.",
+        "This project focuses on comprehensive development of the marina promenade. It includes extensive " +
+        "softscaping and installation of an advanced irrigation system to ensure maintenance of lush, green landscapes year-round.",
       subImages: [
         {
           id: 1,
@@ -520,7 +519,7 @@ export class GeoscapeProjectsService {
       consultantAR: "AECOM",
       statusAR: "مكتمل",
       descriptionAR:
-        "تتولى شركة چيوسكيب مسؤولية توفير مجموعة متنوعة من النباتات للمجموعة الأولى في جزيرة سندال. ويهدف هذا المشروع إلى تعزيز الجمال الطبيعي للجزيرة ودعم التنوع البيولوجي من خلال إدخال أنواع مختلفة من النباتات",
+        "تتولى شركة جيوسكيب مسؤولية توفير مجموعة متنوعة من النباتات للمجموعة الأولى في جزيرة سندالة. يهدف هذا المشروع إلى تعزيز الجمال الطبيعي للجزيرة ودعم التنوع البيولوجي من خلال إدخال أنواع نباتية متنوعة.",
 
       image:
         "neom-projects/sindalah-Island-cluster/sindalah-Island-cluster-1.webp",
@@ -531,9 +530,9 @@ export class GeoscapeProjectsService {
       progress: "100",
       statusEN: "Completed",
       descriptionEN:
-        "Geoscape is responsible for supplying a diverse range of plants for Cluster 1 on Sindalah" +
-        " Island. This project aims to enhance the island's natural beauty and support biodiversity through" +
-        " the introduction of various plant species",
+        "Geoscape is responsible for supplying a diverse range of plants for Cluster 1 on Sindalah Island. " +
+        "This project aims to enhance the island's natural beauty and support biodiversity through the introduction " +
+        "of various plant species.",
       subImages: [
         {
           id: 1,
@@ -617,7 +616,7 @@ export class GeoscapeProjectsService {
       image: "neom-projects/wo42/wo42-8.webp",
       alt: "NEOM Company – The LINE (WO 4200000127-02) image",
       scopeOfWorkEN: "Native Tree Transplanting",
-      scopeOfWorkAR: "زراعة الأشجار",
+      scopeOfWorkAR: "نقل وزراعة الأشجار المحلية",
       mainContractorEN: "FMSCO",
       mainContractorAR: "FMSCO",
       consultantEN: "Bechtel",
@@ -626,12 +625,12 @@ export class GeoscapeProjectsService {
       statusEN: "Completed",
       statusAR: "مكتمل",
       descriptionEN:
-        "As part of the ambitious NEOM project, The LINE required the transplantation" +
-        " of native trees to preserve the natural landscape. Geoscape successfully" +
-        " completed this task, ensuring that the environmental integrity of the area was maintained.",
+        "As part of the ambitious NEOM project, The LINE required transplantation of native trees to preserve " +
+        "the natural landscape. Geoscape successfully completed this task, ensuring the environmental integrity " +
+        "of the area was maintained.",
       descriptionAR:
-        "كجزء من مشروع نيوم الطموح، تطلب مشروع ذا لاين زراعة الأشجار المحلية للحفاظ على المنظر الطبيعي. نجحت چيوسكيب في إتمام" +
-        " هذه المهمة، مما ضمن الحفاظ على النزاهة البيئية للمنطقة.",
+        "كجزء من مشروع نيوم الطموح، تطلب مشروع ذا لاين نقل وزراعة الأشجار المحلية للحفاظ على المنظر الطبيعي. نجحت شركة جيوسكيب في إتمام" +
+        " هذه المهمة بنجاح، مما ضمن الحفاظ على التوازن البيئي للمنطقة.",
 
       subImages: [
         {
@@ -687,8 +686,8 @@ export class GeoscapeProjectsService {
       nameAR:
         "البنية التحتية والمباني العامة على طريق الأمير محمد بن سلمان – المرحلة الأولى القسم الثاني (الحزمة 2B) من مشروع بوليفارد الرياض (جسر الدراجات الهوائية)",
       image: "riyadh-projects/cycle-bridge/cycle-bridge-1.webp",
-      scopeOfWorkEN: " Softscape and Irrigation system",
-      scopeOfWorkAR: "  المناظر الطبيعية ونظام الري",
+      scopeOfWorkEN: "Softscape and Irrigation System",
+      scopeOfWorkAR: "تنسيق الحدائق ونظام الري",
       mainContractorEN: "Freyssinet",
       mainContractorAR: "فريسينه",
       consultantEN: "IDOM",
@@ -702,7 +701,7 @@ export class GeoscapeProjectsService {
         " and shrubs, as well as hardscaping features such as pathways, patios, and other structures." +
         " The irrigation system ensures sustainable water management.",
       descriptionAR:
-        "يتضمن هذا المشروع تنسيق الحدائق الشامل والري لمجتمع سكني. يشمل تصميم وتنفيذ عناصر تنسيق الحدائق الناعمة مثل العشب والأشجار والشجيرات، بالإضافة إلى ميزات تنسيق الحدائق الصلبة مثل الممرات والفناءات والهياكل الأخرى. يضمن نظام الري إدارة مستدامة للمياه.",
+        "يتضمن هذا المشروع تنسيق الحدائق الشامل ونظام الري لجسر الدراجات الهوائية في بوليفارد الرياض. يشمل تصميم وتنفيذ عناصر تنسيق الحدائق الناعمة مثل العشب والأشجار والشجيرات، بالإضافة إلى الأعمال الصلبة مثل الممرات والهياكل المعمارية. يضمن نظام الري إدارة مستدامة للمياه.",
 
       subImages: [
         { id: 1, image: "riyadh-projects/cycle-bridge/cycle-bridge-1.webp" },
@@ -727,8 +726,8 @@ export class GeoscapeProjectsService {
         " حنيفة" +
         " كجزء من POD18 من مشروع بوليفارد الرياض في مدينة الرياض",
       image: "riyadh-projects/wadi-hanifa/wadi-hanifa-7.webp",
-      scopeOfWorkEN: " Softscape and Irrigation system",
-      scopeOfWorkAR: "  المناظر الطبيعية ونظام الري",
+      scopeOfWorkEN: "Softscape and Irrigation System",
+      scopeOfWorkAR: "تنسيق الحدائق ونظام الري",
       mainContractorEN: "Freyssinet",
       mainContractorAR: "فريسينه",
       consultantEN: "IDOM",
@@ -737,11 +736,11 @@ export class GeoscapeProjectsService {
       statusEN: "Completed",
       statusAR: "مكتمل",
       descriptionEN:
-        " This project focuses on enhancing the landscape in the Arts District of Riyadh, specifically within the Wadi Hanifah" +
-        " areas. Our work includes the softscaping of green areas and the implementation of efficient irrigation systems to support the" +
-        " city's environmental and aesthetic goals",
+        "This project focuses on enhancing the landscape in the Arts District of Riyadh, specifically within the Wadi Hanifah " +
+        "areas. Our work includes softscaping green areas and implementing efficient irrigation systems to support the " +
+        "city's environmental and aesthetic goals.",
       descriptionAR:
-        "يركز هذا المشروع على تحسين المناظر الطبيعية في منطقة الفنون بالرياض، وبالتحديد في مناطق وادي حنيفة. يشمل عملنا تنسيق المساحات الخضراء وتنفيذ أنظمة ري فعالة لدعم الأهداف البيئية والجمالية للمدينة.",
+        "يركز هذا المشروع على تطوير المناظر الطبيعية في منطقة الفنون بالرياض، وتحديدًا في مناطق وادي حنيفة. يشمل عملنا تنسيق المساحات الخضراء وتنفيذ أنظمة ري فعالة لدعم الأهداف البيئية والجمالية للمدينة.",
 
       subImages: [
         { id: 1, image: "riyadh-projects/wadi-hanifa/wadi-hanifa-1.webp" },
@@ -759,8 +758,8 @@ export class GeoscapeProjectsService {
       nameEN: "Ministry of Finance",
       nameAR: "وزارة المالية",
       image: "riyadh-projects/ministry-of-finance/ministry-of-finance-1.webp",
-      scopeOfWorkEN: "Softscape and Irrigation system",
-      scopeOfWorkAR: "  المناظر الطبيعية ونظام الري",
+      scopeOfWorkEN: "Softscape and Irrigation System",
+      scopeOfWorkAR: "تنسيق الحدائق ونظام الري",
       mainContractorEN: "Ministry of Finance",
       mainContractorAR: "وزارة المالية",
       consultantEN: "Ministry of Finance",
@@ -769,12 +768,11 @@ export class GeoscapeProjectsService {
       statusEN: "Ongoing",
       statusAR: "مستمر",
       descriptionEN:
-        "Geoscape is tasked with the landscaping and irrigation work for the " +
-        "Ministry of Finance's premises. This project aims to create a serene " +
-        "and well-maintained environment that reflects the prestige of the ministry" +
-        " while ensuring sustainable water usage through advanced irrigation techniques.",
+        "Geoscape is responsible for the landscaping and irrigation work at the Ministry of Finance premises. " +
+        "This project aims to create a serene and well-maintained environment that reflects the ministry's prestige " +
+        "while ensuring sustainable water usage through advanced irrigation techniques.",
       descriptionAR:
-        "تم تكليف چيوسكيب بأعمال تنسيق الحدائق والري لمقر وزارة المالية. يهدف هذا المشروع إلى خلق بيئة هادئة ومُحافظة تعكس" +
+        "تتولى شركة جيوسكيب أعمال تنسيق الحدائق والري لمقر وزارة المالية. يهدف هذا المشروع إلى خلق بيئة هادئة ومحافظة تعكس" +
         " هيبة الوزارة مع ضمان استخدام مستدام للمياه من خلال تقنيات الري المتقدمة.",
 
       subImages: [

@@ -9,12 +9,11 @@ export class GreenhouseService {
     {
       id: 1,
       nameEN: "ES Multi-Span Film Greenhouse",
-      nameAR: "الصوبه الزراعيه متعدده الطوابق",
+      nameAR: "الصوبة الزراعية متعددة الامتدادات",
       descriptionEN:
         "An economical and durable multi-span greenhouse designed with a focus on cost-effectiveness. Its sturdy film material provides excellent crop protection, making it ideal for budget-conscious commercial growers",
       descriptionAR:
-        "صوبه زراعيه اقتصادية ومتينة متعددة الامتدادات مصممة مع التركيز على الفعالية من حيث التكلفة. توفر مادة الفيلم القوية" +
-        " حماية ممتازة للمحاصيل، مما يجعلها مثالية للمزارعين التجاريين المهتمين بالميزانية",
+        "صوبة زراعية اقتصادية ومتينة متعددة الامتدادات مصممة مع التركيز على الفعالية من حيث التكلفة. توفر مادة الفيلم القوية حماية ممتازة للمحاصيل، مما يجعلها مثالية للمزارعين التجاريين المهتمين بالميزانية.",
       subImages: [
         {
           id: 1,
@@ -63,12 +62,11 @@ export class GreenhouseService {
     {
       id: 2,
       nameEN: "EU Multi-Span Film Greenhouse",
-      nameAR: "الصوبه الزراعيه متعدده الطوابق",
+      nameAR: "الصوبة الزراعية متعددة الامتدادات",
       descriptionEN:
         "A high-quality, European-standard multi-span greenhouse with film covering, offering superior crop protection and energy efficiency. Perfect for large-scale farming in varying climates.",
       descriptionAR:
-        "صوبه زراعيه عالية الجودة ومتعددة الامتدادات وفقًا للمعايير الأوروبية مع غطاء فيلمي، توفر حماية فائقة للمحاصيل وكفاءة" +
-        " في استخدام الطاقة. مثالية للزراعة على نطاق واسع في مناخات مختلفة.",
+        "صوبة زراعية عالية الجودة ومتعددة الامتدادات وفقًا للمعايير الأوروبية مع غطاء فيلمي، توفر حماية فائقة للمحاصيل وكفاءة في استخدام الطاقة. مثالية للزراعة على نطاق واسع في مناخات مختلفة.",
 
       subImages: [
         {
@@ -106,12 +104,11 @@ export class GreenhouseService {
     {
       id: 3,
       nameEN: "Glass-Greenhouse",
-      nameAR: "الصوبة الزراعيه",
+      nameAR: "الصوبة الزجاجية",
       descriptionEN:
         "A premium greenhouse solution featuring tempered glass panels for maximum light transmission and excellent insulation. Designed for long-term durability, it is perfect for high-value crops and year-round cultivation.",
       descriptionAR:
-        " صوبه زراعيه ممتازة تتميز بألواح زجاجية مقواة لأقصى قدر من انتقال الضوء وعزل ممتاز. مصمم ليكون متينًا على المدى" +
-        " الطويل، فهو مثالي للمحاصيل عالية القيمة والزراعة على مدار العام.",
+        "صوبة زراعية ممتازة تتميز بألواح زجاجية مقواة لأقصى قدر من انتقال الضوء وعزل ممتاز. مصممة لتكون متينة على المدى الطويل، فهي مثالية للمحاصيل عالية القيمة والزراعة على مدار العام.",
 
       subImages: [
         {
@@ -144,12 +141,11 @@ export class GreenhouseService {
     {
       id: 4,
       nameEN: "Polycarbonate Greenhouse",
-      nameAR: "صوبة من البوليكربونات",
+      nameAR: "الصوبة البوليكربونية",
       descriptionEN:
         "Engineered for durability and insulation, this greenhouse features polycarbonate panels that ensure excellent light diffusion and UV protection. Ideal for creating optimal growing conditions for a wide range of crops.",
       descriptionAR:
-        "تم تصميم هذه الصوبه لتكون متينة ومعزولة، وتتميز بألواح من البولي كربونات تضمن انتشارًا ممتازًا للضوء وحماية من" +
-        " الأشعة فوق البنفسجية. مثالية لخلق ظروف نمو مثالية لمجموعة واسعة من المحاصيل.",
+        "تم تصميم هذه الصوبة لتكون متينة ومعزولة، وتتميز بألواح من البولي كربونات تضمن انتشارًا ممتازًا للضوء وحماية من الأشعة فوق البنفسجية. مثالية لخلق ظروف نمو مثالية لمجموعة واسعة من المحاصيل.",
 
       subImages: [
         {
@@ -182,7 +178,7 @@ export class GreenhouseService {
     {
       id: 5,
       nameEN: "Shade House",
-      nameAR: "بيت الظل",
+      nameAR: "الصوبة الظلية",
       descriptionEN:
         "High-quality shade netting designed to protect plants from excessive sunlight, ideal for temperature-sensitive crops or areas with intense sunlight exposure.",
       descriptionAR:
