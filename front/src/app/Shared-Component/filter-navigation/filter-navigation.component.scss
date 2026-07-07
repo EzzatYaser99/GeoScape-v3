@@ -3,7 +3,6 @@
 @use "../../../styles/variables" as vr;
 
 aside {
-  @include mx.filter-navigation;
   position: sticky;
   align-self: flex-start;
   top: calc(#{vr.$header-height} + #{vr.$spacing-16});
@@ -13,25 +12,112 @@ aside {
   border: 1px solid cv.$brand-border;
   box-shadow: 0 4px 24px cv.$shadow-black-06;
 
+
   .filter-box {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: cv.$brand-white;
+    border-radius: vr.$border-radius-xl;
+
+
     max-height: 350px;
     border: none;
     box-shadow: none;
     padding: vr.$padding-8 0;
+
+
+    scrollbar-width: thin;
+    scrollbar-color: cv.$brand-green transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: cv.$brand-green;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: cv.$brand-green-dark;
+    }
   }
+
+  .filter-title {
+    font-size: vr.$size-xxl;
+    font-weight: 700;
+    margin: 0 0 vr.$spacing-12 0;
+    color: cv.$brand-text;
+    padding: vr.$padding-12;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .filter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .filter-list-item {
+    margin: 0 0 vr.$spacing-8 0;
+  }
+
+  .filter-item {
+    display: block;
+    width: 100%;
+    text-align: start;
+    padding: vr.$padding-12 vr.$padding-16;
+    background: transparent;
+    border: 0;
+    color: cv.$brand-text-muted;
+    font-weight: 600;
+    border-radius: vr.$border-radius-lg;
+    border-left: 3px solid transparent;
+    transition: background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+
+    &:hover {
+      background: cv.$brand-green-03;
+      transform: translateX(2px);
+      outline: none;
+    }
+  }
+
+  .filter-item-active {
+    border-left-color: cv.$brand-green;
+    color: cv.$brand-green-dark;
+    font-weight: 700;
+    background: cv.$brand-green-05;
+    transform: translateX(0);
+  }
+
 }
 
 ::ng-deep [dir="rtl"] aside {
   .filter-item {
-    border-left: none;
-    border-right: 3px solid transparent;
+    border-right: 3px solid transparent !important;
+    border-left: 0 !important;
+
+    &:hover {
+      transform: translateX(0px);
+    }
   }
 
   .filter-item-active {
-    border-right-color: cv.$brand-green;
+    border-right-color: cv.$brand-green !important;
   }
 
   .filter-item:hover {
-    transform: translateX(-2px);
+    transform: translateX(-2px) !important;
   }
 }

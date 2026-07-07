@@ -1,14 +1,14 @@
 @if (showScrollButton) {
   <div
     class="scrollbtn fadeindown animation-duration-500"
-    [pTooltip]="'generic.scroll_to_top' | translate"
+    [pTooltip]="'common.scroll_to_top' | translate"
     tooltipPosition="left"
   >
     <button
       type="button"
       (click)="scrollToTop($event)"
       class="btn"
-      [attr.aria-label]="'generic.scroll_to_top' | translate"
+      [attr.aria-label]="'common.scroll_to_top' | translate"
     >
       <i class="pi pi-arrow-circle-up" aria-hidden="true"></i>
     </button>
