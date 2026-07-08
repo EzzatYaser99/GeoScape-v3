@@ -19,7 +19,7 @@ export interface HeaderNavItem extends NavigationItem {
 
 @Component({
   selector: "app-header",
-  imports: [RouterLink, SwitchLangButtonComponent, TranslatePipe],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: "./header.component.html",
   standalone: true,
   styleUrl: "./header.component.scss",
