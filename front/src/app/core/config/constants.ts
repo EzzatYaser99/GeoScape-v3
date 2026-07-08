@@ -80,7 +80,7 @@ export const CONTACT_INFO = {
   ADDRESS: {
     EN: 'King Fahd Rd, Al Olaya, Riyadh',
     AR: 'طريق الملك فهد، العليا، الرياض',
-    HREF: 'https://maps.app.goo.gl/tAMe31CRJtVjrR717',
+    HREF: 'https://maps.app.goo.gl/KagWqWaShj1ytXPw7',
   },
   EMAIL: 'info@geoscape.net',
   PHONE: {
