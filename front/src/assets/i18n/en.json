@@ -135,7 +135,7 @@
     "phone_no": "Phone Number",
     "opening_days": "Opening Days",
     "follow_us": "Follow Us",
-    "all_right": "© 2026 All Rights Reserved |",
+    "all_right": "© {{ year }} All Rights Reserved |",
     "distributed": "Designed & Developed by"
   },
   "home": {

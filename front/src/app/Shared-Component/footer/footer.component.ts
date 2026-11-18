@@ -38,6 +38,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   lang: "en" | "ar" = "en";
+  currentYear = new Date().getFullYear();
   openDays: WorkDays[] = [];
   contactDetailsInfo: ContactDetailsInfo[] = [];
   footerNavLinks: FooterNavLink[] = [];
