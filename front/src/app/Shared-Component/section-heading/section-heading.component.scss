@@ -19,7 +19,7 @@
   display: inline-block;
   @include mx.uppercase-label(vr.$size-xl, 0.18em);
   color: cv.$brand-green;
-  margin-bottom: vr.$spacing-12;
+  margin: vr.$spacing-12;
   padding: vr.$padding-4 vr.$padding-12;
   border-radius: vr.$border-radius-curvy;
   background: cv.$brand-green-05;
