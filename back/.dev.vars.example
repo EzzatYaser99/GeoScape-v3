@@ -1,0 +1,2 @@
+MOCK_EMAILS=true
+ALLOWED_ORIGINS=http://localhost:7200,https://geoscape.sa,https://www.geoscape.sa

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env index.js",
     "build": "webpack",
-    "test": "node --test"
+    "test": "node --test",
+    "dev:worker": "wrangler dev",
+    "deploy:worker": "wrangler deploy"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
@@ -19,7 +21,8 @@
   },
   "devDependencies": {
     "webpack": "^5.113.0",
-    "webpack-cli": "^7.3.1"
+    "webpack-cli": "^7.3.1",
+    "wrangler": "^4.166.0"
   },
   "engines": {
     "node": ">=22.9.0"
