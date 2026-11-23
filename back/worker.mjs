@@ -89,7 +89,7 @@ export default {
     async fetch(request, env) {
         const url = new URL(request.url);
         const allowedOrigins = new Set(
-            (env.ALLOWED_ORIGINS || 'http://localhost:7200,https://geoscape.sa,https://www.geoscape.sa')
+            (env.ALLOWED_ORIGINS || 'http://localhost:6200,http://localhost:7200,https://geoscape.sa,https://www.geoscape.sa')
                 .split(',').map(origin => origin.trim()).filter(Boolean),
         );
         const origin = request.headers.get('Origin');

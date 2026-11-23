@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import worker from './worker.mjs';
 
 const origin = 'http://localhost:7200';
+const frontendOrigin = 'http://localhost:6200';
 const env = {
     ALLOWED_ORIGINS: origin,
     MOCK_EMAILS: 'true',
@@ -31,6 +32,15 @@ test('accepts Angular contact form data in mock mode', async () => {
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('Access-Control-Allow-Origin'), origin);
     assert.deepEqual(await response.json(), { message: 'Email sent successfully' });
+});
+
+test('allows the Angular development server origin', async () => {
+    const response = await worker.fetch(request(contact, { origin: frontendOrigin }), {
+        ...env,
+        ALLOWED_ORIGINS: `${origin},${frontendOrigin}`,
+    });
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Access-Control-Allow-Origin'), frontendOrigin);
 });
 
 test('rejects invalid details and unexpected origins', async () => {
